@@ -1,7 +1,7 @@
 
 import './App.css';
 import ListTest from './components/AnComponent/ListTest';
-
+import ListTest from './components/ListTest';
 function App() {
   return (
     <div className="App">
@@ -9,5 +9,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
