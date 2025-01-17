@@ -1,11 +1,12 @@
 
 import './App.css';
 import ListTest from './components/AnComponent/ListTest';
-import ListTest from './components/ListTest';
+import HomeTest from './components/TriComponent/HomeTest';
 function App() {
   return (
     <div className="App">
           <ListTest/>
+          <HomeTest/>
     </div>
   );
 }
