@@ -1,5 +1,5 @@
 {
-  "employees": [
+  "user": [
     {
       "id": 1,
       "username": "admin",
