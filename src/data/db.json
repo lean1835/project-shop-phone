@@ -25,7 +25,7 @@
       "role": "Business Staff"
     }
   ],
-  "Staff": [
+  "staff": [
     {
       "id": 1,
       "name": "Nguyen Van A",
