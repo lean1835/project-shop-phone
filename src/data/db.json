@@ -107,7 +107,7 @@
     {
       "id": 1,
       "name": "Le Thi C",
-      "phone": "0123987654",
+      "phone": "0123456789",
       "address": "Danang, Vietnam",
       "age": 30,
       "email": "letc@example.com"
@@ -115,10 +115,26 @@
     {
       "id": 2,
       "name": "Pham Van D",
-      "phone": "0938274655",
+      "phone": "9876543210",
       "address": "Hue, Vietnam",
       "age": 40,
       "email": "pvd@example.com"
+    },
+    {
+      "name": "Phong Le",
+      "phone": "2222222222",
+      "address": "32 a",
+      "age": 23,
+      "email": "phong.levanthanh@gmail.com",
+      "id": 3
+    },
+    {
+      "name": "Phong Le",
+      "phone": "2222222223",
+      "address": "23",
+      "age": 23,
+      "email": "ee-.@gmail.com",
+      "id": 4
     }
   ],
   "stock": [
