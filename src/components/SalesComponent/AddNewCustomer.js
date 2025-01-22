@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {addNewCustomer} from "../../services/customerService";
-import {useLocation, useNavigate} from "react-router-dom";
-import {Form, Formik, Field, ErrorMessage} from "formik";
+import React, { useState } from 'react';
+import { addNewCustomer } from "../../services/customerService";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import '../../assets/saleComp.css';
 
 function AddNewCustomer() {
     const [newCustomer] = useState({
@@ -31,35 +32,35 @@ function AddNewCustomer() {
     return (
         <>
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
-                <Form>
-                    <div>
+                <Form className="add-customer-container">
+                    <div className="form-group">
                         <label>Name</label>
-                        <Field name="name" type="text"/>
-                        <ErrorMessage name="name"/>
+                        <Field name="name" type="text" className="form-control"/>
+                        <ErrorMessage name="name" component="div" className="error-message"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Phone</label>
-                        <Field name="phone" type="tel"/>
-                        <ErrorMessage name="phone"/>
+                        <Field name="phone" type="tel" className="form-control"/>
+                        <ErrorMessage name="phone" component="div" className="error-message"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Address</label>
-                        <Field name="address" type="text"/>
-                        <ErrorMessage name="address"/>
+                        <Field name="address" type="text" className="form-control"/>
+                        <ErrorMessage name="address" component="div" className="error-message"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Age</label>
-                        <Field name="age" type="number"/>
-                        <ErrorMessage name="age"/>
+                        <Field name="age" type="number" className="form-control"/>
+                        <ErrorMessage name="age" component="div" className="error-message"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Email</label>
-                        <Field name="email" type="email"/>
-                        <ErrorMessage name="email"/>
+                        <Field name="email" type="email" className="form-control"/>
+                        <ErrorMessage name="email" component="div" className="error-message"/>
                     </div>
-                    <div>
-                        <button type="submit">Add New Customer</button>
-                        <button type="button" onClick={handleBack} >Back</button>
+                    <div className="form-actions">
+                        <button type="submit" className="btn btn-primary">Add New Customer</button>
+                        <button type="button" className="btn btn-secondary" onClick={handleBack}>Back</button>
                     </div>
                 </Form>
             </Formik>
