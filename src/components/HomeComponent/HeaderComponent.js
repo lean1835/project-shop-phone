@@ -13,7 +13,7 @@ function HeaderComponent() {
     }
     useEffect(() => {
         if (!account) {
-            const storedAccount = JSON.parse(localStorage.getItem('account'));
+            const storedAccount = JSON.parse(sessionStorage.getItem('account') || localStorage.getItem('account'));
             if (storedAccount) {
                 dispatch({
                     type: "LOGIN",

@@ -4,7 +4,8 @@ export function login(loginInfo) {
     return async (dispatch) => {
         const account = await checkLogin(loginInfo);
         if (account !== null) {
-            localStorage.setItem("userAccount", JSON.stringify(account)); 
+            localStorage.setItem('userAccount', JSON.stringify(account));
+            sessionStorage.setItem('userAccount', JSON.stringify(account));
             // Lưu vào localStorage
             dispatch({
                 type: "LOGIN",
@@ -20,7 +21,7 @@ export function login(loginInfo) {
 }
 
 export function logout() {
-    localStorage.removeItem("userAccount"); 
+    localStorage.removeItem("userAccount");
     // Xóa khỏi localStorage khi đăng xuất
     return {
         type: "LOGOUT",
