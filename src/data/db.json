@@ -119,54 +119,6 @@
       "address": "Hue, Vietnam",
       "age": 40,
       "email": "pvd@example.com"
-    },
-    {
-      "name": "Phong Le",
-      "phone": "2222222222",
-      "address": "32 a",
-      "age": 23,
-      "email": "phong.levanthanh@gmail.com",
-      "id": 3
-    },
-    {
-      "name": "Phong Le",
-      "phone": "2222222223",
-      "address": "23",
-      "age": 23,
-      "email": "ee-.@gmail.com",
-      "id": 4
-    },
-    {
-      "name": "Phong Le",
-      "phone": "0123456778",
-      "address": "32 a",
-      "age": 23,
-      "email": "clonemlp21@gmail.com",
-      "id": 5
-    },
-    {
-      "name": "Phong Le",
-      "phone": "0123456780",
-      "address": "32 a",
-      "age": 123,
-      "email": "phong.levanthanh@gmail.com",
-      "id": 6
-    },
-    {
-      "name": "Phong Le",
-      "phone": "0123456788",
-      "address": "32 a",
-      "age": 12,
-      "email": "phong.levanthanh@gmail.com",
-      "id": 7
-    },
-    {
-      "name": "Phong Le",
-      "phone": "0123456787",
-      "address": "32 a",
-      "age": 23,
-      "email": "phong.levanthanh@gmail.com",
-      "id": 8
     }
   ],
   "stock": [
