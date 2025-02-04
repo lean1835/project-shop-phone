@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Link} from 'react-router-dom'
 import {Formik, Form, Field, ErrorMessage} from "formik";
-function EditCustomer (){
+function EditManagerCustomer (){
     return(
         <>
             <div className="manager_retail">
@@ -51,4 +51,4 @@ function EditCustomer (){
         </>
     );
 }
-export default EditCustomer;
+export default EditManagerCustomer;
