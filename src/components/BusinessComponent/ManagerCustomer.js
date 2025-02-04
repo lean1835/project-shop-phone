@@ -47,7 +47,7 @@ function ManagerCustomer (){
                 </tbody>
             </table>
                 <button>
-                    <Link to={'/customer/edit'}>Chỉnh sửa</Link>
+                    <Link to={'/home/manager/customer/edit'}>Chỉnh sửa</Link>
                 </button>
                 
                 <button>Thoát</button>

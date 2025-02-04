@@ -6,7 +6,7 @@ function EditCustomer (){
         <>
             <div className="manager_retail">
                 <button >
-                    <Link className="button_choice_product" to={'/le/product'}>Chọn sản phẩm</Link>      
+   
                 </button>
                 
                 {/* <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={handleValidate} > */}
