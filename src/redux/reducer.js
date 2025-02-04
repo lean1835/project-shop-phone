@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-
 const initState = {
     account: null
 }
@@ -17,7 +16,6 @@ function accountReducer(state = initState, action) {
             }
         default:
             return state
-
     }
 }
 export const rootReducer = combineReducers({
