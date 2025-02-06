@@ -3,7 +3,7 @@ import staffService from "../../service/staffService";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
-import { getAllAccounts } from "../../service/accountService";
+import { getAllAccounts } from "../../services/accountService";
 
 export default function StaffingComponent() {
   const [staff, setStaff] = useState([]);
