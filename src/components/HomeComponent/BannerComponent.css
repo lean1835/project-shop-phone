@@ -1,0 +1,24 @@
+.banner {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.banner .banner-promotion {
+    width: 100%;
+    margin-top: 50px;
+    height: calc(100vh - 50px);
+    border: 1px solid red;
+    background-image: url('../../../public/banner4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner .banner-promotion .img-banner{
+    width: 80%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+}
