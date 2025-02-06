@@ -2,10 +2,19 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { getAllProducts } from "../../services/productService";
 function ChoiceProduct (){
-
+    const [productList , setProductList] = useState([]);
+    useEffect(()=>{
+        const fetchData= async()=>{
+                        const products= await getAllProducts();
+                        setProductList(products);
+                    }
+                    fetchData();
+                },[])
     return(
         <>
+
             <div className="choice_product">
                 <span>Hiển thị:</span>
                 <input type="radio" name="display" value={'all'}/>Tất cả sản phẩm <br/>
@@ -34,24 +43,23 @@ function ChoiceProduct (){
                     <th>Tên</th>
                     <th>Giá</th>
                     <th>Kích thước màn</th>
-                    <th>Sim</th>
                     <th>Độ phân giải</th>
                     <th>Cpu</th>
                     <th>Dung lượng</th>
                 </tr>
                 </thead>
                 <tbody>
-                {/* {productList.map((p,i)=>(
+                {productList.map((p,i)=>(
                     <tr key={p.id}>
-                        <td>{i+1}</td>
-                        <td>{p.id}</td>
                         <td>{p.name}</td>
-                        <td>{p.sim}</td>
-                        <td>{p.feature}</td>
-                        <td>{p.manufacture.name}</td>
+                        <td>{p.price}</td>
+                        <td>{p.screen_size}</td>
+                        <td>{p.camera}/{p.selfie}</td>
+                        <td>{p.cpu}</td>
+                        <td>{p.storage}</td>
 
                     </tr>
-                ))} */}
+                ))}
 
                 </tbody>
             </table>
