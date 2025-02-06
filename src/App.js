@@ -17,6 +17,8 @@ import EditManagerCustomer from "./components/BusinessComponent/EditManagerCusto
 import SaleManager from "./components/SalesComponent/SaleManager";
 import AddNewCustomer from "./components/SalesComponent/AddNewCustomer";
 import SearchProduct from "./components/SalesComponent/SearchProduct";
+import StaffingComponent from "./components/StaffingComponent";
+
 function App() {
   return (
     <>
@@ -32,12 +34,14 @@ function App() {
         <Route path="/SaleManager" element={<SaleManager />} />
         <Route path="/addNewCustomer" element={<AddNewCustomer />} />
         <Route path="/searchProduct" element={<SearchProduct />} />
-        <Route path={"/ListStock"} element={<ListStock />}></Route>
-        <Route path={"/ImportStock"} element={<AddStock />}></Route>
-        <Route path={"/ProductsInStock"} element={<ProductsInStock />}></Route>
-        <Route path={"/SuppliersStock"} element={<SuppliersStock />}></Route>
+        <Route path="/ListStock" element={<ListStock />}/>
+        <Route path="/ImportStock" element={<AddStock />}/>
+        <Route path="/ProductsInStock" element={<ProductsInStock />}/>
+        <Route path="/SuppliersStock" element={<SuppliersStock />}/>
+        <Route path='/home/managerStaff' element={<StaffingComponent />} />
       </Routes>
     </>
   );
+
 }
 export default App;
