@@ -106,6 +106,9 @@ function SaleManager() {
                     </tbody>
                 </table>
             </div>
+            <div>
+                <button>Checkout</button>
+            </div>
         </div>
     );
 }

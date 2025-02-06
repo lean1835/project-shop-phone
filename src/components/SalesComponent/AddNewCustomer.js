@@ -40,7 +40,7 @@ function AddNewCustomer() {
                     </div>
                     <div className="form-group">
                         <label>Phone</label>
-                        <Field name="phone" type="tel" className="form-control"/>
+                        <Field name="phone" type="tel" className="form-control" disabled/>
                         <ErrorMessage name="phone" component="div" className="error-message"/>
                     </div>
                     <div className="form-group">
