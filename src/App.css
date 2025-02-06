@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+/* .button_manager{
+  text-decoration: none;
+  color: black;
+  padding: 70px;
+  display: block;
+  
+} */
+.manager{
+  text-align: center;
+  justify-content: space-evenly;
+  display: flex;
+  margin-top: 300px;
+}
+.button_retail{
+  text-decoration: none;
+  color: black;
+  padding: 100px;
+  
+}
+.button_customer{
+  text-decoration: none;
+  color: black;
+  padding: 100px;
+  display: block;
+}
+select {
+         /* Chiều cao */
+       /* Khoảng cách bên trong */
+  font-size: 16px;      /* Cỡ chữ */
+
+
+  border: 2px solid black; /* Viền */
+  border-radius: 5px;   /* Bo tròn góc */
+     /* Ẩn kiểu mặc định của trình duyệt */
+  cursor: pointer;      /* Hiển thị con trỏ khi hover */
+}

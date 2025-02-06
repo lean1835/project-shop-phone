@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { searchProductByName } from "../../service/productService";
+import { searchProductByName } from "../../services/productService";
 import { Link } from "react-router-dom";
 
 function ProductsInStock() {

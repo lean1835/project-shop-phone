@@ -2,7 +2,7 @@
   "accounts": [
     {
       "id": 1,
-      "username": "admin",
+      "username": "Admin",
       "password": "123",
       "role": "Admin"
     },
@@ -64,7 +64,7 @@
       "id": 1,
       "name": "Smartphone A",
       "price": 5000000,
-      "image": "images/imageA.jpg",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
       "selfie": "8MP",
@@ -76,7 +76,7 @@
       "id": 2,
       "name": "Smartphone B",
       "price": 7000000,
-      "image": "images/imageB.jpg",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
       "camera": "48MP",
       "selfie": "16MP",
@@ -143,7 +143,7 @@
     {
       "id": 1,
       "name": "Le Thi C",
-      "phone": "0123987654",
+      "phone": "0123456789",
       "address": "Danang, Vietnam",
       "age": 30,
       "email": "letc@example.com"
@@ -151,7 +151,7 @@
     {
       "id": 2,
       "name": "Pham Van D",
-      "phone": "0938274655",
+      "phone": "9876543210",
       "address": "Hue, Vietnam",
       "age": 40,
       "email": "pvd@example.com"

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { searchSuppliersByName } from "../../service/suppliersService";
+import { searchSuppliersByName } from "../../services/suppliersService";
 import { Link } from "react-router-dom";
 
 function SuppliersStock() {
