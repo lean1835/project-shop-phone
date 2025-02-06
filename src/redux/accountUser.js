@@ -1,4 +1,4 @@
-import { checkLogin } from "../service/accountService";
+import { checkLogin } from "../services/accountService";
 
 export function login(loginInfo) {
     return async (dispatch) => {
