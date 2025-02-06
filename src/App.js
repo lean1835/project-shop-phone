@@ -14,6 +14,7 @@ import EditManagerCustomer from './components/BusinessComponent/EditManagerCusto
 import SaleManager from './components/SalesComponent/SaleManager';
 import AddNewCustomer from "./components/SalesComponent/AddNewCustomer";
 import SearchProduct from "./components/SalesComponent/SearchProduct";
+import StaffingComponent from './components/StaffingComponent';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/SaleManager" element={<SaleManager/>}/>
                 <Route path="/addNewCustomer" element={<AddNewCustomer/>}/>
                 <Route path='/searchProduct' element={<SearchProduct/>}/>
+                <Route path='/home/manager/staff' element={<StaffingComponent />} />
             </Routes>
         </>
 

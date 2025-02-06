@@ -13,6 +13,10 @@ function Manager (){
                    <Link className="button_customer" to={'/home/manager/customer'}>Quản lý khách hàng</Link>
                     
                 </button>
+                <button >
+                   <Link className="button_staff" to={'/home/manager/staff'}>Quản lý nhân viên</Link>
+                    
+                </button>
             </div>
         </>
     );
