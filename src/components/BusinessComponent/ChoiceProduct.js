@@ -37,7 +37,7 @@ function ChoiceProduct (){
                     <button className={' w-10 btn btn-success btn-sm'} type={'button'} >Tìm kiếm</button>
                     {/* <button onClick={handleSearch} className={' w-25 btn btn-success btn-sm'} type={'button'} >Search</button> */}
                 </form>
-                <table className={'table table-dark'}>
+                <table className={'table table-light'}>
                 <thead>
                 <tr>
                     <th>Tên</th>
