@@ -2,8 +2,16 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { getAllCustomers } from "../../services/customerService";
 function ManagerCustomer (){
-
+        const [customerList,setCustomerList]=useState([]);
+        useEffect(()=>{
+                const fetchData= async()=>{
+                                const customers= await getAllCustomers();
+                                setCustomerList(customers);
+                            }
+                            fetchData();
+                        },[])
     return(
         <>
             <div className="manager_customer">
@@ -21,7 +29,7 @@ function ManagerCustomer (){
                     <button className={' w-10 btn btn-success btn-sm'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
                     {/* <button onClick={handleSearch} className={' w-25 btn btn-success btn-sm'} type={'button'} >Search</button> */}
                 </form>
-                <table className={'table table-dark'}>
+                <table className={'table table-light'}>
                 <thead>
                 <tr>
                     <th>Tên</th>
@@ -32,17 +40,16 @@ function ManagerCustomer (){
                 </tr>
                 </thead>
                 <tbody>
-                {/* {productList.map((p,i)=>(
-                    <tr key={p.id}>
-                        <td>{i+1}</td>
-                        <td>{p.id}</td>
-                        <td>{p.name}</td>
-                        <td>{p.sim}</td>
-                        <td>{p.feature}</td>
-                        <td>{p.manufacture.name}</td>
+                {customerList.map((c,i)=>(
+                    <tr key={c.id}>
+                        <td>{c.name}</td>
+                        <td>{c.phone}</td>
+                        <td>{c.age}</td>
+                        <td>{c.address}</td>
+                        <td>{c.email}</td>
 
                     </tr>
-                ))} */}
+                ))}
 
                 </tbody>
             </table>
