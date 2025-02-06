@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import staffService from "../../service/staffService";
-import accountService from "../../service/accountService";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
+import { getAllAccounts } from "../../service/accountService";
 
 export default function StaffingComponent() {
   const [staff, setStaff] = useState([]);
 
   useEffect(() => {
     try {
-      Promise.all([staffService.getAll(), accountService.getAll()]).then(([staffResponse, accountResponse]) => {
+      Promise.all([staffService.getAll(), getAllAccounts()]).then(([staffResponse, accountResponse]) => {
         const staffData = staffResponse.data;
         const accountData = accountResponse.data;
 
