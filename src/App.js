@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +11,10 @@ import ManagerCustomer from './components/BusinessComponent/ManagerCustomer';
 import ChoiceProduct from './components/BusinessComponent/ChoiceProduct';
 import HomeComponent from './components/HomeComponent/HomeComponent';
 import EditManagerCustomer from './components/BusinessComponent/EditManagerCustomer';
+import SaleManager from './components/SalesComponent/SaleManager';
+import AddNewCustomer from "./components/SalesComponent/AddNewCustomer";
+import SearchProduct from "./components/SalesComponent/SearchProduct";
+
 function App() {
     return (
         <>
@@ -23,6 +27,9 @@ function App() {
                 <Route  path='/home/manager/retail/product' element={<ChoiceProduct/>}/>
                 <Route  path='/home/manager/customer' element={<ManagerCustomer/>}/>
                 <Route  path='/home/manager/customer/edit' element={<EditManagerCustomer/>}/>
+                <Route path="/SaleManager" element={<SaleManager/>}/>
+                <Route path="/addNewCustomer" element={<AddNewCustomer/>}/>
+                <Route path='/searchProduct' element={<SearchProduct/>}/>
             </Routes>
         </>
 
