@@ -36,7 +36,7 @@ function HeaderComponent() {
                                         <li><Link className="dropdown-item" >Quản lý nhân viên</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff") && (
-                                        <li><Link className="dropdown-item" >Quản lý bán hàng</Link></li>
+                                        <li><Link className="dropdown-item" to="/salemanager" >Quản lý bán hàng</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Business Staff") && (
                                         <li><Link to={'/home/manager'} className="dropdown-item" >Quản lý kinh doanh</Link></li>
