@@ -28,10 +28,10 @@ function App() {
                 <Route  path='/home/manager/retail/product' element={<ChoiceProduct/>}/>
                 <Route  path='/home/manager/customer' element={<ManagerCustomer/>}/>
                 <Route  path='/home/manager/customer/edit' element={<EditManagerCustomer/>}/>
-                <Route path="/SaleManager" element={<SaleManager/>}/>
+                <Route path="/saleManager" element={<SaleManager/>}/>
                 <Route path="/addNewCustomer" element={<AddNewCustomer/>}/>
                 <Route path='/searchProduct' element={<SearchProduct/>}/>
-                <Route path='/home/manager/staff' element={<StaffingComponent />} />
+                <Route path='/home/managerStaff' element={<StaffingComponent />} />
             </Routes>
         </>
 
