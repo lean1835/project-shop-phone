@@ -29,9 +29,6 @@ function HeaderComponent() {
                                 </a>
 
                                 <ul className="dropdown-menu">
-                                    {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff" || account.role === "Warehouse Staff") && (
-                                        <li><Link className="dropdown-item">Quản lý thông tin cá nhân</Link></li>
-                                    )}
                                     {account.role === "Admin" && (
                                         <li><Link className="dropdown-item" to={'/home/managerStaff'}>Quản lý nhân viên</Link></li>
                                     )}
