@@ -14,3 +14,7 @@ export async function checkLogin(loginInfor) {
     }
 
 }
+
+export async function getAllAccounts() {
+    return await axios.get("http://localhost:8080/accounts");
+}
