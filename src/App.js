@@ -18,6 +18,7 @@ import SaleManager from "./components/SalesComponent/SaleManager";
 import AddNewCustomer from "./components/SalesComponent/AddNewCustomer";
 import SearchProduct from "./components/SalesComponent/SearchProduct";
 import StaffingComponent from "./components/StaffingComponent";
+import ProductInfoPage from "./components/ProductComponent/ProductInfoPage";
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
         <Route path="/ProductsInStock" element={<ProductsInStock />}/>
         <Route path="/SuppliersStock" element={<SuppliersStock />}/>
         <Route path='/home/managerStaff' element={<StaffingComponent />} />
+        <Route path='/home/productInfoPage' element={<ProductInfoPage />} />
+
       </Routes>
     </>
   );

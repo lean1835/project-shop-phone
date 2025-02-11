@@ -2,7 +2,7 @@
   "accounts": [
     {
       "id": 1,
-      "username": "Admin",
+      "username": "admin",
       "password": "123",
       "role": "Admin"
     },
