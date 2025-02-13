@@ -3,6 +3,7 @@ import {getAllCustomers} from "../../services/customerService";
 import {useLocation, useNavigate} from "react-router-dom";
 import {formarCurrency, getUriSearchParam} from "../../utils/common";
 import '../../assets/saleComp.css';
+import HeaderComponent from "../HomeComponent/HeaderComponent";
 
 function SaleManager() {
     const location = useLocation();
@@ -46,70 +47,73 @@ function SaleManager() {
     }, [navigate, phone]);
 
     return (
-        <div className="container">
-            <h1>Sale Manager</h1>
-            <div className="order-box order-box-1">
-                <div>
-                    <label>Phone:</label>
-                    <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-                    <button onClick={handleCheck}>Check</button>
+        <>
+            <HeaderComponent/>
+            <div className="container">
+                <h1>Sale Manager</h1>
+                <div className="order-box order-box-1">
+                    <div>
+                        <label>Phone:</label>
+                        <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                        <button onClick={handleCheck}>Check</button>
+                    </div>
+                    {customer && (
+                        <table className="sales-table">
+                            <tbody>
+                            <tr className="render-tr">
+                                <th className="render-th">Name</th>
+                                <td className="render-td">{customer.name}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr className="render-tr">
+                                <th className="render-th">Phone</th>
+                                <td className="render-td">{customer.phone}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr className="render-tr">
+                                <th className="render-th">Address</th>
+                                <td className="render-td">{customer.address}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr className="render-tr">
+                                <th className="render-th">Age</th>
+                                <td className="render-td">{customer.age}</td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr className="render-tr">
+                                <th className="render-th">Email</th>
+                                <td className="render-td">{customer.email}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    )}
                 </div>
-                {customer && (
+                <div className="order-box order-box-2">
+                    <button onClick={() => navigate('/searchProduct', {state: {phone: phone}})}>Select Product</button>
                     <table className="sales-table">
                         <tbody>
                         <tr className="render-tr">
-                            <th className="render-th">Name</th>
-                            <td className="render-td">{customer.name}</td>
+                            <th className="render-th">Selected Product</th>
+                            <td className="render-td">{allSelectedProduct.selectedProduct}</td>
                         </tr>
                         </tbody>
                         <tbody>
                         <tr className="render-tr">
-                            <th className="render-th">Phone</th>
-                            <td className="render-td">{customer.phone}</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr className="render-tr">
-                            <th className="render-th">Address</th>
-                            <td className="render-td">{customer.address}</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr className="render-tr">
-                            <th className="render-th">Age</th>
-                            <td className="render-td">{customer.age}</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr className="render-tr">
-                            <th className="render-th">Email</th>
-                            <td className="render-td">{customer.email}</td>
+                            <th className="render-th">Total</th>
+                            <td className="render-td">{formarCurrency(allSelectedProduct.total)}</td>
                         </tr>
                         </tbody>
                     </table>
-                )}
+                </div>
+                <div>
+                    <button>Checkout</button>
+                </div>
             </div>
-            <div className="order-box order-box-2">
-                <button onClick={() => navigate('/searchProduct', {state: {phone: phone}})}>Select Product</button>
-                <table className="sales-table">
-                    <tbody>
-                    <tr className="render-tr">
-                        <th className="render-th">Selected Product</th>
-                        <td className="render-td">{allSelectedProduct.selectedProduct}</td>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr className="render-tr">
-                        <th className="render-th">Total</th>
-                        <td className="render-td">{formarCurrency(allSelectedProduct.total)}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                <button>Checkout</button>
-            </div>
-        </div>
+        </>
     );
 }
 
