@@ -2,6 +2,7 @@ import React from 'react'
 import HeaderComponent from './HeaderComponent'
 import BannerComponent from './BannerComponent'
 import BodyComponent from './BodyComponent'
+import FooterComponent from './FooterComponent'
 
 function HomeComponent(){
     return(
@@ -9,6 +10,7 @@ function HomeComponent(){
         <HeaderComponent/>
         <BannerComponent/>
         <BodyComponent/>
+        <FooterComponent/>
         </>
     )
 }
