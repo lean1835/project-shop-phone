@@ -33,25 +33,22 @@ function HeaderComponent() {
                                         <li><Link className="dropdown-item">Quản lý thông tin cá nhân</Link></li>
                                     )}
                                     {account.role === "Admin" && (
-                                        <li><Link className="dropdown-item" >Quản lý nhân viên</Link></li>
+                                        <li><Link className="dropdown-item" to={'/home/managerStaff'}>Quản lý nhân viên</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff") && (
-                                        <li><Link className="dropdown-item" to="/salemanager" >Quản lý bán hàng</Link></li>
+                                        <li><Link className="dropdown-item" to="/saleManager" >Quản lý bán hàng</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Business Staff") && (
                                         <li><Link to={'/home/manager'} className="dropdown-item" >Quản lý kinh doanh</Link></li>
                                     )}
-                                    {(account.role === "Admin" || account.role === "Business Staff") && (
-                                        <li><Link className="dropdown-item" >Quản lý báo cáo</Link></li>
-                                    )}
                                     {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff") && (
-                                        <li><Link className="dropdown-item" >Xem thông tin hàng hóa</Link></li>
+                                        <li><Link to={'/home/productInfoPage'} className="dropdown-item" >Xem thông tin hàng hóa</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Warehouse Staff") && (
                                         <li><Link className="dropdown-item" >Quản lý nhà cung cấp</Link></li>
                                     )}
                                     {(account.role === "Admin" || account.role === "Sales Staff" || account.role === "Warehouse Staff") && (
-                                        <li><Link className="dropdown-item" to="/warehouse">Quản lý nhập kho</Link></li>
+                                        <li><Link className="dropdown-item" to="/liststock">Quản lý nhập kho</Link></li>
                                     )}
                                 </ul>
                             </li>
