@@ -63,7 +63,7 @@
     {
       "id": 1,
       "name": "Smartphone A",
-      "price": 5000000,
+      "price": "",
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
@@ -75,7 +75,7 @@
     {
       "id": 2,
       "name": "Smartphone B",
-      "price": 7000000,
+      "price": "0",
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
       "camera": "48MP",
@@ -99,7 +99,7 @@
     {
       "id": 4,
       "name": "Smartphone D",
-      "price": 7000000,
+      "price": "0",
       "image": "images/imageB.jpg",
       "screen_size": "6.5 inches",
       "camera": "48MP",
@@ -145,15 +145,15 @@
       "name": "Le Thi C",
       "phone": "0123456789",
       "address": "Danang, Vietnam",
-      "age": 30,
+      "age": 21,
       "email": "letc@example.com"
     },
     {
       "id": 2,
-      "name": "Pham Van D",
+      "name": "Le Van An",
       "phone": "9876543210",
       "address": "Hue, Vietnam",
-      "age": 40,
+      "age": 23,
       "email": "pvd@example.com"
     }
   ],
