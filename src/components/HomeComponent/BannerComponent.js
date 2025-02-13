@@ -1,8 +1,7 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import './BannerComponent.css'
 function BannerComponent() {
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const items = [
         "/banner-mid1.png",
         "/banner-mid2.png",
@@ -12,11 +11,11 @@ function BannerComponent() {
     const handleNext = () => {
         const nextIndex = (currentIndex + 1) % items.length;
         setCurrentIndex(nextIndex);
-      };
-      const handlePrev = () => {
+    };
+    const handlePrev = () => {
         const prevIndex = (currentIndex - 1 + items.length) % items.length;
         setCurrentIndex(prevIndex);
-      };
+    };
     return (
         <>
             <div class='banner'>
