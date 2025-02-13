@@ -25,11 +25,9 @@ function App() {
   return (
     <>
       <ToastContainer />
-
       <Routes>
         {/* Trang Login không có Layout */}
         <Route path="/" element={<LoginComponent />} />
-
         {/* Các trang khác được bọc trong Layout */}
         <Route
           path="/*"
@@ -39,9 +37,10 @@ function App() {
                 <Route path="/home" element={<HomeComponent />} />
                 <Route path="/home/manager" element={<Manager />} />
                 <Route path="/home/manager/retail" element={<ManagerRetail />} />
-                <Route path="/home/manager/retail/product" element={<ChoiceProduct />} />
+                <Route path={'/home/manager/retail/:id'} element={<ManagerRetail />} />
+                <Route path='/home/manager/retail/product' element={<ChoiceProduct />} />
                 <Route path="/home/manager/customer" element={<ManagerCustomer />} />
-                <Route path="/home/manager/customer/edit" element={<EditManagerCustomer />} />
+                <Route path={'/home/manager/customer/edit/:id'} element={<EditManagerCustomer />} />
                 <Route path="/SaleManager" element={<SaleManager />} />
                 <Route path="/addNewCustomer" element={<AddNewCustomer />} />
                 <Route path="/searchProduct" element={<SearchProduct />} />
