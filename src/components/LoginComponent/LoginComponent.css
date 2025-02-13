@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100vw;
     border-radius: 20px;
-    background: linear-gradient(to right, rgb(243, 241, 241) 55%, red 45%);
+    background: linear-gradient(to right, rgb(243, 241, 241) 50%, red 50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,42 +10,25 @@
 
 .logo {
     display: flex;
-    /* align-items: center; */
     font-size: 24px;
     z-index: 11;
-    height: 100%;
-    width: calc(100vw - 45%);
-    background-image: url(../../../public/login2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
+    height: 100vh;
+    width: calc(100vw - 50%);
     justify-content: center;
 }
-.logo::after {
-    content: '';
+.logo span{
+    font-family: selectedFont;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 100px;
+}
+.logo img{
+    width: 50%;
+    height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.logo > * {
-    z-index: 2;
-    color: white;
-    font-weight: bold; 
-}
-.logo span {
-    font-family: 'Kaushan Script', cursive;
-    font-size: 23px;
-}
-
-.logo i {
-    color: rgb(78, 35, 196);
-    font-size: 34px;
+    z-index: -1; 
+    border-top-left-radius: 20px; /* Bo góc trên bên phải */
+    border-bottom-left-radius: 20px; /* Bo góc dưới bên phải */
 }
 .login{
     width: 45%;
@@ -53,26 +36,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(../../../public/login.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    justify-content: center;
-}
-.login::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
 }
 .login > * {
     z-index: 2;
-    color: white;
+    color: black;
     font-weight: bold; 
 }
 .form-login {
@@ -84,16 +51,18 @@
     z-index: 10;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
 }
 .form .heading{
     text-align: center;
+    margin-top: 50px;
 }
 form .form-group {
     width: 100%;
     max-width: 400px;
     padding-top: 30px;
-    padding-left: 20px;
+    padding-left: 100px;
+
 }
 .form-login .form-group input {
     width: 95%;
@@ -110,11 +79,10 @@ form .form-group {
     border-radius: 5px;
     font-size: 20px;
     border: none;
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
-    background-color: red;
-    margin-left: 160px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: black;
+    margin-left: 180px;
 }
 .sign-up .form-submit:hover {
     background-color: red;

@@ -17,11 +17,11 @@ function HeaderComponent() {
         <>
             <nav class="navbar navbar-expand-lg bg-red">
                 <div class='logo-header'>
-                    <Link><img class='image' src='logo.png' /></Link>
-                    <a class="navbar-brand" href="#" >An Shop</a>
+                    <Link to={'/home'}><img class='image' src='logo.png' /></Link>
+                    <a class="navbar-brand" href="/home" >An Shop</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    {/* <ul class="navbar-nav">
                         {account && (
                             <li class="nav-item dropdown">
                                 <a style={{ color: 'white' }} class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,9 +29,6 @@ function HeaderComponent() {
                                 </a>
 
                                 <ul className="dropdown-menu">
-                                    {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff" || account.role === "Warehouse Staff") && (
-                                        <li><Link className="dropdown-item">Quản lý thông tin cá nhân</Link></li>
-                                    )}
                                     {account.role === "Admin" && (
                                         <li><Link className="dropdown-item" to={'/home/managerStaff'}>Quản lý nhân viên</Link></li>
                                     )}
@@ -53,8 +50,8 @@ function HeaderComponent() {
                                 </ul>
                             </li>
                         )}
-                    </ul>
-                    <form class="d-flex" role="search">
+                    </ul> */}
+                    <form class="d-flex" role="search" style={{marginLeft:'150px'}}>
                         <div class='search-container'>
                             <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" style={{ border: 'none' }} />
                             <button className="search-btn">
@@ -76,19 +73,19 @@ function HeaderComponent() {
                                 <a>Loại tài khoản: </a> {account && account.role}
                             </li>
                             <li className="nav-item">
-                                {account && <button onClick={handleLogout} class='logout'>Logout</button>}
+                                {account && <button onClick={handleLogout} class='logout' style={{background:'linear-gradient(180deg, #f71818  67.61%, #d9503f 95.18%)'}}>Logout</button>}
                             </li>
                         </ul>
                     </li>
                     ) : (
                         <li class="nav-item" style={{ listStyleType: 'none' }}>
-                            <button onClick={() => navigate('/')} className="btn btn-primary">Login</button>
+                            <button onClick={() => navigate('/')} className="btn btn-primary" style={{backgroundColor:'black'}}>Login</button>
                         </li>
                     )}
-                    <div class="shopping-cart">
+                    {/* <div class="shopping-cart">
                         <i className="material-icons">shopping_cart</i>
                         <a style={{ fontSize: '20px', marginLeft: '5px' }} >Giỏ hàng</a>
-                    </div>
+                    </div> */}
                 </div>
             </nav>
         </>

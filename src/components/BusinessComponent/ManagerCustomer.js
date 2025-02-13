@@ -59,9 +59,7 @@ function ManagerCustomer (){
                 ) : (
                     <input className="form-control d-inline w-25 mx-2" ref={searchAddressRef} placeholder="Nhập địa chỉ" />
                 )}
-                    <button onClick={handleSearch} className="btn btn-success btn-sm">
-                    <i className="fa-solid fa-magnifying-glass"></i> Tìm kiếm
-                </button>
+                     <button onClick={handleSearch} className={' w-10 btn btn-success btn-sm'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <table className={'table table-light'}>
                 <thead>
