@@ -1,114 +1,188 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "./ui/Card";
-import { Table } from "./ui/Table";
-import { Pagination } from "./ui/Pagination";
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
-import  Select  from "./ui/Select";
+import "bootstrap/dist/css/bootstrap.min.css";
+import AddProductModal from "./AddProductModal";
+import EditProduct from "./EditProduct";
+import './ProductInfoPage.css';
 
-const productsData = [
-  { id: 1, name: "Nokia G10 4GB-64GB", price: "3.190.000", cpu: "SCT310", storage: "64 GB", quantity: 100 },
-  { id: 2, name: "Xiaomi 12 Pro 12GB - 256GB", price: "25.790.000", cpu: "Snapdragon 8 Gen 1", storage: "256 GB", quantity: 50 },
-  { id: 3, name: "Samsung Galaxy Z Flip3 5G 12GB", price: "18.990.000", cpu: "Snapdragon 888", storage: "128 GB", quantity: 40 },
-  { id: 4, name: "iPhone SE 2022 64GB", price: "11.990.000", cpu: "Apple A15 Bionic", storage: "64 GB", quantity: 20 },
-  { id: 5, name: "iPhone 13 mini 128GB", price: "18.490.000", cpu: "Apple A15 Bionic", storage: "128 GB", quantity: 25 }
-];
 
 const ProductInfoPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCategory, setSearchCategory] = useState("name");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState(productsData);
-  const itemsPerPage = 5;
+  const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [editProductId, setEditProductId] = useState(null);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const itemsPerPage = 10;
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearch(searchTerm);
-    }, 300);
-    return () => clearTimeout(handler);
-  }, [searchTerm]);
+    fetch("http://localhost:8080/products")
+      .then(response => response.json())
+      .then(data => setProducts(data));
+  }, []);
+
+  // Thêm sản phẩm mới
+  const handleAddProduct = (newProduct) => {
+    fetch("http://localhost:8080/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProduct),
+    }).then(() => {
+      setProducts([...products, { id: products.length + 1, ...newProduct }]);
+      setShowModal(false);
+    });
+  };
+
+  // Mở modal chỉnh sửa sản phẩm
+  const handleEditProduct = (id) => {
+    setEditProductId(id);
+    setEditModal(true);
+  };
+
+  // Cập nhật danh sách sản phẩm sau khi chỉnh sửa
+  const handleUpdateProduct = (updatedProduct) => {
+    setProducts(products.map(product => product.id === updatedProduct.id ? updatedProduct : product));
+  };
+
+  // Xóa một sản phẩm
+  const handleDeleteSingleProduct = (id) => {
+    if (!window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) return;
+
+    fetch(`http://localhost:8080/products/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setProducts(products.filter(product => product.id !== id));
+    });
+  };
+
+  // Xóa nhiều sản phẩm đã chọn
+  const handleDeleteSelectedProducts = () => {
+    if (selectedProducts.length === 0) {
+      alert("Vui lòng chọn ít nhất một sản phẩm để xóa.");
+      return;
+    }
+
+    if (!window.confirm("Bạn có chắc chắn muốn xóa các sản phẩm đã chọn không?")) return;
+
+    selectedProducts.forEach(id => {
+      fetch(`http://localhost:8080/products/${id}`, {
+        method: "DELETE",
+      }).then(() => {
+        setProducts(products.filter(product => !selectedProducts.includes(product.id)));
+      });
+    });
+
+    setSelectedProducts([]);
+  };
+
+  // Chọn checkbox
+  const handleCheckboxChange = (id) => {
+    setSelectedProducts(prev =>
+      prev.includes(id) ? prev.filter(pid => pid !== id) : [...prev, id]
+    );
+  };
 
   const filteredProducts = products.filter(product =>
-    product[searchCategory].toString().toLowerCase().includes(debouncedSearch.toLowerCase())
+    product[searchCategory]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleDelete = (id) => {
-    setProducts(products.filter(product => product.id !== id));
-  };
-
-  const handleEdit = (id) => {
-    const productToEdit = products.find(product => product.id === id);
-    if (productToEdit) {
-      const newName = prompt("Nhập tên mới:", productToEdit.name);
-      if (newName !== null) {
-        setProducts(products.map(product => 
-          product.id === id ? { ...product, name: newName } : product
-        ));
-      }
-    }
-  };
-
   return (
-    <Card>
-      <CardContent>
-        <div className="flex justify-between items-center mb-4">
-          <Button onClick={() => window.location.href = '/add-product'}>Thêm mới hàng hóa</Button>
-          <div className="flex gap-2">
-            <Select 
-              value={searchCategory} 
-              onChange={(e) => setSearchCategory(e.target.value)}
-            >
-              <option value="name">Tên</option>
-              <option value="price">Giá</option>
-              <option value="quantity">Số lượng</option>
-            </Select>
-            <Input 
-              type="text" 
-              placeholder={`Tìm kiếm theo ${searchCategory}...`} 
-              value={searchTerm} 
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+    <>
+    
+    <div className="container mt-4">
+      <div className="d-flex justify-content-between mb-3">
+        <button className="btn btn-primary text-white" onClick={() => setShowModal(true)}>Thêm mới hàng hóa</button>
+       
+        <div className="d-flex gap-2">
+          <select className="form-select" value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)}>
+            <option value="name">Tên</option>
+            <option value="price">Giá</option>
+            <option value="storage">Lưu trữ</option>
+          </select>
+          <input type="text" className="form-control" placeholder={`Tìm kiếm theo ${searchCategory}...`} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
-        <h2 className="text-xl font-bold mb-4">Danh sách hàng hóa</h2>
-        <Table className="border border-gray-200">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="border p-2">#</th>
-              <th className="border p-2">Tên</th>
-              <th className="border p-2">Giá</th>
-              <th className="border p-2">CPU</th>
-              <th className="border p-2">Lưu trữ</th>
-              <th className="border p-2">Số lượng</th>
-              <th className="border p-2">Hành động</th>
+      </div>
+
+      <AddProductModal show={showModal} onClose={() => setShowModal(false)} onAdd={handleAddProduct} />
+      <EditProduct show={editModal} onClose={() => setEditModal(false)} productId={editProductId} onUpdate={handleUpdateProduct} />
+
+      <table className="table table-bordered">
+        <thead className="table-light">
+          <tr>
+            <th>Chọn</th>
+            <th>#</th>
+            <th>Hình ảnh</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>CPU</th>
+            <th>Lưu trữ</th>
+            <th>Màn hình</th>
+            <th>Camera</th>
+            <th>Selfie</th>
+            <th>Mô tả</th>
+            <th>Tác vụ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentProducts.map((product, index) => (
+            <tr key={product.id}>
+              <td>
+                <input 
+                  type="checkbox" 
+                  checked={selectedProducts.includes(product.id)}
+                  onChange={() => handleCheckboxChange(product.id)} 
+                />
+              </td>
+              <td>{indexOfFirstItem + index + 1}</td>
+              <td><img src={product.image} alt={product.name} width="50" /></td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.cpu}</td>
+              <td>{product.storage}</td>
+              <td>{product.screen_size}</td>
+              <td>{product.camera}</td>
+              <td>{product.selfie}</td>
+              <td>{product.description}</td>
+              <td className="w-10">
+                <button className="btn btn-success text-white p-2 " onClick={() => handleEditProduct(product.id)}>Sửa</button>
+                <button className="btn btn-danger text-white p-2 m-2" onClick={() => handleDeleteSingleProduct(product.id)}>Xóa</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {currentProducts.map((product, index) => (
-              <tr key={product.id} className="border hover:bg-gray-50">
-                <td className="border p-2">{index + 1}</td>
-                <td className="border p-2">{product.name}</td>
-                <td className="border p-2">{product.price}</td>
-                <td className="border p-2">{product.cpu}</td>
-                <td className="border p-2">{product.storage}</td>
-                <td className="border p-2">{product.quantity}</td>
-                <td className="border p-2 flex gap-2">
-                  <Button variant="secondary" onClick={() => handleEdit(product.id)}>Chỉnh sửa</Button>
-                  <Button variant="destructive" onClick={() => handleDelete(product.id)}>Xóa</Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        <Pagination total={filteredProducts.length} itemsPerPage={itemsPerPage} currentPage={currentPage} onPageChange={setCurrentPage} />
-      </CardContent>
-    </Card>
+          ))}
+        </tbody>
+      </table>
+
+      <nav>
+      
+        <ul className="pagination justify-content-center">
+          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>Trước</button>
+          </li>
+          {[...Array(totalPages).keys()].map(number => (
+            <li key={number} className={`page-item ${currentPage === number + 1 ? "active" : ""}`}>
+              <button className="page-link" onClick={() => setCurrentPage(number + 1)}>{number + 1}</button>
+            </li>
+          ))}
+          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+            <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>Sau</button>
+          </li>
+          <li className="ms-auto">          
+          <button className="btn btn-danger text-white" onClick={handleDeleteSelectedProducts}>Chọn và xoá nhiều SP</button>          
+          </li>
+          
+        </ul>
+       
+      </nav>
+    </div>
+    </>
   );
 };
 
 export default ProductInfoPage;
+

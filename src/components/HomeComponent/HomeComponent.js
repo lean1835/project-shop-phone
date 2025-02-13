@@ -7,10 +7,10 @@ import FooterComponent from './FooterComponent'
 function HomeComponent(){
     return(
         <>
-        <HeaderComponent/>
-        <BannerComponent/>
+        {/* <HeaderComponent/> */}
+        // <BannerComponent/>
         <BodyComponent/>
-        <FooterComponent/>
+        {/* <FooterComponent/> */}
         </>
     )
 }
