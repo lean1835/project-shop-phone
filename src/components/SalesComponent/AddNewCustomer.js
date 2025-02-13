@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import '../../assets/saleComp.css';
+import HeaderComponent from "../HomeComponent/HeaderComponent";
 
 function AddNewCustomer() {
     const [newCustomer] = useState({
@@ -31,6 +32,7 @@ function AddNewCustomer() {
     });
     return (
         <>
+            <HeaderComponent/>
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                 <Form className="add-customer-container">
                     <div className="form-group">

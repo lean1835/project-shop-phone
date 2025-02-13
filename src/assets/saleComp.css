@@ -6,6 +6,17 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('../../public/banner4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1.sale-manager {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .order-box {
@@ -56,15 +67,15 @@
 
 .order-box button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
-    border: none;
+    border: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .order-box button:hover {
-    background-color: #0056b3;
+    background-color: #272f33;
 }
 
 .render-td {
@@ -156,14 +167,14 @@ table th {
 }
 
 .add-customer-container button {
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 .add-customer-container button:hover {
-    background-color: #0056b3;
+    background-color: #000000;
 }
 
 .add-customer-container .error-message {
@@ -195,7 +206,7 @@ table th {
 .search-product-container button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -204,7 +215,7 @@ table th {
 }
 
 .search-product-container button:hover {
-    background-color: #0056b3;
+    background-color: #272f33;
 }
 
 .search-product-container table {
@@ -255,7 +266,7 @@ table th {
 
 .search-product-container .modal-footer button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -264,5 +275,5 @@ table th {
 }
 
 .search-product-container .modal-footer button:hover {
-    background-color: #0056b3;
+    background-color: #272f33;
 }
