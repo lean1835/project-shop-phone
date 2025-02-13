@@ -8,11 +8,11 @@ import ManageComponent from './ManageComponent'
 function HomeComponent(){
     return(
         <>
-        <HeaderComponent/>
+        {/* <HeaderComponent/> */}
         <ManageComponent/>
         <BannerComponent/>
         <BodyComponent/>
-        <FooterComponent/>
+        {/* <FooterComponent/> */}
         </>
     )
 }

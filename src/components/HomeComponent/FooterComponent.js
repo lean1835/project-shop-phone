@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link} from 'react-router-dom';
 import './FooterComponent.css'
 function FooterComponent() {
     return (
@@ -29,7 +30,7 @@ function FooterComponent() {
                     <p />
                 </div>
                 <div className='footer-right'>
-                <h5>Chính sách công ty</h5>
+                    <h5>Chính sách công ty</h5>
                     <a>Chính sách bảo hành</a>
                     <p />
                     <a>Chính sách đổi trả</a>
@@ -43,7 +44,7 @@ function FooterComponent() {
                 </div>
                 <div className='footer-logo'>
                     <h5>Website cùng tập đoàn</h5>
-                    <img src='./logoCT.png'/>
+                    <Link to='https://codegym.vn/'><img src='./logoCT.png' /></Link>
                 </div>
             </div>
         </>
