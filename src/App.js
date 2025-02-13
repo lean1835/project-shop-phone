@@ -79,6 +79,8 @@ import StaffingComponent from "./components/StaffingComponent";
 import ProductInfoPage from "./components/ProductComponent/ProductInfoPage";
 import Layout from "./components/HomeComponent/Layout";
 
+
+
 function App() {
   return (
     <>
@@ -107,7 +109,7 @@ function App() {
                 <Route path='/home/managerStaff' element={<StaffingComponent />} />
                 <Route path='/home/productInfoPage' element={<ProductInfoPage />} />
               </Routes>
-            </Layout>
+              </Layout>
           }
         />
       </Routes>

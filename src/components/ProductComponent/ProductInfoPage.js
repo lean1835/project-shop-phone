@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddProductModal from "./AddProductModal";
 import EditProduct from "./EditProduct";
 import './ProductInfoPage.css';
-import HeaderComponent from "../HomeComponent/HeaderComponent";
+
 
 const ProductInfoPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
