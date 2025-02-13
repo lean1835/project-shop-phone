@@ -5,7 +5,7 @@ import BannerComponent from './BannerComponent'
 function HomeComponent(){
     return(
         <>
-        <HeaderComponent/>
+        {/* <HeaderComponent/> */}
         <BannerComponent/>
         </>
     )
