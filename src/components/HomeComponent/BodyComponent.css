@@ -1,0 +1,85 @@
+.body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+.body .body-manage {
+    width: 15%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.body .body-manage .body-card {
+    width: 80%;
+    height: 80%;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+.body li {
+    list-style: none;
+}
+.body .link{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.body-list .link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.body .body-manage .body-card .body-card-img {
+    width: 80px;
+    height: 80px;
+}
+.body .body-card {
+    width: 250px;
+    height: 150px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.body .body-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.body-list {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-left: 80px;
+}
+h5 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    color: #333;
+}
+.body-list .loading{
+    background: linear-gradient(180deg, #f71818  67.61%, #d9503f 95.18%);
+    border: none;
+    border-radius: 10px;
+}
+.body-list .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.body-list .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
