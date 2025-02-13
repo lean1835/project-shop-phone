@@ -8,9 +8,9 @@ function HomeComponent(){
     return(
         <>
         {/* <HeaderComponent/> */}
-        {/* <BannerComponent/>
+        // <BannerComponent/>
         <BodyComponent/>
-        <FooterComponent/> */}
+        {/* <FooterComponent/> */}
         </>
     )
 }
