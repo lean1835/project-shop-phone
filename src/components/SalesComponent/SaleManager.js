@@ -5,6 +5,7 @@ import {formarCurrency, getUriSearchParam} from "../../utils/common";
 import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
 import {Button, Modal} from 'react-bootstrap';
+import {triggerWebhook} from "./checkOutProduct";
 
 function SaleManager() {
     const location = useLocation();
@@ -21,7 +22,7 @@ function SaleManager() {
         selectedProductName : location.state?.selectedProductNames || "",
         selectedProduct: location.state?.selectedProducts || [],
         total: location.state?.total || 0,
-        quantities: location.state?.quantities || {}
+        quantities: location.state?.quantities || []
     });
     const [showModal, setShowModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -58,13 +59,17 @@ function SaleManager() {
         setShowModal(true);
     };
 
-    console.log('allSelectedProduct: ', {
-        selectedProductNames: allSelectedProduct.selectedProductName,
-        phone,
-        selectedProducts: allSelectedProduct.selectedProduct.map(product => product.id),
-        total: allSelectedProduct.total,
-        quantities: allSelectedProduct.quantities
-    });
+    const handleCheckOut = async () => {
+        const info = {
+            name: customer.name,
+            email: customer.email,
+            selectedProductNames: allSelectedProduct.selectedProductName,
+            quantities: allSelectedProduct.quantities.map(q => q.quantity),
+            total: allSelectedProduct.total
+        };
+        await triggerWebhook(info);
+        navigate('/SaleManager');
+    }
 
     return (
         <>
@@ -169,7 +174,7 @@ function SaleManager() {
                     </table>
                 </div>
                 <div>
-                    <button>Checkout</button>
+                    <button onClick={handleCheckOut}>Checkout</button>
                 </div>
             </div>
 

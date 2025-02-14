@@ -20,6 +20,8 @@ function SearchProduct() {
     const [total, setTotal] = useState(useLocation().state?.total || 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const phone = useLocation().state?.phone;
+    console.log("useLocation().state:", useLocation().state);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +31,6 @@ function SearchProduct() {
             setOriginProducts(data);
         };
         fetchData();
-        console.log('vo day 1 lan');
     }, []);
 
     const handleSearch = () => {
@@ -88,7 +89,6 @@ function SearchProduct() {
     }, [products, selectedProductNames, selectedProducts, total, phone, quantities]);
 
     const handleBack = useCallback(() => {
-        console.log('originLocationState: ', originLocationState);
         navigate('/SaleManager', {
             state: {
                 ...originLocationState,
@@ -97,9 +97,6 @@ function SearchProduct() {
         });
     }, [originLocationState, selectedProducts, products]);
 
-    console.log('selectedProducts: ', selectedProducts);
-    console.log('quantities: ', quantities);
-    console.log('originLocationState: ', originLocationState);
 
     return (
         <>
