@@ -69,6 +69,7 @@ h1.sale-manager {
     padding: 10px 20px;
     background-color: white;
     color: #b81211;
+    border: white;
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid red;
@@ -172,6 +173,10 @@ table th {
 .add-customer-container .add{
     background-color: green;
     color: white;
+.add-customer-container button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
     cursor: pointer;
 
 }
@@ -186,6 +191,7 @@ table th {
 
 .add-customer-container button:hover {
     font-weight: bold;
+    background-color: #000000;
 }
 
 .add-customer-container .error-message {
