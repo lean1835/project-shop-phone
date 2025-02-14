@@ -1,43 +1,57 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
-import { getAllProducts } from "../../services/productService";
+import { searchByNameAndChoice} from "../../services/productService";
 function ChoiceProduct (){
     const [productList , setProductList] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const nameSearchRef=useRef();
+    const navigate=useNavigate();
+    const choiceRef=useRef();
+    const [choiceDisplay,setChoiceDisplay]=useState();
+    const [isReload,setIsReload]=useState(false);
     useEffect(()=>{
         const fetchData= async()=>{
-                        const products= await getAllProducts();
-                        setProductList(products);
-                    }
-                    fetchData();
-                },[])
+            const nameSearch=nameSearchRef.current.value;
+            const products= await searchByNameAndChoice(nameSearch,choiceDisplay);
+            setProductList(products);
+        }
+        fetchData();
+        },[isReload])
+
+    const handleRadioChange = (productId) => {
+        setSelectedProduct(productId);
+    };     
+    const handleOut=()=>{
+        navigate('/home/manager/retail')
+    }   
+    const handleSearch=()=>{
+        setIsReload((pre)=>!pre);
+    } 
+    const handleChoice=(event)=>{
+        setChoiceDisplay(event.target.value);
+        setIsReload((pre)=>!pre);
+    }   
+
     return(
         <>
 
             <div className="choice_product">
                 <span>Hiển thị:</span>
-                <input type="radio" name="display" value={'all'}/>Tất cả sản phẩm <br/>
-                <input type="radio" name="display" value={'no_price'}/>Các mặt hàng chưa có giá
+                
+                <input type="radio" name="display" ref={choiceRef} onChange={handleChoice} value={"no_price"}/>Các mặt hàng chưa có giá<br/>
+                <input type="radio" name="display" ref={choiceRef} onChange={handleChoice}  value={"all"}/>Tất cả sản phẩm 
                 <form >
 
-                    {/* <select ref={searchManufactureIdRef} className={'w-25'}> */}
-                    <br/>
-                    <span>Tìm kiếm theo:  </span> 
-                    <select  className={'w-17'}>
-                        <option value={""}>Tìm kiếm theo tên</option>
-                        {/* {manufactureList.map(e=>(
-                            <option value={e.id}>{e.name}</option>
-                        ))} */}
-
-                    </select>
+                    <button>giá</button>
                     
-                    <input className={'w-10'}  name={'searchName'} placeholder={'áo'}/> 
+                    <input className={'w-10'} ref={nameSearchRef} name={'nameSearch'} placeholder={'áo'}/> 
                     {/* <input className={'w-25'} ref={searchRef} name={'searchName'} placeholder={'Enter search name'}/> */}
-                    <button className={' w-10 btn btn-success btn-sm'} type={'button'} >Tìm kiếm</button>
+                    <button className={' w-10 btn btn-success btn-sm'} onClick={handleSearch} type={'button'} >Tìm kiếm</button>
                     {/* <button onClick={handleSearch} className={' w-25 btn btn-success btn-sm'} type={'button'} >Search</button> */}
                 </form>
-                <table className={'table table-dark'}>
+                <table className={'table table-light'}>
                 <thead>
                 <tr>
                     <th>Tên</th>
@@ -46,6 +60,7 @@ function ChoiceProduct (){
                     <th>Độ phân giải</th>
                     <th>Cpu</th>
                     <th>Dung lượng</th>
+                    <th>Chọn</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,14 +72,31 @@ function ChoiceProduct (){
                         <td>{p.camera}/{p.selfie}</td>
                         <td>{p.cpu}</td>
                         <td>{p.storage}</td>
-
+                        <td>
+                            <input
+                                type="radio"
+                                name="product"
+                                checked={selectedProduct === p.id}
+                                onChange={() => handleRadioChange(p.id)}
+                                className="form-check-input"
+                            />
+                        </td>
                     </tr>
                 ))}
 
                 </tbody>
             </table>
-                <button>Chọn</button>
-                <button>Thoát</button>
+            {selectedProduct !== null && (
+                <button>
+                    <Link to={`/home/manager/retail/${selectedProduct}`}>
+                        <i className="fa-solid fa-circle-info">
+                            <a>Chọn</a>
+                        </i>
+                    </Link>
+                </button>                
+            )}
+             
+                <button onClick={handleOut}>Thoát</button>
 
             </div>
         </>
