@@ -295,3 +295,17 @@ table th {
 .search-product-container .modal-footer button:hover {
     background-color: #272f33;
 }
+.container .check-out{
+    padding: 10px 20px;
+    background-color: white;
+    color: #b81211;
+    border: white;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+.container .check-out:hover{
+    background-color: #b81211;
+    color: white;
+    font-weight: bold;
+}

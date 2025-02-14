@@ -65,6 +65,14 @@
       "accountID": "4",
       "phone": "0123456789",
       "id": "cvVTIvP"
+    },
+    {
+      "name": "VÕ TẤN TRÍ",
+      "dob": "2003-06-20",
+      "address": "Đà Nẵng",
+      "accountID": "2",
+      "phone": "0359694849",
+      "id": "9OzWNBV"
     }
   ],
   "products": [
@@ -183,6 +191,14 @@
       "age": 22,
       "email": "clonemlp21@gmail.com",
       "id": 3
+    },
+    {
+      "name": "VÕ TẤN TRÍ",
+      "phone": "0359694849",
+      "address": "Đà Nẵng",
+      "age": 22,
+      "email": "votantri2006@gmail.com",
+      "id": 4
     }
   ],
   "stock": [

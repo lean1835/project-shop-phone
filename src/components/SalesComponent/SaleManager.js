@@ -173,7 +173,7 @@ function SaleManager() {
                     </table>
                 </div>
                 <div>
-                    <button onClick={handleCheckOut}>Checkout</button>
+                    <button className="check-out" onClick={handleCheckOut}>Checkout</button>
                 </div>
             </div>
 
