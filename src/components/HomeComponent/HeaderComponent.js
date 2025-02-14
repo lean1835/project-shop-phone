@@ -23,36 +23,6 @@ function HeaderComponent() {
                     <a type='button' onClick={handleLog} class="navbar-brand" >An Shop</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {/* <ul class="navbar-nav">
-                        {account && (
-                            <li class="nav-item dropdown">
-                                <a style={{ color: 'white' }} class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Danh mục quản lý
-                                </a>
-
-                                <ul className="dropdown-menu">
-                                    {account.role === "Admin" && (
-                                        <li><Link className="dropdown-item" to={'/home/managerStaff'}>Quản lý nhân viên</Link></li>
-                                    )}
-                                    {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff") && (
-                                        <li><Link className="dropdown-item" to="/saleManager" >Quản lý bán hàng</Link></li>
-                                    )}
-                                    {(account.role === "Admin" || account.role === "Business Staff") && (
-                                        <li><Link to={'/home/manager'} className="dropdown-item" >Quản lý kinh doanh</Link></li>
-                                    )}
-                                    {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Sales Staff") && (
-                                        <li><Link to={'/home/productInfoPage'} className="dropdown-item" >Xem thông tin hàng hóa</Link></li>
-                                    )}
-                                    {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Warehouse Staff") && (
-                                        <li><Link className="dropdown-item" >Quản lý nhà cung cấp</Link></li>
-                                    )}
-                                    {(account.role === "Admin" || account.role === "Sales Staff" || account.role === "Warehouse Staff") && (
-                                        <li><Link className="dropdown-item" to="/liststock">Quản lý nhập kho</Link></li>
-                                    )}
-                                </ul>
-                            </li>
-                        )}
-                    </ul> */}
                     <form class="d-flex" role="search" style={{marginLeft:'150px'}}>
                         <div class='search-container'>
                             <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" style={{ border: 'none' }} />
@@ -84,10 +54,6 @@ function HeaderComponent() {
                             <button onClick={() => navigate('/')} className="btn btn-primary" style={{backgroundColor:'black'}}>Login</button>
                         </li>
                     )}
-                    {/* <div class="shopping-cart">
-                        <i className="material-icons">shopping_cart</i>
-                        <a style={{ fontSize: '20px', marginLeft: '5px' }} >Giỏ hàng</a>
-                    </div> */}
                 </div>
             </nav>
         </>
