@@ -73,8 +73,7 @@ function SaleManager() {
 
     return (
         <>
-            <HeaderComponent/>
-            <div className="container-fluid">
+            <div className="container">
                 <h1 className="sale-manager" >Sale Manager</h1>
                 <div className="order-box order-box-1">
                     <div>

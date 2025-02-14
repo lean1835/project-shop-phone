@@ -32,7 +32,6 @@ function AddNewCustomer() {
     });
     return (
         <>
-            <HeaderComponent/>
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                 <Form className="add-customer-container">
                     <div className="form-group">
@@ -61,8 +60,8 @@ function AddNewCustomer() {
                         <ErrorMessage name="email" component="div" className="error-message"/>
                     </div>
                     <div className="form-actions">
-                        <button type="submit" className="btn btn-primary">Add New Customer</button>
-                        <button type="button" className="btn btn-secondary" onClick={handleBack}>Back</button>
+                        <button type="submit" className="btn btn-primary add">Add New Customer</button>
+                        <button type="button" className="btn btn-secondary back" onClick={handleBack}>Back</button>
                     </div>
                 </Form>
             </Formik>

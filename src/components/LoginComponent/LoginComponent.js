@@ -35,7 +35,7 @@ function LoginComponent() {
         <>
             <div class="login-container">
                 <div class="logo">
-                    <i class="fas fa-hat-wizard"></i>
+                    <img src='./phone.avif'/>
                     <span>An Shop</span>
                 </div>
                 <div class='login'>

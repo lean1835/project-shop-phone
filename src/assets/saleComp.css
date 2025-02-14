@@ -13,7 +13,7 @@
 h1.sale-manager {
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color:#190e12;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -67,15 +67,17 @@ h1.sale-manager {
 
 .order-box button {
     padding: 10px 20px;
-    background-color: #000000;
-    color: #fff;
-    border: white;
+    background-color: white;
+    color: #b81211;
     border-radius: 4px;
     cursor: pointer;
+    border: 2px solid red;
 }
 
 .order-box button:hover {
-    background-color: #272f33;
+    background-color: #b81211;
+    color: white;
+    font-weight: bold;
 }
 
 .render-td {
@@ -162,19 +164,28 @@ table th {
 .add-customer-container button {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid ;
     border-radius: 4px;
+
 }
 
-.add-customer-container button {
-    background-color: #000000;
-    color: #fff;
-    border: none;
+.add-customer-container .add{
+    background-color: green;
+    color: white;
     cursor: pointer;
+
+}
+
+.add-customer-container .back{
+    background-color: gray;
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+
 }
 
 .add-customer-container button:hover {
-    background-color: #000000;
+    font-weight: bold;
 }
 
 .add-customer-container .error-message {
