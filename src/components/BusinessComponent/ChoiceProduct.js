@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { searchByNameAndChoice} from "../../services/productService";
+import './ChoiceProduct.css'
 function ChoiceProduct (){
     const [productList , setProductList] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -38,17 +39,14 @@ function ChoiceProduct (){
         <>
 
             <div className="choice_product">
-                <span>Hiển thị:</span>
+                <span >Hiển thị:</span>
                 
-                <input type="radio" name="display" ref={choiceRef} onChange={handleChoice} value={"no_price"}/>Các mặt hàng chưa có giá<br/>
-                <input type="radio" name="display" ref={choiceRef} onChange={handleChoice}  value={"all"}/>Tất cả sản phẩm 
-                <form >
-
-                    <button>giá</button>
-                    
-                    <input className={'w-10'} ref={nameSearchRef} name={'nameSearch'} placeholder={'áo'}/> 
+                <input className="choice_display" type="radio" name="display" ref={choiceRef} onChange={handleChoice} value={"no_price"}/>Các mặt hàng chưa có giá<br/>
+                <input className="choice_display" type="radio" name="display" ref={choiceRef} onChange={handleChoice}  value={"all"}/>Tất cả sản phẩm 
+                <form >                 
+                    <input className={'search_input'} ref={nameSearchRef} name={'nameSearch'} placeholder={'áo'}/> 
                     {/* <input className={'w-25'} ref={searchRef} name={'searchName'} placeholder={'Enter search name'}/> */}
-                    <button className={' w-10 btn btn-success btn-sm'} onClick={handleSearch} type={'button'} >Tìm kiếm</button>
+                    <button className={' button_search'} onClick={handleSearch} type={'button'} >Tìm kiếm</button>
                     {/* <button onClick={handleSearch} className={' w-25 btn btn-success btn-sm'} type={'button'} >Search</button> */}
                 </form>
                 <table className={'table table-light'}>
@@ -87,16 +85,14 @@ function ChoiceProduct (){
                 </tbody>
             </table>
             {selectedProduct !== null && (
-                <button>
-                    <Link to={`/home/manager/retail/${selectedProduct}`}>
-                        <i className="fa-solid fa-circle-info">
-                            <a>Chọn</a>
-                        </i>
-                    </Link>
-                </button>                
+                <button 
+                    className="button_choice_product" 
+                    onClick={() => navigate(`/home/manager/retail/${selectedProduct}`)}>
+                    Chọn
+                </button>              
             )}
              
-                <button onClick={handleOut}>Thoát</button>
+                <button className="button_exit" onClick={handleOut}>Thoát</button>
 
             </div>
         </>

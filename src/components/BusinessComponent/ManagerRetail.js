@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link, useNavigate, useParams} from 'react-router-dom'
 import { getProductById, updateProduct } from "../../services/productService";
 import { toast } from "react-toastify";
-
+import './ManagerRetail.css'
 function ManagerRetail (){
     const {id}=useParams();
     const [oneProduct,setOneProduct]=useState({id:' ',name:" ",price:' ',image:' ',screen_size:' ',camera:' ',selfie:' ',cpu:' ',storage:' ',description:' '})
@@ -39,18 +39,19 @@ function ManagerRetail (){
     return(
         <>
             <div className="manager_retail">
-                <button >
-                    <Link className="button_choice_product" to={'/home/manager/retail/product'}>Chọn sản phẩm</Link>      
+            <div className="khung">
+                <button className="button_choice_product" onClick={() => navigate('/home/manager/retail/product')}>
+                    Chọn sản phẩm
                 </button>
                 
                 {/* <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={handleValidate} > */}
                 {/* <Formik  >
                     <Form>from thông tin */}
                         <div className="info_product">
-                            <hr/>
-                            <h5>Thông tin sản phẩm</h5>
+
+                            <h2>Thông tin sản phẩm:</h2>
                             <div> 
-                                <label >Tên sản phẩm:   </label>
+                                <label className="first_label" >Tên sản phẩm:   </label>
                                 <span> {oneProduct.name}</span>
                             </div><br/>
                             <div> 
@@ -85,13 +86,14 @@ function ManagerRetail (){
                         {/* Nhập giá */}
                         <div> 
                                 <label >Nhập giá bán lẻ:</label>
-                                <input type="number" name="price" ref={priceRef} placeholder="Nhap gia"/>
+                                <input className="input_price" type="number" name="price" ref={priceRef} placeholder="Nhap gia"/>
                             </div><br/>
                         {/* Lựa chọn */}<hr/>
                         <div>
-                            <button className="btn btn-success" onClick={handleSubmit} >Cập nhật giá bán lẻ</button>
-                            <button className="btn btn-info" onClick={handleOut} >Thoát</button>
-                        </div><hr/>
+                            <button className="button_update"  onClick={handleSubmit} >Cập nhật giá bán lẻ</button>
+                            <button className="button_exit" onClick={handleOut} >Thoát</button>
+                        </div>
+            </div>
             </div>
         </>
     );

@@ -4,6 +4,7 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import { getCustomerById, updateCustomer } from "../../services/customerService";
 import * as Yup from 'yup';
 import { toast } from "react-toastify";
+import './EditManagerCustomer.css'
 function EditManagerCustomer (){
     const {id}=useParams();
     const [customer,setCustomer]=useState(null);
@@ -40,7 +41,7 @@ function EditManagerCustomer (){
         }         
     return(
         <>
-            <div className="manager_retail">              
+            <div className="edit_customer">              
                 {/* <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={handleValidate} > */}
                 <Formik initialValues={customer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                     <Form>{/* from thông tin */}
@@ -72,8 +73,12 @@ function EditManagerCustomer (){
                                 <ErrorMessage name='email' style={{color: 'red'}} component='div'/>
                             </div><br/>
                         </div>                    
-                            <button className="btn btn-success" type={'submit'}>OK</button>
-                            <button><Link to={'/home/manager/customer'}>Thoát</Link></button>
+                            <button className="button_submit" type={'submit'}>OK</button>
+                            <button 
+                                className="button_exit" 
+                                onClick={() => navigate('/home/manager/customer')}>
+                                Thoát
+                            </button>
                     </Form>
                 </Formik>
                 {/* <button onClick={handleOut}>Thoát</button> */}

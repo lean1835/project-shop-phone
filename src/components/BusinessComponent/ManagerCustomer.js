@@ -55,11 +55,11 @@ function ManagerCustomer (){
                         
                     </select>                    
                     {typeId === "1" ? (
-                    <input className="form-control d-inline w-25 mx-2" ref={searchNameRef} placeholder="Nhập tên khách hàng" />
+                    <input className="input_search" ref={searchNameRef} placeholder="Nhập tên khách hàng" />
                 ) : (
-                    <input className="form-control d-inline w-25 mx-2" ref={searchAddressRef} placeholder="Nhập địa chỉ" />
+                    <input className="input_search" ref={searchAddressRef} placeholder="Nhập địa chỉ" />
                 )}
-                     <button onClick={handleSearch} className={' w-10 btn btn-success btn-sm'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
+                     <button onClick={handleSearch} className={'button_search'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <table className={'table table-light'}>
                 <thead>
@@ -95,13 +95,15 @@ function ManagerCustomer (){
                 </tbody>
             </table>
             {selectedCustomer !=null &&(
-                <button>
-                    <Link to={'/home/manager/customer/edit/'+selectedCustomer}>Chỉnh sửa</Link>
+                <button 
+                    className="button_edit_customer" 
+                    onClick={() => navigate(`/home/manager/customer/edit/${selectedCustomer}`)}>
+                    Chỉnh sửa
                 </button>
             )}
                 
                 
-                <button onClick={handleOut}>Thoát</button>
+                <button className="button_exit" onClick={handleOut}>Thoát</button>
 
             </div>
         </>

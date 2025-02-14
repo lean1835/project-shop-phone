@@ -1,0 +1,82 @@
+.manager{
+    
+    text-align: center;
+    justify-content: space-evenly;
+    display: flex;
+    height: 100%;
+    
+    /* margin-top: 300px; */
+    /* height: 1000px; */
+     position: relative ;
+  }
+  .button_retail{
+    text-decoration: none;
+    color: black;
+    padding: 110px;
+    transform: scale(0.7);
+    width: 320px;
+    border: 0px;
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff0000,#ddfa00);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    transition: 0.5s;
+  }
+
+  .button_retail:hover{
+    background: linear-gradient(90deg, #fff200,#fa3600);
+    border-radius: 100%  ;
+    transform: rotate(3600deg);
+    transition: 0.5s;
+    color: black;
+  }
+  .button_customer:hover{
+    background: linear-gradient(90deg, #fff200,#fa3600);
+    border-radius: 100%  ;
+    transform: rotate(3600deg);
+    transition: 0.5s;
+    color: black;
+  }
+
+  .button_customer{
+    transition: 0.5s;
+    text-decoration: none;
+    color: black;
+    padding: 110px;
+    transform: scale(0.7);
+    width: 340px;
+    border: 0px;
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff0000,#ddfa00);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+    color: white
+  }
+
+  .menu{
+    height: 1000px;
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20210817/pngtree-geometric-graphics-superimposed-simple-modern-red-business-background-image_762781.jpg);
+    background-size: cover;
+    position: relative;
+  }
+
+  .huh_chu{
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    font-style: italic;
+    font-size: 55px;
+    transition: 2s;
+    color: black;
+    font-weight: bolder;
+  }
+  
