@@ -175,6 +175,14 @@
       "address": "Hue, Vietnam",
       "age": 23,
       "email": "pvd@example.com"
+    },
+    {
+      "name": "Phong Le",
+      "phone": "0905202020",
+      "address": "32 a",
+      "age": 22,
+      "email": "clonemlp21@gmail.com",
+      "id": 3
     }
   ],
   "stock": [
