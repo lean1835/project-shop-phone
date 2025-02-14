@@ -13,11 +13,12 @@ function HeaderComponent() {
         navigate('/');
     }
 
+
     return (
         <>
             <nav class="navbar navbar-expand-lg bg-red">
                 <div class='logo-header'>
-                    <Link to={'/home'}><img class='image' src='logo.png' /></Link>
+                    <Link to={"/home"}><img class='image' src='logo.png' /></Link>
                     <a class="navbar-brand" href="/home" >An Shop</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
