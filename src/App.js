@@ -18,6 +18,8 @@ import SaleManager from "./components/SalesComponent/SaleManager";
 import AddNewCustomer from "./components/SalesComponent/AddNewCustomer";
 import SearchProduct from "./components/SalesComponent/SearchProduct";
 import StaffingComponent from "./components/StaffingComponent";
+import EditStock from "./components/StockComponent/EditStock";
+import AddNewProduct from "./components/StockComponent/AddNewProduct";
 
 function App() {
   return (
@@ -35,10 +37,12 @@ function App() {
         <Route path="/addNewCustomer" element={<AddNewCustomer />} />
         <Route path="/searchProduct" element={<SearchProduct />} />
         <Route path="/ListStock" element={<ListStock />}/>
-        <Route path="/ImportStock" element={<AddStock />}/>
-        <Route path="/ProductsInStock" element={<ProductsInStock />}/>
-        <Route path="/SuppliersStock" element={<SuppliersStock />}/>
+        <Route path="/ListStock/EditStock/:id" element={<EditStock />}/>
+        <Route path="/AddStock" element={<AddStock />}/>
+        <Route path="/AddStock/ProductsInStock" element={<ProductsInStock />}/>
+        <Route path="/AddStock/SuppliersStock" element={<SuppliersStock/>}/>
         <Route path='/home/managerStaff' element={<StaffingComponent />} />
+        <Route path="/AddStock/AddNewProduct" element={<AddNewProduct/>}/>
       </Routes>
     </>
   );

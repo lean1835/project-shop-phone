@@ -1,25 +1,25 @@
 {
   "accounts": [
     {
-      "id": 1,
-      "username": "Admin",
+      "id": "1",
+      "username": "admin",
       "password": "123",
       "role": "Admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "banhang",
       "password": "123",
       "role": "Sales Staff"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "thukho",
       "password": "123",
       "role": "Warehouse Staff"
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "kinhdoanh",
       "password": "123",
       "role": "Business Staff"
@@ -27,7 +27,7 @@
   ],
   "staff": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Nguyen Van A",
       "dob": "1990-01-24",
       "address": "123 Main Street, Hanoi, Vietnam",
@@ -35,7 +35,7 @@
       "phone": "0123456789"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Tran Thi B",
       "dob": "1995-03-15",
       "address": "456 Market Street, Ho Chi Minh City, Vietnam",
@@ -43,7 +43,7 @@
       "phone": "0987654321"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Le Van C",
       "dob": "1998-05-20",
       "address": "789 Park Street, Danang, Vietnam",
@@ -51,19 +51,35 @@
       "phone": "0123987654"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Pham Thi D",
       "dob": "2000-07-30",
       "address": "101 River Street, Hue, Vietnam",
       "accountID": 4,
       "phone": "0938274655"
+    },
+    {
+      "name": "Tran Thi E",
+      "dob": "2001-01-17",
+      "address": "100 Phan Boi Chau",
+      "accountID": "4",
+      "phone": "0123456789",
+      "id": "cvVTIvP"
+    },
+    {
+      "name": "VÕ TẤN TRÍ",
+      "dob": "2003-06-20",
+      "address": "Đà Nẵng",
+      "accountID": "2",
+      "phone": "0359694849",
+      "id": "9OzWNBV"
     }
   ],
   "products": [
     {
       "id": 1,
       "name": "Smartphone A",
-      "price": 5000000,
+      "price": "99",
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
@@ -75,7 +91,7 @@
     {
       "id": 2,
       "name": "Smartphone B",
-      "price": 7000000,
+      "price": "0",
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
       "camera": "48MP",
@@ -88,7 +104,7 @@
       "id": 3,
       "name": "Smartphone C",
       "price": 5000000,
-      "image": "images/imageA.jpg",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
       "selfie": "8MP",
@@ -100,7 +116,7 @@
       "id": 4,
       "name": "Smartphone D",
       "price": 7000000,
-      "image": "images/imageB.jpg",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
       "camera": "48MP",
       "selfie": "16MP",
@@ -112,7 +128,19 @@
       "id": 5,
       "name": "Smartphone D",
       "price": 7000000,
-      "image": "images/imageB.jpg",
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
+      "screen_size": "6.5 inches",
+      "camera": "48MP",
+      "selfie": "16MP",
+      "cpu": "Snapdragon 888",
+      "storage": "256GB",
+      "description": "A flagship smartphone with the latest technology."
+    },
+    {
+      "id": 6,
+      "name": "Smartphone D",
+      "price": 7000000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
       "camera": "48MP",
       "selfie": "16MP",
@@ -123,7 +151,7 @@
   ],
   "suppliers": [
     {
-      "id": 1,
+      "id": "1",
       "code": "SUP001",
       "name": "ABC Supplies",
       "address": "123 Main Street, Hanoi, Vietnam",
@@ -131,7 +159,7 @@
       "email": "abc@supplies.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "code": "SUP002",
       "name": "XYZ Trading",
       "address": "456 Market Street, Ho Chi Minh City, Vietnam",
@@ -141,25 +169,41 @@
   ],
   "customers": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Le Thi C",
       "phone": "0123456789",
       "address": "Danang, Vietnam",
-      "age": 30,
+      "age": 21,
       "email": "letc@example.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Pham Van D",
       "phone": "9876543210",
       "address": "Hue, Vietnam",
-      "age": 40,
+      "age": 23,
       "email": "pvd@example.com"
+    },
+    {
+      "name": "Phong Le",
+      "phone": "0905202020",
+      "address": "32 a",
+      "age": 22,
+      "email": "clonemlp21@gmail.com",
+      "id": 3
+    },
+    {
+      "name": "VÕ TẤN TRÍ",
+      "phone": "0359694849",
+      "address": "Đà Nẵng",
+      "age": 22,
+      "email": "votantri2006@gmail.com",
+      "id": 4
     }
   ],
   "stock": [
     {
-      "id": 1,
+      "id": "1",
       "productId": 1,
       "supplierId": 1,
       "quantity": 30,
@@ -167,7 +211,7 @@
       "importDate": "2025-01-10"
     },
     {
-      "id": 2,
+      "id": "2",
       "productId": 2,
       "supplierId": 2,
       "quantity": 50,
@@ -175,7 +219,7 @@
       "importDate": "2025-01-12"
     },
     {
-      "id": 3,
+      "id": "3",
       "productId": 3,
       "supplierId": 1,
       "quantity": 30,
@@ -183,7 +227,7 @@
       "importDate": "2025-01-10"
     },
     {
-      "id": 4,
+      "id": "4",
       "productId": 4,
       "supplierId": 2,
       "quantity": 50,
@@ -191,12 +235,20 @@
       "importDate": "2025-01-12"
     },
     {
-      "id": 5,
+      "id": "5",
       "productId": 5,
       "supplierId": 2,
       "quantity": 50,
       "importPrice": 6000000,
       "importDate": "2025-01-12"
+    },
+    {
+      "productId": "",
+      "supplierId": "",
+      "quantity": 20,
+      "importPrice": 222,
+      "importDate": "2025-03-01",
+      "id": "9h_abM3"
     }
   ]
 }
