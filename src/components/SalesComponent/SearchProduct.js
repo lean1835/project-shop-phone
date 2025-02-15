@@ -100,7 +100,6 @@ function SearchProduct() {
 
     return (
         <>
-            <HeaderComponent/>
             <div className="search-product-container">
                 <input ref={searchName} name="searchName" placeholder="Enter name product" className="form-control"/>
                 <button onClick={handleSearch} className="btn btn-primary">Search</button>

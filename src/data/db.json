@@ -57,13 +57,29 @@
       "address": "101 River Street, Hue, Vietnam",
       "accountID": 4,
       "phone": "0938274655"
+    },
+    {
+      "name": "Tran Thi E",
+      "dob": "2001-01-17",
+      "address": "100 Phan Boi Chau",
+      "accountID": "4",
+      "phone": "0123456789",
+      "id": "cvVTIvP"
+    },
+    {
+      "name": "VÕ TẤN TRÍ",
+      "dob": "2003-06-20",
+      "address": "Đà Nẵng",
+      "accountID": "2",
+      "phone": "0359694849",
+      "id": "9OzWNBV"
     }
   ],
   "products": [
     {
       "id": 1,
       "name": "Smartphone A",
-      "price": "99",
+      "price": "31232",
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
@@ -98,30 +114,6 @@
     },
     {
       "id": 4,
-      "name": "Smartphone D",
-      "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
-      "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
-    },
-    {
-      "id": 5,
-      "name": "Smartphone D",
-      "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
-      "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
-    },
-    {
-      "id": 6,
       "name": "Smartphone D",
       "price": 7000000,
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
@@ -175,6 +167,14 @@
       "age": 22,
       "email": "clonemlp21@gmail.com",
       "id": 3
+    },
+    {
+      "name": "VÕ TẤN TRÍd",
+      "phone": "0359694849",
+      "address": "Đà Nẵng",
+      "age": 22,
+      "email": "votantri2006@gmail.com",
+      "id": 4
     }
   ],
   "stock": [
@@ -205,14 +205,6 @@
     {
       "id": "4",
       "productId": 4,
-      "supplierId": 2,
-      "quantity": 50,
-      "importPrice": 6000000,
-      "importDate": "2025-01-12"
-    },
-    {
-      "id": "5",
-      "productId": 5,
       "supplierId": 2,
       "quantity": 50,
       "importPrice": 6000000,

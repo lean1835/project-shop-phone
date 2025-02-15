@@ -53,13 +53,13 @@ function ManageComponent() {
                     </div></Link>
                 </div>
                 )}
-                {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Warehouse Staff") && (<div className='body-manage'>
+                {/* {(account.role === "Admin" || account.role === "Business Staff" || account.role === "Warehouse Staff") && (<div className='body-manage'>
                     <Link className="link"><div className='body-card'>
                         <li>Quản lý nhà cung cấp</li>
                         <img className='body-card-img' src='./supply-chain.png' />
                     </div></Link>
                 </div>
-                )}
+                )} */}
                 {(account.role === "Admin" || account.role === "Sales Staff" || account.role === "Warehouse Staff") && (<div className='body-manage'>
                     <Link className="link" to="/liststock"><div className='body-card'>
                         <li>Quản lý nhập kho</li>

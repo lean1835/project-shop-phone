@@ -73,8 +73,7 @@ function SaleManager() {
 
     return (
         <>
-            <HeaderComponent/>
-            <div className="container-fluid">
+            <div className="container">
                 <h1 className="sale-manager" >Sale Manager</h1>
                 <div className="order-box order-box-1">
                     <div>
@@ -174,7 +173,7 @@ function SaleManager() {
                     </table>
                 </div>
                 <div>
-                    <button onClick={handleCheckOut}>Checkout</button>
+                    <button className="check-out" onClick={handleCheckOut}>Checkout</button>
                 </div>
             </div>
 

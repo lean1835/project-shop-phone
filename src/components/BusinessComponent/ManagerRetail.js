@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link, useNavigate, useParams} from 'react-router-dom'
 import { getProductById, updateProduct } from "../../services/productService";
 import { toast } from "react-toastify";
-import './ManagerRetail.css'
+import styles from './ManagerRetail.module.css'
 function ManagerRetail (){
     const {id}=useParams();
     const [oneProduct,setOneProduct]=useState({id:' ',name:" ",price:' ',image:' ',screen_size:' ',camera:' ',selfie:' ',cpu:' ',storage:' ',description:' '})
@@ -38,60 +38,61 @@ function ManagerRetail (){
     }
     return(
         <>
-            <div className="manager_retail">
-            <div className="khung">
-                <button className="button_choice_product" onClick={() => navigate('/home/manager/retail/product')}>
+            <div className={styles.manager_retail}>
+                
+            <div className={styles.khung}>
+                <div className={styles.khung_start}>
+                <h1>Quản lý giá bán lẻ</h1><hr/>
+            </div>
+                <button className={styles.button_choice_product} onClick={() => navigate('/home/manager/retail/product')}>
                     Chọn sản phẩm
                 </button>
-                
-                {/* <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={handleValidate} > */}
-                {/* <Formik  >
-                    <Form>from thông tin */}
-                        <div className="info_product">
+
+                        <div className={styles.info_product}>
 
                             <h2>Thông tin sản phẩm:</h2>
                             <div> 
-                                <label className="first_label" >Tên sản phẩm:   </label>
-                                <span> {oneProduct.name}</span>
+                                <label className={styles.first_label} >Tên sản phẩm:   </label>
+                                <span className={styles.span}>  {oneProduct.name}</span>
                             </div><br/>
                             <div> 
-                                <label >Giá:</label>
-                                <span> {oneProduct.price}</span>
+                                <label className={styles.label} >Giá:</label>
+                                <span className={styles.span}> {oneProduct.price}</span>
                             </div><br/>
                             <div> 
-                                <label >Kích thước màn hình:</label>
-                                <span> {oneProduct.screen_size}</span>
+                                <label className={styles.label}>Kích thước màn hình:</label>
+                                <span className={styles.span}> {oneProduct.screen_size}</span>
                             </div><br/>
                             <div> 
-                                <label >Camera:</label>
-                                <span> {oneProduct.camera}</span>
+                                <label className={styles.label}>Camera:</label>
+                                <span className={styles.span}> {oneProduct.camera}</span>
                             </div><br/>
                             <div> 
-                                <label >Selfie:</label>
-                                <span> {oneProduct.selfie}</span>
+                                <label className={styles.label}>Selfie:</label>
+                                <span className={styles.span}> {oneProduct.selfie}</span>
                             </div><br/>
                             <div> 
-                                <label >Cpu:</label>
-                                <span> {oneProduct.cpu}</span>
+                                <label className={styles.label}>Cpu:</label>
+                                <span className={styles.span}> {oneProduct.cpu}</span>
                             </div><br/>
                             <div> 
-                                <label >Dung lượng:</label>
-                                <span> {oneProduct.storage}</span>
+                                <label className={styles.label}>Dung lượng:</label>
+                                <span className={styles.span}> {oneProduct.storage}</span>
                             </div><br/>
                             <div> 
-                                <label >Mô tả:</label>
-                                <span> {oneProduct.description}</span>
+                                <label className={styles.label}>Mô tả:</label>
+                                <span className={styles.span}> {oneProduct.description}</span>
                             </div><br/>
-                        </div><hr/>
+                        </div>
                         {/* Nhập giá */}
-                        <div> 
-                                <label >Nhập giá bán lẻ:</label>
-                                <input className="input_price" type="number" name="price" ref={priceRef} placeholder="Nhap gia"/>
+                        <div className={styles.form_input}> 
+                                <label className={styles.form_label} >Nhập giá bán lẻ</label>
+                                <input className={styles.input_price} type="number" name="price" ref={priceRef} placeholder=""/>
                             </div><br/>
-                        {/* Lựa chọn */}<hr/>
-                        <div>
-                            <button className="button_update"  onClick={handleSubmit} >Cập nhật giá bán lẻ</button>
-                            <button className="button_exit" onClick={handleOut} >Thoát</button>
+                        {/* Lựa chọn */}
+                        <div className={styles.up_or_exit}>
+                            <button className={styles.button_update}  onClick={handleSubmit} >Cập nhật giá bán lẻ</button>
+                            <button className={styles.button_exit} onClick={handleOut} >Thoát</button>
                         </div>
             </div>
             </div>

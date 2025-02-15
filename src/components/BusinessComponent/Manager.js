@@ -1,22 +1,25 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Link, useNavigate} from 'react-router-dom'
-import './Manager.css'
+import styles from './Manager.module.css'
 function Manager (){
     const navigate=useNavigate();
     return(
         <>
-<div className="menu">
-<i className='huh_chu'>Quản lý kinh doanh</i>
-            <div className="manager">
-                
-            <button className="button_retail" onClick={() => navigate('/home/manager/retail')}>
+<div className={styles.menu}>
+    <div className={styles.bao}>
+       <div className={styles.khung_start}>
+            <h1>Chọn sản phẩm</h1><hr/>
+        </div>
+        <div className={styles.manager}> 
+            <button className={styles.button_retail} onClick={() => navigate('/home/manager/retail')}>
                 Quản lý giá bán lẻ
             </button>
-            <button className="button_customer" onClick={() => navigate('/home/manager/customer')}>
+            <button className={styles.button_customer} onClick={() => navigate('/home/manager/customer')}>
                 Quản lý khách hàng
-            </button>
-                
-            </div></div>
+            </button>               
+        </div>
+    </div>
+</div>
         </>
     );
 }
