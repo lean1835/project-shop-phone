@@ -261,14 +261,6 @@
       "quantity": 50,
       "importPrice": 6000000,
       "importDate": "2025-01-12"
-    },
-    {
-      "productId": "",
-      "supplierId": "",
-      "quantity": 2,
-      "importPrice": 2222,
-      "importDate": "2025-02-15",
-      "id": "P18O30D"
     }
   ]
 }

@@ -66,8 +66,8 @@ function EditStock(){
                         <Field className="form-control" type="text" name="importPrice" placeholder="Enter the price" />
                     </div>
                     <div style={{ textAlign: "center" }}>
-                    <button type="submit" className='btn btn-success me-2'>Sửa</button>
-                    <Link to={"/Liststock"} type="button" className='btn btn-secondary'>Hủy</Link>
+                    <button type="submit" className='btn btn-custom me-2'>Sửa</button>
+                    <Link to={"/Liststock"} type="button" className='btn btn-exit'>Hủy</Link>
                     </div>
                 </Form>
             </Formik>

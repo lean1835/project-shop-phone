@@ -7,6 +7,7 @@
   margin: 20px auto; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   /* background-color: #f9f9f9; */
+  
 }
 
 .title-form {
@@ -34,6 +35,15 @@
 }
 .btn-custom:hover {
   background-color: red;  
+  color: white;           
+}
+.btn-exit{
+  border: 1px solid rgb(71, 69, 69);  
+  background-color: white; 
+  color: black;           
+}
+.btn-exit:hover {
+  background-color: rgb(71, 69, 69);  
   color: white;           
 }
 .button-container{

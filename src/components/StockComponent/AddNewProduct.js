@@ -166,10 +166,10 @@ function AddNewProduct() {
           </div>
 
           <div style={{ textAlign: "center" }}>
-            <button type="submit" className="btn btn-success me-2">
+            <button type="submit" className="btn btn-custom me-2">
               Thêm
             </button>
-            <Link to={"/Liststock"} type="button" className="btn btn-secondary">
+            <Link to={"/Liststock"} type="button" className="btn btn-exit">
               Hủy
             </Link>
           </div>

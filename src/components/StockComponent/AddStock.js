@@ -36,8 +36,8 @@ function AddStock() {
     const stockData = {
       productId: location.state?.id || newStock.id,
       supplierId: location.state?.supplierIdSelected || "",
-      quantity: Number(values.quantity),
-      importPrice: Number(values.importPrice),
+      quantity: values.quantity,
+      importPrice: values.importPrice,
       importDate: values.importDate,
     };
     await addNewStock(stockData);
@@ -185,7 +185,7 @@ function AddStock() {
             <button type="submit" className="btn me-2 btn-custom">
               Thêm vào kho
             </button>
-            <Link to={"/Liststock"} type="button" className="btn btn-secondary">
+            <Link to={"/Liststock"} type="button" className="btn btn-exit">
               Hủy
             </Link>
           </div>
