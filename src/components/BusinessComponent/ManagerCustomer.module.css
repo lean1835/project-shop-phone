@@ -200,20 +200,20 @@
     border-radius: 15px;
 }
 .pre{
-    margin-left: 37%;
-    border-radius: 8px;
-    margin-top: 3%;
+    margin-left: 39%!important;
+    border-radius: 8px!important;
+    margin-top: 1%!important;
 }
 .post{
-    margin-left: 1%;
-    border-radius: 8px;
-    margin-top: 3%;
+    margin-left: 1%!important;
+    border-radius: 8px!important;
+    margin-top: 3%!important;
 }
 .page{
-    color: rgb(214, 65, 24);
-    font-family: 'Pacifico', cursive;
-    margin-left: 15px;
-    padding-top: 10px;
-    font-size: 20px;
-    font-weight: 700;
+    color: rgb(214, 65, 24) !important;
+    font-family: 'Pacifico', cursive !important;
+    margin-left: 15px!important;
+    padding-top: 10px!important;
+    font-size: 20px!important;
+    font-weight: 700!important;
 }
