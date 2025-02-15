@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddProductModal from "./AddProductModal";
 import EditProduct from "./EditProduct";
@@ -15,34 +16,36 @@ const ProductInfoPage = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const itemsPerPage = 5;
 
-  // 🚀 Lấy danh sách sản phẩm từ API
+  
+  const API_URL = "http://localhost:8080/products";
+
+  // DS sản phẩm từ API
   useEffect(() => {
     fetchProducts();
   }, []);
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:8080/products");
-      const data = await response.json();
-      setProducts(data);
+      const response = await axios.get(API_URL);
+      setProducts(response.data);
     } catch (error) {
       console.error("Lỗi khi tải danh sách sản phẩm:", error);
     }
   };
 
-  // 🚀 Xử lý thêm sản phẩm (Nhận từ AddProductModal)
+  // thêm sản phẩm từ AddProductModal
   const handleAddProduct = (newProduct) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
     setShowModal(false);
   };
 
-  // 🚀 Mở modal chỉnh sửa sản phẩm
+  // chỉnh sửa SP
   const handleEditProduct = (id) => {
     setEditProductId(id);
     setEditModal(true);
   };
 
-  // 🚀 Cập nhật danh sách sản phẩm sau khi chỉnh sửa
+  // UPdate DS sau khi chỉnh
   const handleUpdateProduct = (updatedProduct) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
@@ -51,21 +54,19 @@ const ProductInfoPage = () => {
     );
   };
 
-  // 🚀 Xóa một sản phẩm
+  // xoá 1
   const handleDeleteSingleProduct = async (id) => {
     if (!window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) return;
 
     try {
-      await fetch(`http://localhost:8080/products/${id}`, {
-        method: "DELETE",
-      });
+      await axios.delete(`${API_URL}/${id}`);
       setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
     } catch (error) {
       console.error("Lỗi khi xóa sản phẩm:", error);
     }
   };
 
-  // 🚀 Xóa nhiều sản phẩm đã chọn
+  // xoá nhiều
   const handleDeleteSelectedProducts = async () => {
     if (selectedProducts.length === 0) {
       alert("Vui lòng chọn ít nhất một sản phẩm để xóa.");
@@ -75,11 +76,7 @@ const ProductInfoPage = () => {
     if (!window.confirm("Bạn có chắc chắn muốn xóa các sản phẩm đã chọn không?")) return;
 
     try {
-      await Promise.all(
-        selectedProducts.map((id) =>
-          fetch(`http://localhost:8080/products/${id}`, { method: "DELETE" })
-        )
-      );
+      await Promise.all(selectedProducts.map((id) => axios.delete(`${API_URL}/${id}`)));
 
       setProducts((prevProducts) =>
         prevProducts.filter((product) => !selectedProducts.includes(product.id))
@@ -90,14 +87,14 @@ const ProductInfoPage = () => {
     }
   };
 
-  // 🚀 Chọn checkbox
+  // chọn ô
   const handleCheckboxChange = (id) => {
     setSelectedProducts((prev) =>
       prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
     );
   };
 
-  // 🔍 Lọc sản phẩm
+  // lọc SP
   const filteredProducts = products.filter((product) =>
     product[searchCategory]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -197,45 +194,24 @@ const ProductInfoPage = () => {
         <nav>
           <ul className="pagination justify-content-center">
             <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
+              <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>
                 Trước
               </button>
             </li>
             {[...Array(totalPages).keys()].map((number) => (
-              <li
-                key={number}
-                className={`page-item ${
-                  currentPage === number + 1 ? "active" : ""
-                }`}
-              >
-                <button
-                  className="page-link"
-                  onClick={() => setCurrentPage(number + 1)}
-                >
+              <li key={number} className={`page-item ${currentPage === number + 1 ? "active" : ""}`}>
+                <button className="page-link" onClick={() => setCurrentPage(number + 1)}>
                   {number + 1}
                 </button>
               </li>
             ))}
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
-            >
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage(currentPage + 1)}
-              >
+            <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+              <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>
                 Sau
               </button>
             </li>
             <li className="ms-auto">
-              <button
-                className="btn btn-danger text-white"
-                onClick={handleDeleteSelectedProducts}
-              >
+              <button className="btn btn-danger text-white" onClick={handleDeleteSelectedProducts}>
                 Chọn và xoá nhiều SP
               </button>
             </li>

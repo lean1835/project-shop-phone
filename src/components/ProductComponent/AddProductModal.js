@@ -17,7 +17,7 @@ const AddProductModal = ({ show, onClose, onAdd }) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false); // Tránh submit 2 lần
 
-  // Xử lý thêm sản phẩm
+  // thêm sản phẩm
   const handleSubmit = async () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
@@ -41,22 +41,22 @@ const AddProductModal = ({ show, onClose, onAdd }) => {
 
     try {
       console.log(" -------yêu cầu thêm sản phẩm -----");
-      // Gửi dữ liệu lên JSON Server bằng Axios
+      // Gửi data = Axios
       const response = await axios.post("http://localhost:8080/products", {
         id: Math.random().toString(16).slice(2), // Tạo ID ngẫu nhiên
         ...newProduct,
       });
 
-      // Kiểm tra phản hồi từ API
+      // kt phản hồi từ server
       if (response.status !== 201) {
         throw new Error("Lỗi khi thêm sản phẩm.");
       }
 
-      // Cập nhật danh sách sản phẩm
+      // update DS
       if (onAdd) {
       onAdd(response.data);
       }
-      // Reset dữ liệu
+      // làm lại data
       setNewProduct({
         name: "",
         price: "",
@@ -69,7 +69,7 @@ const AddProductModal = ({ show, onClose, onAdd }) => {
         description: "",
       });
 
-      // Đóng modal
+      // close modal
       onClose();
     } catch (error) {
       console.error("Lỗi khi thêm sản phẩm:", error);

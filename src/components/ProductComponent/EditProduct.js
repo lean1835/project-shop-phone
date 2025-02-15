@@ -17,7 +17,7 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
 
   const [isLoading, setIsLoading] = useState(false); // Tránh submit nhiều lần
 
-  // 🚀 Lấy dữ liệu sản phẩm từ API khi mở modal
+  //  lấy data product
   useEffect(() => {
     if (!productId) return;
 
@@ -37,12 +37,12 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
     fetchProduct();
   }, [productId]);
 
-  // Cập nhật dữ liệu khi nhập vào input
+  // update dữ liệu nhập
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  // 🚀 Xử lý cập nhật sản phẩm
+  // update sp
   const handleSubmit = async () => {
     if (isLoading) return;
     setIsLoading(true);
@@ -55,8 +55,8 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
 
     try {
       await axios.patch(`http://localhost:8080/products/${productId}`, product);
-      onUpdate(product); // Cập nhật dữ liệu trên giao diện
-      onClose(); // Đóng modal sau khi cập nhật thành công
+      onUpdate(product); 
+      onClose(); 
     } catch (error) {
       console.error("Lỗi khi cập nhật sản phẩm:", error);
       alert("Có lỗi xảy ra khi cập nhật sản phẩm.");
