@@ -91,6 +91,14 @@
       "phone": "0938274655"
     },
     {
+      "name": "Nguyễn Trúc Linh",
+      "dob": "2001-01-17",
+      "address": "100 Phan Boi Chau",
+      "accountID": "4",
+      "phone": "0123456789",
+      "id": "cvVTIvP"
+    },
+    {
       "name": "Thanh Phong",
       "dob": "2003-06-20",
       "address": "Đà Nẵng",
@@ -369,6 +377,14 @@
       "importDate": "2025-01-12"
     },
     {
+      "id": "6",
+      "productId": 6,
+      "supplierId": 3,
+      "quantity": 40,
+      "importPrice": 5500000,
+      "importDate": "2025-01-15"
+    },
+    {
       "id": "7",
       "productId": 7,
       "supplierId": 1,
@@ -383,6 +399,14 @@
       "quantity": 45,
       "importPrice": 6500000,
       "importDate": "2025-01-20"
+    },
+    {
+      "id": "9",
+      "productId": 9,
+      "supplierId": 3,
+      "quantity": 35,
+      "importPrice": 5000000,
+      "importDate": "2025-01-22"
     },
     {
       "id": "10",
