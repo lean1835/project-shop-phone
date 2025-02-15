@@ -5,6 +5,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
+import {toast} from "react-toastify";
 
 function AddNewCustomer() {
     const [newCustomer] = useState({
@@ -18,6 +19,7 @@ function AddNewCustomer() {
     const navigate = useNavigate();
     const handleSubmit = async (value) => {
         await addNewCustomer(value);
+        toast("Thêm mới khách hàng thành công");
         navigate('/SaleManager', { state: { phone: value.phone } });
     }
     const handleBack = () => {

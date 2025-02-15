@@ -6,6 +6,7 @@ import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
 import {Button, Modal} from 'react-bootstrap';
 import {triggerWebhook} from "./checkOutProduct";
+import {toast} from "react-toastify";
 
 function SaleManager() {
     const location = useLocation();
@@ -68,7 +69,8 @@ function SaleManager() {
             total: allSelectedProduct.total
         };
         await triggerWebhook(info);
-        navigate('/SaleManager');
+        toast("Thanh toán thành công");
+        navigate('/home');
     }
 
     return (
@@ -173,7 +175,7 @@ function SaleManager() {
                     </table>
                 </div>
                 <div>
-                    <button onClick={handleCheckOut}>Thanh toán</button>
+                    <button className="check-out" onClick={handleCheckOut}>Thanh toán</button>
                 </div>
             </div>
 

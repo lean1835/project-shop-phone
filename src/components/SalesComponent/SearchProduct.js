@@ -6,6 +6,7 @@ import {Button, Modal} from 'react-bootstrap';
 import {formarCurrency} from "../../utils/common";
 import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
+import {toast} from "react-toastify";
 
 function SearchProduct() {
     const [originProducts, setOriginProducts] = useState([]);
@@ -77,6 +78,7 @@ function SearchProduct() {
     );
 
     const handleConfirm = useCallback(() => {
+        toast("Chọn sản phẩm thành công");
         navigate('/SaleManager', {
             state: {
                 selectedProductNames,
