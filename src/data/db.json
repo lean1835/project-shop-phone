@@ -206,9 +206,29 @@
       "id": "1",
       "productId": 1,
       "supplierId": 1,
-      "quantity": 30,
+      "quantity": "32",
       "importPrice": 4000000,
-      "importDate": "2025-01-10"
+      "importDate": "2025-01-10",
+      "product": {
+        "id": 1,
+        "name": "Smartphone A",
+        "price": "99",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
+        "screen_size": "6.1 inches",
+        "camera": "12MP",
+        "selfie": "8MP",
+        "cpu": "Snapdragon 870",
+        "storage": "128GB",
+        "description": "A high-quality smartphone with advanced features."
+      },
+      "supplier": {
+        "id": "1",
+        "code": "SUP001",
+        "name": "ABC Supplies",
+        "address": "123 Main Street, Hanoi, Vietnam",
+        "phone": "0123456789",
+        "email": "abc@supplies.com"
+      }
     },
     {
       "id": "2",
