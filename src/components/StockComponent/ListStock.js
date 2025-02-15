@@ -64,8 +64,8 @@ function ListStock() {
             placeholder="Sản phẩm cần tìm kiếm"
             className="form-control d-inline-block w-25"
           />
-          <button className="btn btn-sm btn-success ms-2" type="button" onClick={handleSearch}>
-            Search
+          <button className="btn btn-success ms-2" type="button" onClick={handleSearch}>
+            Tìm kiếm
           </button>
         </div>
       </div>
