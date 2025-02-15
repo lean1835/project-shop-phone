@@ -15,106 +15,103 @@ const ProductInfoPage = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const itemsPerPage = 5;
 
+  // 🚀 Lấy danh sách sản phẩm từ API
   useEffect(() => {
-    fetch("http://localhost:8080/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+    fetchProducts();
   }, []);
 
-  // Thêm sản phẩm mới
-  const handleAddProduct = (newProduct) => {
-    fetch("http://localhost:8080/products", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newProduct),
-    }).then(() => {
-      setProducts([...products, { id: products.length + 1, ...newProduct }]);
-      setShowModal(false);
-    });
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/products");
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Lỗi khi tải danh sách sản phẩm:", error);
+    }
   };
 
-  // Mở modal chỉnh sửa sản phẩm
+  // 🚀 Xử lý thêm sản phẩm (Nhận từ AddProductModal)
+  const handleAddProduct = (newProduct) => {
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+    setShowModal(false);
+  };
+
+  // 🚀 Mở modal chỉnh sửa sản phẩm
   const handleEditProduct = (id) => {
     setEditProductId(id);
     setEditModal(true);
   };
 
-  // Cập nhật danh sách sản phẩm sau khi chỉnh sửa
+  // 🚀 Cập nhật danh sách sản phẩm sau khi chỉnh sửa
   const handleUpdateProduct = (updatedProduct) => {
-    setProducts(
-      products.map((product) =>
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
       )
     );
   };
 
-  // Xóa một sản phẩm
-  const handleDeleteSingleProduct = (id) => {
-    if (!window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?"))
-      return;
+  // 🚀 Xóa một sản phẩm
+  const handleDeleteSingleProduct = async (id) => {
+    if (!window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) return;
 
-    fetch(`http://localhost:8080/products/${id}`, {
-      method: "DELETE",
-    }).then(() => {
-      setProducts(products.filter((product) => product.id !== id));
-    });
+    try {
+      await fetch(`http://localhost:8080/products/${id}`, {
+        method: "DELETE",
+      });
+      setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+    } catch (error) {
+      console.error("Lỗi khi xóa sản phẩm:", error);
+    }
   };
 
-  // Xóa nhiều sản phẩm đã chọn
-  const handleDeleteSelectedProducts = () => {
+  // 🚀 Xóa nhiều sản phẩm đã chọn
+  const handleDeleteSelectedProducts = async () => {
     if (selectedProducts.length === 0) {
       alert("Vui lòng chọn ít nhất một sản phẩm để xóa.");
       return;
     }
 
-    if (
-      !window.confirm("Bạn có chắc chắn muốn xóa các sản phẩm đã chọn không?")
-    )
-      return;
+    if (!window.confirm("Bạn có chắc chắn muốn xóa các sản phẩm đã chọn không?")) return;
 
-    selectedProducts.forEach((id) => {
-      fetch(`http://localhost:8080/products/${id}`, {
-        method: "DELETE",
-      }).then(() => {
-        setProducts(
-          products.filter((product) => !selectedProducts.includes(product.id))
-        );
-      });
-    });
+    try {
+      await Promise.all(
+        selectedProducts.map((id) =>
+          fetch(`http://localhost:8080/products/${id}`, { method: "DELETE" })
+        )
+      );
 
-    setSelectedProducts([]);
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => !selectedProducts.includes(product.id))
+      );
+      setSelectedProducts([]);
+    } catch (error) {
+      console.error("Lỗi khi xóa sản phẩm:", error);
+    }
   };
 
-  // Chọn checkbox
+  // 🚀 Chọn checkbox
   const handleCheckboxChange = (id) => {
     setSelectedProducts((prev) =>
       prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
     );
   };
 
+  // 🔍 Lọc sản phẩm
   const filteredProducts = products.filter((product) =>
-    product[searchCategory]
-      ?.toString()
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase())
+    product[searchCategory]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = filteredProducts.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
       <div className="container mt-4">
         <div className="d-flex justify-content-between mb-3">
-          <button
-            className="btn btn-primary text-white"
-            onClick={() => setShowModal(true)}
-          >
+          <button className="btn btn-primary text-white" onClick={() => setShowModal(true)}>
             Thêm mới hàng hóa
           </button>
 
@@ -131,33 +128,21 @@ const ProductInfoPage = () => {
             <input
               type="text"
               className="form-control"
-              placeholder={ `${searchCategory}`}
+              placeholder={searchCategory}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
 
             {searchTerm && (
-              <button
-                className="btn btn-success"
-                onClick={() => setSearchTerm("")}
-              >
+              <button className="btn btn-success" onClick={() => setSearchTerm("")}>
                 Thoát
               </button>
             )}
           </div>
         </div>
 
-        <AddProductModal
-          show={showModal}
-          onClose={() => setShowModal(false)}
-          onAdd={handleAddProduct}
-        />
-        <EditProduct
-          show={editModal}
-          onClose={() => setEditModal(false)}
-          productId={editProductId}
-          onUpdate={handleUpdateProduct}
-        />
+        <AddProductModal show={showModal} onClose={() => setShowModal(false)} onAdd={handleAddProduct} />
+        <EditProduct show={editModal} onClose={() => setEditModal(false)} productId={editProductId} onUpdate={handleUpdateProduct} />
 
         <table className="table table-bordered">
           <thead className="table-light">
@@ -187,9 +172,7 @@ const ProductInfoPage = () => {
                   />
                 </td>
                 <td>{indexOfFirstItem + index + 1}</td>
-                <td>
-                  <img src={product.image} alt={product.name} width="50" />
-                </td>
+                <td><img src={product.image} alt={product.name} width="50" /></td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.cpu}</td>
@@ -199,16 +182,10 @@ const ProductInfoPage = () => {
                 <td>{product.selfie}</td>
                 <td>{product.description}</td>
                 <td className="w-10">
-                  <button
-                    className="btn btn-success text-white p-2 "
-                    onClick={() => handleEditProduct(product.id)}
-                  >
+                  <button className="btn btn-success text-white p-2 " onClick={() => handleEditProduct(product.id)}>
                     Sửa
                   </button>
-                  <button
-                    className="btn btn-danger text-white p-2 m-2"
-                    onClick={() => handleDeleteSingleProduct(product.id)}
-                  >
+                  <button className="btn btn-danger text-white p-2 m-2" onClick={() => handleDeleteSingleProduct(product.id)}>
                     Xóa
                   </button>
                 </td>
@@ -270,4 +247,3 @@ const ProductInfoPage = () => {
 };
 
 export default ProductInfoPage;
-

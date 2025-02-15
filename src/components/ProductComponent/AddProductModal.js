@@ -40,6 +40,7 @@ const AddProductModal = ({ show, onClose, onAdd }) => {
     }
 
     try {
+      console.log(" -------yêu cầu thêm sản phẩm -----");
       // Gửi dữ liệu lên JSON Server bằng Axios
       const response = await axios.post("http://localhost:8080/products", {
         id: Math.random().toString(16).slice(2), // Tạo ID ngẫu nhiên
@@ -52,8 +53,9 @@ const AddProductModal = ({ show, onClose, onAdd }) => {
       }
 
       // Cập nhật danh sách sản phẩm
+      if (onAdd) {
       onAdd(response.data);
-
+      }
       // Reset dữ liệu
       setNewProduct({
         name: "",
