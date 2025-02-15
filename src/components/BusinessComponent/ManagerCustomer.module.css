@@ -192,10 +192,28 @@
     background-color: white;
     position: absolute;
     width: 75%;
-    top: 45%;
+    top:55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 80%;
+    height: 90%;
     box-shadow: -17px 18px 20px 9px rgb(249 0 0 / 39%);
     border-radius: 15px;
+}
+.pre{
+    margin-left: 37%;
+    border-radius: 8px;
+    margin-top: 3%;
+}
+.post{
+    margin-left: 1%;
+    border-radius: 8px;
+    margin-top: 3%;
+}
+.page{
+    color: rgb(214, 65, 24);
+    font-family: 'Pacifico', cursive;
+    margin-left: 15px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
 }
