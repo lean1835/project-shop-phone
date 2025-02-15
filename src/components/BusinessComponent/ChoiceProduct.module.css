@@ -193,3 +193,19 @@
     color: white;
     transition: 0.8s;
 }
+
+.pagination{
+        margin:auto ;
+        display: block;
+}
+
+.pre{
+    margin-left: 37%;
+    border-radius: 8px;
+    margin-top: 3%;
+}
+.post{
+    margin-left: 1%;
+    border-radius: 8px;
+    margin-top: 3%;
+}

@@ -111,11 +111,12 @@ function ChoiceProduct() {
                         </tbody>
                     </table>
                     <div className={styles.pagination}>
-                        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} ></button>
+                        <button className={styles.pre} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                             &laquo; Trước
                         </button>
                         <span>Trang {currentPage} / {totalPages}</span>
-                        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        <button className={styles.post} onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                             Sau &raquo;
                         </button>
                     </div>
