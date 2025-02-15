@@ -71,8 +71,14 @@
       "dob": "2003-06-20",
       "address": "Đà Nẵng",
       "accountID": "2",
-      "phone": "0359694849",
-      "id": "9OzWNBV"
+      "phone": "03596948492",
+      "id": "9OzWNBV",
+      "account": {
+        "id": "2",
+        "username": "banhang",
+        "password": "123",
+        "role": "Sales Staff"
+      }
     }
   ],
   "products": [

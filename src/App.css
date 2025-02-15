@@ -44,24 +44,7 @@
   display: block;
   
 } */
-.manager{
-  text-align: center;
-  justify-content: space-evenly;
-  display: flex;
-  margin-top: 300px;
-}
-.button_retail{
-  text-decoration: none;
-  color: black;
-  padding: 100px;
-  
-}
-.button_customer{
-  text-decoration: none;
-  color: black;
-  padding: 100px;
-  display: block;
-}
+
 .button_staff{
   text-decoration: none;
   color: black;
