@@ -41,7 +41,7 @@ function LoginComponent() {
                 <div class='login'>
                     <div class="form-login">
                         <form class="form">
-                            <h3 class="heading">Sign up</h3>
+                            <h3 class="heading">Sign in</h3>
                             <div class="form-group">
                                 <label class="form-label">Username</label>
                                 <input name={'username'} ref={usernameRef} placeholder="Nhập tên đăng nhập" class="form-control" />
@@ -54,7 +54,7 @@ function LoginComponent() {
                             </div>
                             <div class="sign-up">
                                 <div>
-                                    <button onClick={handleLogin} type={"button"} class="form-submit" >Sign up</button>
+                                    <button onClick={handleLogin} type={"button"} class="form-submit" >Sign in</button>
                                 </div>
                             </div>
                         </form>
