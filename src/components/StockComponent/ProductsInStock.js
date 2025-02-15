@@ -38,11 +38,12 @@ function ProductsInStock() {
     };
 
     const handleConfirmSelect = () => {
+        console.log(selectedProduct);
         navigate(`/AddStock`, {
             state: {
-                idSelected: selectedProduct.id,
-                nameSelected: selectedProduct.name,
-                imageSelected: selectedProduct.image
+                idSelectedProduct: selectedProduct.id,
+                nameSelectedProduct: selectedProduct.name,
+                imageSelectedProduct: selectedProduct.image
             }
         });
         setShowSelectModal(false);

@@ -8,7 +8,7 @@ function ListStock() {
   const [productList, setProductList] = useState([]);
   const searchName = useRef('');
   const [page, setPage] = useState(1);
-  const [size] = useState(4);
+  const [size] = useState(5);
   const [totalPage, setTotalPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteStock, setDeleteStock] = useState({ id: '', name: '' }); 

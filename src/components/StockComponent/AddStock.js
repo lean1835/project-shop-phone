@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./AddStock.css";
 import { addNewStock } from "../../services/stockService";
@@ -9,16 +9,14 @@ import * as Yup from "yup";
 function AddStock() {
   const location = useLocation();
   const [newStock, setNewStock] = useState({
-    id: location.state?.id || "",
-    name: location.state?.nameSelected || "",
-    image: location.state?.imageSelected || "",
-    importPrice: "",
-    quantity: "",
-    supplier: { name: "" },
+    idSelectedProduct: location.state?.idSelectedProduct || "",
+    nameSelectedProduct: location.state?.nameSelectedProduct || "",
+    imageSelectedProduct: location.state?.imageSelectedProduct || "",
   });
 
   const [newSupplier, setNewSupplier] = useState({
-    nameSupplier: location.state?.nameSupplierSelected || "",
+    idSupplierSelected: location.state?.idSupplierSelected || "",
+    nameSupplierSelected: location.state?.nameSupplierSelected || "",
   });
 
   const [newAddStock, setNewAddStock] = useState({
@@ -32,44 +30,33 @@ function AddStock() {
   const navigate = useNavigate();
   
   const handleSubmit = async (values) => {
-
+   
     const stockData = {
-      productId: location.state?.id || newStock.id,
-      supplierId: location.state?.supplierIdSelected || "",
+      productId: newStock.idSelectedProduct,
+      supplierId: newSupplier.idSupplierSelected,
       quantity: values.quantity,
       importPrice: values.importPrice,
       importDate: values.importDate,
     };
+
     await addNewStock(stockData);
     toast.success("Thêm mới thành công");
     navigate("/ListStock");
   };
 
   const handleSupplier = () => {
+    console.log(newStock);
+    console.log(newSupplier);
     navigate("/AddStock/SuppliersStock", {
       state: {
-        productId: newStock.id,
-        nameSelected: newStock.name,
-        imageSelected: newStock.image,
-        supplier: newSupplier.nameSupplier,
+        idSelectedProduct: newStock.idSelectedProduct,
+        nameSelectedProduct: newStock.nameSelectedProduct,
+        imageSelectedProduct: newStock.imageSelectedProduct,
+        idSupplierSelected: newSupplier.idSupplierSelected,
+        nameSupplierSelected: newSupplier.nameSupplierSelected
       },
     });
   };
-
-  useEffect(() => {
-    if (location.state) {
-      setNewStock((prev) => ({
-        id: location.state.id || prev.id,
-        name: location.state.nameSelected || prev.name,
-        image: location.state.imageSelected || prev.image,
-        importPrice: location.state.importPrice || prev.importPrice,
-        quantity: location.state.quantity || prev.quantity,
-      }));
-      setNewSupplier({
-        nameSupplier: location.state.nameSupplierSelected || "",
-      });
-    }
-  }, [location.state]);
 
   const handleValidateStock = Yup.object({
     quantity: Yup.number().required("Yêu cầu không để trống"),
@@ -97,7 +84,9 @@ function AddStock() {
           Thêm sản phẩm mới
         </Link>
       </div>
-      <Formik initialValues={newAddStock} validationSchema={handleValidateStock} onSubmit={handleSubmit}>
+      <Formik initialValues={newAddStock} validationSchema={handleValidateStock} onSubmit={handleSubmit} >
+      
+        
         <Form>
           <div className="mb-3">
             <label className="form-label">Tên sản phẩm</label>
@@ -106,10 +95,9 @@ function AddStock() {
               type="text"
               name="productId"
               placeholder="Nhập tên sản phẩm"
-              value={newStock.name}
-              disabled
+              value={newStock.nameSelectedProduct}
             />
-            
+          
           </div>
           <div className="mb-3 d-flex align-items-center">
             <div className="flex-grow-1">
@@ -119,8 +107,7 @@ function AddStock() {
                 type="text"
                 name="supplierId"
                 placeholder="Nhập tên nhà cung cấp"
-                value={newSupplier.nameSupplier}
-                disabled
+                value={newSupplier.nameSupplierSelected}
               />
              
             </div>
@@ -143,10 +130,10 @@ function AddStock() {
           <div className="row mb-3">
             <div className="col">
               <label className="form-label">Hình ảnh hàng hóa </label>
-              {/* <Field className="form-control" type="text" name="image" placeholder="URL hình ảnh" value={newStock.image} disabled/> */}
-              {newStock.image && (
+              {/* <Field className="form-control" type="text" name="image" placeholder="URL hình ảnh" value={newStock.imageSelectedProduct} /> */}
+              {newStock.imageSelectedProduct && (
                 <img
-                  src={newStock.image}
+                  src={newStock.imageSelectedProduct}
                   alt="Hàng hóa"
                   className="img-fluid"
                   style={{ maxWidth: "150px", height: "auto" }}

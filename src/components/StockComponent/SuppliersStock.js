@@ -10,8 +10,8 @@ function SuppliersStock() {
     const searchName = useRef('');
     const navigate = useNavigate();
     const [showSelectModel, setShowSelectModal] = useState(false);
-    const location = useLocation();
-
+    const location = useLocation().state;
+    const originState = JSON.parse(JSON.stringify(location)); //chuyển sang string, rồi chuyển lại json để lưu ở ô nhớ mới
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,14 +35,15 @@ function SuppliersStock() {
     const handelSelectSupplier = (supplier) =>{
         setSelectedSupplier(supplier);
         setShowSelectModal(true);
+        console.log(originState);
     }
 
     const handleConfirmSelect = () => {
         navigate(`/AddStock`, {
             state: {
-                ...location.state,
+                ...originState,
+                idSupplierSelected: selectedSupplier.id,
                 nameSupplierSelected: selectedSupplier.name,
-                
             }
         });
         setShowSelectModal(false);

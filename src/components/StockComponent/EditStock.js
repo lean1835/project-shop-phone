@@ -39,7 +39,7 @@ function EditStock(){
             maxWidth: "700px", 
             margin: "20px auto", 
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", 
-            backgroundColor: "#f9f9f9"
+            // backgroundColor: "#f9f9f9"
           }}>
           <h4 style={{ textAlign: "center", color: "#333" }}>CHỈNH SỬA THÔNG TIN</h4>
             

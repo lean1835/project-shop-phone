@@ -28,7 +28,7 @@
   "staff": [
     {
       "id": "1",
-      "name": "Nguyen Van A",
+      "name": "Nguyễn Văn An",
       "dob": "1990-01-24",
       "address": "123 Main Street, Hanoi, Vietnam",
       "accountID": 1,
@@ -36,7 +36,7 @@
     },
     {
       "id": "2",
-      "name": "Tran Thi B",
+      "name": "Trần Thị Lan",
       "dob": "1995-03-15",
       "address": "456 Market Street, Ho Chi Minh City, Vietnam",
       "accountID": 2,
@@ -44,7 +44,7 @@
     },
     {
       "id": "3",
-      "name": "Le Van C",
+      "name": "Lê Văn Cao",
       "dob": "1998-05-20",
       "address": "789 Park Street, Danang, Vietnam",
       "accountID": 3,
@@ -52,14 +52,46 @@
     },
     {
       "id": "4",
-      "name": "Pham Thi D",
-      "dob": "2000-07-30",
+      "name": "Võ Tấn Trí",
+      "dob": "2003-06-320",
       "address": "101 River Street, Hue, Vietnam",
       "accountID": 4,
       "phone": "0938274655"
     },
     {
-      "name": "Tran Thi E",
+      "id": "5",
+      "name": "Trần Duy Linh",
+      "dob": "2003-06-320",
+      "address": "101 River Street, Hue, Vietnam",
+      "accountID": 4,
+      "phone": "0938274655"
+    },
+    {
+      "id": "6",
+      "name": "Lê An",
+      "dob": "2003-06-320",
+      "address": "101 River Street, Hue, Vietnam",
+      "accountID": 4,
+      "phone": "0938274655"
+    },
+    {
+      "id": "7",
+      "name": "Trương Ngọc Lĩnh",
+      "dob": "2003-06-320",
+      "address": "101 River Street, Hue, Vietnam",
+      "accountID": 4,
+      "phone": "0938274655"
+    },
+    {
+      "id": "8",
+      "name": "Lan Anh",
+      "dob": "2003-06-320",
+      "address": "101 River Street, Hue, Vietnam",
+      "accountID": 4,
+      "phone": "0938274655"
+    },
+    {
+      "name": "Nguyễn Trúc Linh",
       "dob": "2001-01-17",
       "address": "100 Phan Boi Chau",
       "accountID": "4",
@@ -67,86 +99,140 @@
       "id": "cvVTIvP"
     },
     {
-      "name": "VÕ TẤN TRÍ",
+      "name": "Thanh Phong",
       "dob": "2003-06-20",
       "address": "Đà Nẵng",
       "accountID": "2",
-      "phone": "0359694849",
-      "id": "9OzWNBV"
+      "phone": "03596948492",
+      "id": "9OzWNBV",
+      "account": {
+        "id": "2",
+        "username": "banhang",
+        "password": "123",
+        "role": "Sales Staff"
+      }
     }
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Smartphone A",
-      "price": "99",
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
+      "id": "1",
+      "name": "iPhone 15",
+      "price": 29000000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-plus_1_.png",
+      "screen_size": "6.1 inches",
+      "camera": "48MP",
+      "selfie": "12MP",
+      "cpu": "A16 Bionic",
+      "storage": "128GB",
+      "description": "Chiếc iPhone mạnh mẽ với camera chất lượng cao."
+    },
+    {
+      "id": "2",
+      "name": "Samsung Galaxy S23",
+      "price": 24000000,
+      "image": "https://bachlongstore.vn/vnt_upload/product/09_2023/pinks.png",
+      "screen_size": "6.1 inches",
+      "camera": "50MP",
+      "selfie": "12MP",
+      "cpu": "Snapdragon 8 Gen 2",
+      "storage": "256GB",
+      "description": "Điện thoại flagship với hiệu năng cực mạnh."
+    },
+    {
+      "id": "3",
+      "name": "Oppo Reno 10",
+      "price": 18000000,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/305695/oppo-reno10-blue-thumbnew-600x600.jpg",
+      "screen_size": "6.7 inches",
+      "camera": "64MP",
+      "selfie": "32MP",
+      "cpu": "Dimensity 8200",
+      "storage": "256GB",
+      "description": "Smartphone Oppo với thiết kế đẹp mắt và camera ấn tượng."
+    },
+    {
+      "id": "4",
+      "name": "Samsung Galaxy A15",
+      "price": 7000000,
+      "image": "https://cdn2.fptshop.com.vn/unsafe/2023_12_11_638379104714831641_samsung-galaxy-a15-xanh-1.jpg",
+      "screen_size": "6.5 inches",
+      "camera": "50MP",
+      "selfie": "13MP",
+      "cpu": "Exynos 1280",
+      "storage": "128GB",
+      "description": "Chiếc điện thoại phổ thông với camera tốt và màn hình lớn."
+    },
+    {
+      "id": "5",
+      "name": "iPhone 14",
+      "price": 22000000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-14-pro-256gb.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
-      "selfie": "8MP",
-      "cpu": "Snapdragon 870",
+      "selfie": "12MP",
+      "cpu": "A15 Bionic",
       "storage": "128GB",
-      "description": "A high-quality smartphone with advanced features."
+      "description": "Chiếc iPhone với hiệu năng mạnh mẽ và thiết kế tinh tế."
     },
     {
-      "id": 2,
-      "name": "Smartphone B",
-      "price": "0",
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
+      "id": "6",
+      "name": "Oppo Find X5 Pro",
+      "price": 26000000,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/250622/oppo-find-x5-pro-den-thumb-600x600.jpg",
+      "screen_size": "6.7 inches",
+      "camera": "50MP",
+      "selfie": "32MP",
+      "cpu": "Snapdragon 8 Gen 1",
       "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
+      "description": "Chiếc flagship Oppo với camera tiên tiến và màn hình chất lượng cao."
     },
     {
-      "id": 3,
-      "name": "Smartphone C",
-      "price": 5000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.1 inches",
+      "id": "7",
+      "name": "Samsung Galaxy Z Flip5",
+      "price": 26000000,
+      "image": "https://cdn2.fptshop.com.vn/unsafe/2024_3_28_638472353992099331_samsung-galaxy-zflip-5-xanh-ai.jpg",
+      "screen_size": "6.7 inches",
       "camera": "12MP",
-      "selfie": "8MP",
-      "cpu": "Snapdragon 870",
+      "selfie": "10MP",
+      "cpu": "Snapdragon 8 Gen 2",
+      "storage": "256GB",
+      "description": "Điện thoại màn hình gập độc đáo với hiệu năng cao."
+    },
+    {
+      "id": "8",
+      "name": "iPhone 13 Mini",
+      "price": 18000000,
+      "image": "https://cdn.phuckhangmobile.com/image/iphone-13-hong-900-24965j.jpg",
+      "screen_size": "5.4 inches",
+      "camera": "12MP",
+      "selfie": "12MP",
+      "cpu": "A15 Bionic",
       "storage": "128GB",
-      "description": "A high-quality smartphone with advanced features."
+      "description": "Chiếc iPhone nhỏ gọn với hiệu năng mạnh mẽ."
     },
     {
-      "id": 4,
-      "name": "Smartphone D",
-      "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
+      "id": "9",
+      "name": "Oppo A98",
+      "price": 9000000,
+      "image": "https://images-cdn.ubuy.com.eg/660c2b3b3af5c079eb54a00d-unlocked-oppo-a98-5g-8gb-256gb-global.jpg",
+      "screen_size": "6.72 inches",
+      "camera": "64MP",
+      "selfie": "32MP",
+      "cpu": "Snapdragon 695",
       "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
+      "description": "Smartphone tầm trung với màn hình lớn và hiệu năng ổn định."
     },
     {
-      "id": 5,
-      "name": "Smartphone D",
-      "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
-      "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
-    },
-    {
-      "id": 6,
-      "name": "Smartphone D",
-      "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
-      "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
+      "id": "10",
+      "name": "Samsung Galaxy M14",
+      "price": 6000000,
+      "image": "https://bachlongstore.vn/vnt_upload/product/10_2023/82371371.png",
+      "screen_size": "6.6 inches",
+      "camera": "50MP",
+      "selfie": "13MP",
+      "cpu": "Exynos 1330",
+      "storage": "128GB",
+      "description": "Smartphone phổ thông với pin dung lượng cao."
     }
   ],
   "suppliers": [
@@ -170,65 +256,93 @@
   "customers": [
     {
       "id": "1",
-      "name": "Le Thi C",
+      "name": "Lê An",
       "phone": "0123456789",
-      "address": "Danang, Vietnam",
+      "address": "Đà Nẵng, Việt Nam",
       "age": 21,
       "email": "letc@example.com"
     },
     {
       "id": "2",
-      "name": "Pham Van D",
+      "name": "Nguyễn Trúc Linh",
       "phone": "9876543210",
-      "address": "Hue, Vietnam",
+      "address": "Huế, Việt Nam",
       "age": 23,
       "email": "pvd@example.com"
     },
     {
-      "name": "Phong Le",
+      "id": "3",
+      "name": "Phong Lê",
       "phone": "0905202020",
-      "address": "32 a",
+      "address": "32A",
       "age": 22,
-      "email": "clonemlp21@gmail.com",
-      "id": 3
+      "email": "clonemlp21@gmail.com"
     },
     {
-      "name": "VÕ TẤN TRÍ",
+      "id": "4",
+      "name": "Võ Tấn Trí",
       "phone": "0359694849",
       "address": "Đà Nẵng",
       "age": 22,
-      "email": "votantri2006@gmail.com",
-      "id": 4
+      "email": "votantri2006@gmail.com"
+    },
+    {
+      "id": "5",
+      "name": "Nguyễn Văn An",
+      "phone": "0912345678",
+      "address": "Hà Nội, Việt Nam",
+      "age": 25,
+      "email": "nguyenvanan@example.com"
+    },
+    {
+      "id": "6",
+      "name": "Trần Thị Mai",
+      "phone": "0987654321",
+      "address": "Hồ Chí Minh, Việt Nam",
+      "age": 27,
+      "email": "tranthimai@example.com"
+    },
+    {
+      "id": "7",
+      "name": "Đặng Quang Huy",
+      "phone": "0934567890",
+      "address": "Cần Thơ, Việt Nam",
+      "age": 24,
+      "email": "dangquanghuy@example.com"
+    },
+    {
+      "id": "8",
+      "name": "Hoàng Thị Lan",
+      "phone": "0978123456",
+      "address": "Nha Trang, Việt Nam",
+      "age": 26,
+      "email": "hoangthilan@example.com"
+    },
+    {
+      "id": "9",
+      "name": "Phan Minh Tâm",
+      "phone": "0963456789",
+      "address": "Vũng Tàu, Việt Nam",
+      "age": 28,
+      "email": "phanminhtam@example.com"
+    },
+    {
+      "id": "10",
+      "name": "Bùi Đức Phúc",
+      "phone": "0956781234",
+      "address": "Hải Phòng, Việt Nam",
+      "age": 30,
+      "email": "buiducphuc@example.com"
     }
   ],
   "stock": [
     {
       "id": "1",
       "productId": 1,
-      "supplierId": 1,
-      "quantity": "32",
-      "importPrice": 4000000,
-      "importDate": "2025-01-10",
-      "product": {
-        "id": 1,
-        "name": "Smartphone A",
-        "price": "99",
-        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
-        "screen_size": "6.1 inches",
-        "camera": "12MP",
-        "selfie": "8MP",
-        "cpu": "Snapdragon 870",
-        "storage": "128GB",
-        "description": "A high-quality smartphone with advanced features."
-      },
-      "supplier": {
-        "id": "1",
-        "code": "SUP001",
-        "name": "ABC Supplies",
-        "address": "123 Main Street, Hanoi, Vietnam",
-        "phone": "0123456789",
-        "email": "abc@supplies.com"
-      }
+      "supplierId": 2,
+      "quantity": 50,
+      "importPrice": 6000000,
+      "importDate": "2025-01-14"
     },
     {
       "id": "2",
@@ -261,6 +375,30 @@
       "quantity": 50,
       "importPrice": 6000000,
       "importDate": "2025-01-12"
+    },
+    {
+      "id": "7",
+      "productId": 7,
+      "supplierId": 1,
+      "quantity": 60,
+      "importPrice": 7000000,
+      "importDate": "2025-01-18"
+    },
+    {
+      "id": "8",
+      "productId": 8,
+      "supplierId": 2,
+      "quantity": 45,
+      "importPrice": 6500000,
+      "importDate": "2025-01-20"
+    },
+    {
+      "id": "10",
+      "productId": 10,
+      "supplierId": 1,
+      "quantity": 55,
+      "importPrice": 7500000,
+      "importDate": "2025-01-25"
     }
   ]
 }
