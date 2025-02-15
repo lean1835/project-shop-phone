@@ -379,7 +379,7 @@
     {
       "id": "6",
       "productId": 6,
-      "supplierId": 3,
+      "supplierId": 2,
       "quantity": 40,
       "importPrice": 5500000,
       "importDate": "2025-01-15"
@@ -403,7 +403,7 @@
     {
       "id": "9",
       "productId": 9,
-      "supplierId": 3,
+      "supplierId": 1,
       "quantity": 35,
       "importPrice": 5000000,
       "importDate": "2025-01-22"
