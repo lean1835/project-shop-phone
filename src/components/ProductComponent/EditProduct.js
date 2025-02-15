@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const EditProduct = ({ show, onClose, productId, onUpdate }) => {
@@ -11,22 +12,29 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
     selfie: "",
     cpu: "",
     storage: "",
-    description: ""
+    description: "",
   });
 
-  const [previewImage, setPreviewImage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Tránh submit nhiều lần
 
-  // Lấy dữ liệu sản phẩm từ API khi mở modal
+  // 🚀 Lấy dữ liệu sản phẩm từ API khi mở modal
   useEffect(() => {
-    if (productId) {
-      fetch(`http://localhost:8080/products/${productId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setProduct(data);
-          setPreviewImage(data.image); // Hiển thị ảnh hiện tại
-        })
-        .catch(error => console.error("Lỗi khi lấy dữ liệu sản phẩm:", error));
-    }
+    if (!productId) return;
+
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(`http://localhost:8080/products/${productId}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu sản phẩm:", error);
+        alert("Không thể tải dữ liệu sản phẩm.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProduct();
   }, [productId]);
 
   // Cập nhật dữ liệu khi nhập vào input
@@ -34,33 +42,27 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  // Xử lý khi chọn ảnh từ máy tính
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setPreviewImage(imageUrl);
-      setProduct({ ...product, image: imageUrl }); // Cập nhật ảnh vào sản phẩm
-    }
-  };
+  // 🚀 Xử lý cập nhật sản phẩm
+  const handleSubmit = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
 
-  // Xử lý cập nhật sản phẩm
-  const handleSubmit = () => {
     if (!product.name || !product.price || !product.image || !product.screen_size || !product.camera || !product.selfie || !product.cpu || !product.storage || !product.description) {
       alert("Vui lòng nhập đầy đủ thông tin sản phẩm.");
+      setIsLoading(false);
       return;
     }
 
-    fetch(`http://localhost:8080/products/${productId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product),
-    })
-      .then(() => {
-        onUpdate(product); // Cập nhật dữ liệu trong danh sách sản phẩm
-        onClose(); // Đóng modal sau khi cập nhật
-      })
-      .catch((error) => console.error("Lỗi khi cập nhật sản phẩm:", error));
+    try {
+      await axios.patch(`http://localhost:8080/products/${productId}`, product);
+      onUpdate(product); // Cập nhật dữ liệu trên giao diện
+      onClose(); // Đóng modal sau khi cập nhật thành công
+    } catch (error) {
+      console.error("Lỗi khi cập nhật sản phẩm:", error);
+      alert("Có lỗi xảy ra khi cập nhật sản phẩm.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!show) return null;
@@ -71,52 +73,57 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Chỉnh sửa sản phẩm</h5>
-            <button type="button" className="btn-close" onClick={onClose}></button>
+            <button type="button" className="btn-close" onClick={onClose} disabled={isLoading}></button>
           </div>
           <div className="modal-body">
-            <div className="row">
-              <div className="col-md-6">
-                <label className="form-label">Tên sản phẩm</label>
-                <input type="text" className="form-control mb-2" name="name" value={product.name} onChange={handleChange} placeholder="Nhập tên sản phẩm" />
+            {isLoading ? (
+              <p className="text-center">Đang tải dữ liệu...</p>
+            ) : (
+              <div className="row">
+                <div className="col-md-6">
+                  <label className="form-label">Tên sản phẩm</label>
+                  <input type="text" className="form-control mb-2" name="name" value={product.name} onChange={handleChange} placeholder="Nhập tên sản phẩm" />
 
-                <label className="form-label">Giá</label>
-                <input type="number" className="form-control mb-2" name="price" value={product.price} onChange={handleChange} placeholder="Nhập giá sản phẩm" />
+                  <label className="form-label">Giá</label>
+                  <input type="number" className="form-control mb-2" name="price" value={product.price} onChange={handleChange} placeholder="Nhập giá sản phẩm" />
 
-                <label className="form-label">Màn hình</label>
-                <input type="text" className="form-control mb-2" name="screen_size" value={product.screen_size} onChange={handleChange} placeholder="Nhập kích thước màn hình" />
+                  <label className="form-label">Màn hình</label>
+                  <input type="text" className="form-control mb-2" name="screen_size" value={product.screen_size} onChange={handleChange} placeholder="Nhập kích thước màn hình" />
 
-                <label className="form-label">Camera</label>
-                <input type="text" className="form-control mb-2" name="camera" value={product.camera} onChange={handleChange} placeholder="Nhập thông số camera" />
+                  <label className="form-label">Camera</label>
+                  <input type="text" className="form-control mb-2" name="camera" value={product.camera} onChange={handleChange} placeholder="Nhập thông số camera" />
 
-                <label className="form-label">Selfie</label>
-                <input type="text" className="form-control mb-2" name="selfie" value={product.selfie} onChange={handleChange} placeholder="Nhập thông số camera selfie" />
+                  <label className="form-label">Selfie</label>
+                  <input type="text" className="form-control mb-2" name="selfie" value={product.selfie} onChange={handleChange} placeholder="Nhập thông số camera selfie" />
+                </div>
+
+                <div className="col-md-6">
+                  <label className="form-label">CPU</label>
+                  <input type="text" className="form-control mb-2" name="cpu" value={product.cpu} onChange={handleChange} placeholder="Nhập loại CPU" />
+
+                  <label className="form-label">Lưu trữ</label>
+                  <input type="text" className="form-control mb-2" name="storage" value={product.storage} onChange={handleChange} placeholder="Nhập dung lượng lưu trữ" />
+
+                  <label className="form-label">Mô tả sản phẩm</label>
+                  <textarea className="form-control mb-2" name="description" value={product.description} onChange={handleChange} placeholder="Nhập mô tả sản phẩm"></textarea>
+
+                  <label className="form-label">Hình ảnh (URL)</label>
+                  <input type="text" className="form-control mb-2" name="image" value={product.image} onChange={handleChange} placeholder="Nhập URL hình ảnh" />
+
+                  {product.image && (
+                    <div className="text-center">
+                      <img src={product.image} alt="Ảnh sản phẩm" className="img-thumbnail mt-2" style={{ maxWidth: "150px" }} />
+                    </div>
+                  )}
+                </div>
               </div>
-
-              <div className="col-md-6">
-                <label className="form-label">CPU</label>
-                <input type="text" className="form-control mb-2" name="cpu" value={product.cpu} onChange={handleChange} placeholder="Nhập loại CPU" />
-
-                <label className="form-label">Lưu trữ</label>
-                <input type="text" className="form-control mb-2" name="storage" value={product.storage} onChange={handleChange} placeholder="Nhập dung lượng lưu trữ" />
-
-                <label className="form-label">Mô tả sản phẩm</label>
-                <textarea className="form-control mb-2" name="description" value={product.description} onChange={handleChange} placeholder="Nhập mô tả sản phẩm"></textarea>
-
-                <label className="form-label">Hình ảnh</label>
-                <input type="file" className="form-control mb-2" onChange={handleImageUpload} accept="image/*" />
-                <input type="text" className="form-control mb-2" name="image" value={product.image} onChange={handleChange} placeholder="Nhập URL hình ảnh" />
-
-                {previewImage && (
-                  <div className="text-center">
-                    <img src={previewImage} alt="Ảnh sản phẩm" className="img-thumbnail mt-2" style={{ maxWidth: "150px" }} />
-                  </div>
-                )}
-              </div>
-            </div>
+            )}
           </div>
           <div className="modal-footer">
-            <button className="btn btn-success" onClick={handleSubmit}>Cập nhật</button>
-            <button className="btn btn-secondary" onClick={onClose}>Hủy</button>
+            <button className="btn btn-success" onClick={handleSubmit} disabled={isLoading}>
+              {isLoading ? "Đang cập nhật..." : "Cập nhật"}
+            </button>
+            <button className="btn btn-secondary" onClick={onClose} disabled={isLoading}>Hủy</button>
           </div>
         </div>
       </div>

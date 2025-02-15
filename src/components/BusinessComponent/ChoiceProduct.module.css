@@ -2,7 +2,7 @@
     position: relative;
     background-size: cover;
     /* background-image: url(https://i.pinimg.com/736x/d7/cf/ad/d7cfad4ec15c6d310681da321c666844.jpg); */
-    height: 1000px;
+    height: 1200px;
 }
 .bao{
     background-color: white;
@@ -13,7 +13,7 @@
     border-radius: 15px;
     background-color: white;
     width: 65%;
-    height: 770px;
+    height: 990px;
     box-shadow: -17px 18px 20px 9px rgb(249 0 0 / 39%);
 }
 .bao .khung_start{
@@ -108,7 +108,7 @@
 .button_choice{
     margin-left: 35%;
     width: 14%;
-    margin-top: 30px;
+    margin-top: 3%;
     padding: 25px;
     border-radius: 8px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -165,7 +165,7 @@
     margin-top: 6%;
     /* con */
     box-shadow: -8px 9px 20px 0px rgb(199 194 194);
-    width: 80%;
+    width: 90%;
     border-collapse: collapse; /* Gộp viền */
     border-radius: 15px; /* Bo tròn viền bảng */
     overflow: hidden; /* Để viền không bị vỡ */

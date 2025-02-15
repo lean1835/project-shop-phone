@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { searchProductByName } from "../../services/productService";
-import { Link } from "react-router-dom";
+import {searchProductByName } from "../../services/productService";
+import {  useNavigate } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import './StockCSS.css'
+
 
 function ProductsInStock() {
     const [productList, setProductList] = useState([]);
     const [originProducts, setOriginProducts] = useState([]);
+    const [selectedProduct,setSelectedProduct] = useState([])
     const searchName = useRef('');
-
+    const navigate = useNavigate();
+    const [showSelectModel, setShowSelectModal] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,30 +32,48 @@ function ProductsInStock() {
         setProductList(filteredProducts);
     };
 
-    const handleSelect = (product) =>{
-        localStorage.setItem('selectedProduct', JSON.stringify(product));
-    }
+    const handleSelect = (product) => {
+        setSelectedProduct(product);
+        setShowSelectModal(true);
+    };
+
+    const handleConfirmSelect = () => {
+        navigate(`/AddStock`, {
+            state: {
+                idSelected: selectedProduct.id,
+                nameSelected: selectedProduct.name,
+                imageSelected: selectedProduct.image
+            }
+        });
+        setShowSelectModal(false);
+    };
+
+    const handleClose = () => {
+        setShowSelectModal(false);
+    };
+
+
     return (
-        <div style={{ border: "2px solid #007bff", borderRadius: "8px", padding: "20px", maxWidth: "1000px", margin: "20px auto", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
-            <h4 style={{ textAlign: "center", color: "#007bff" }}>Chọn sản phẩm</h4>
+        <div style={{ border: "2px solid #ebedee", borderRadius: "8px", padding: "20px", maxWidth: "90%", margin: "20px auto", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
+            <h4 style={{ textAlign: "center", color: "#333" }}>DANH SÁCH SẢN PHẨM</h4>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-                <input ref={searchName} placeholder="Enter name product" className="form-control d-inline-block w-50" />
-                <button type="button" onClick={handleSearch} className="btn btn-primary" style={{ marginLeft: "10px" }}>Search</button>
+                <input ref={searchName} placeholder="Nhập sản phẩm cần tìm" className="form-control d-inline-block w-50" />
+                <button type="button" onClick={handleSearch} className="btn btn-success" style={{ marginLeft: "10px" }}>Search</button>
             </div>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                     <tr style={{ backgroundColor: "#f2f2f2" }}>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Screen size</th>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Hình ảnh</th>
+                        <th>Màn hình</th>
                         <th>Camera</th>
                         <th>Selfie</th>
-                        <th>Chip</th>
-                        <th>RAM</th>
-                        <th>Description</th>
-                        <th>Select</th>
+                        <th>CPU</th>
+                        <th>Lưu trữ</th>
+                        <th>Mô tả</th>
+                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,12 +90,26 @@ function ProductsInStock() {
                             <td>{e.storage}</td>
                             <td>{e.description}</td>
                             <td>
-                                <Link onClick={() => handleSelect(e)} to={"/ImportStock"} className="btn btn-info">Select</Link>
+                                <button className="btn btn-sm btn-custom " onClick={() => handleSelect(e)} ><i className="fa-solid fa-square-check"></i></button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <Modal show={showSelectModel} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Thông báo</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Bạn có muốn chọn sản phẩm này không?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                        Thoát
+                        </Button>
+                        <Button variant="success" onClick={handleConfirmSelect}>
+                        Chọn
+                        </Button>
+                    </Modal.Footer>
+            </Modal>
         </div>
     );
 }

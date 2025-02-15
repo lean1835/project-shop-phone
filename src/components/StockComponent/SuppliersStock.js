@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { searchSuppliersByName } from "../../services/suppliersService";
-import { Link } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 
 function SuppliersStock() {
     const [suppliersList, setSuppliersList] = useState([]);
     const [originSuppliers, setOriginSuppliers] = useState([]);
+    const [selectedSupplier,setSelectedSupplier] = useState([])
     const searchName = useRef('');
+    const navigate = useNavigate();
+    const [showSelectModel, setShowSelectModal] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +20,7 @@ function SuppliersStock() {
                 setSuppliersList(list);
                 setOriginSuppliers(list);
             } catch (error) {
-                // Handle error here if needed
+                
             }
         };
         fetchData();
@@ -27,25 +32,43 @@ function SuppliersStock() {
         setSuppliersList(filteredProducts);
     };
 
-    const handelSelectSupplier = () =>{
-        
+    const handelSelectSupplier = (supplier) =>{
+        setSelectedSupplier(supplier);
+        setShowSelectModal(true);
     }
+
+    const handleConfirmSelect = () => {
+        navigate(`/AddStock`, {
+            state: {
+                ...location.state,
+                nameSupplierSelected: selectedSupplier.name,
+                
+            }
+        });
+        setShowSelectModal(false);
+    };
+
+    const handleClose = () => {
+        setShowSelectModal(false);
+    };
+
+    
     return (
-        <div style={{ border: "2px solid #007bff", borderRadius: "8px", padding: "20px", maxWidth: "1000px", margin: "20px auto", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
-            <h4 style={{ textAlign: "center", color: "#007bff" }}>Tìm nhà cung cấp</h4>
+        <div style={{ border: "2px solid #ebedee", borderRadius: "8px", padding: "20px", maxWidth: "1000px", margin: "20px auto", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
+            <h4 style={{ textAlign: "center", color: "#333" }}>DANH SÁCH NHÀ CUNG CẤP</h4>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
                 <input ref={searchName} placeholder="Enter name product" className="form-control d-inline-block w-50" />
-                <button type="button" onClick={handleSearch} className="btn btn-primary" style={{ marginLeft: "10px" }}>Search</button>
+                <button type="button" onClick={handleSearch} className="btn btn-success" style={{ marginLeft: "10px" }}>Search</button>
             </div>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                     <tr style={{ backgroundColor: "#f2f2f2" }}>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
+                        <th>STT</th>
+                        <th>Tên nhà cung cấp</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Select</th>
+                        <th>Chọn</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,12 +80,26 @@ function SuppliersStock() {
                             <td>{e.phone}</td>
                             <td>{e.email}</td>
                             <td>
-                                <Link onClick={handelSelectSupplier} to={"/ImportStock"} className="btn btn-info">Select</Link>
+                            <button onClick={() => handelSelectSupplier(e)} className="btn btn-sm btn-custom"><i className="fa-solid fa-square-check"></i></button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <Modal show={showSelectModel} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Thông báo</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Bạn có muốn chọn nhà cung cấp này không?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                        Thoát
+                        </Button>
+                        <Button variant="success" onClick={handleConfirmSelect}>
+                        Chọn
+                        </Button>
+                    </Modal.Footer>
+            </Modal>
         </div>
     );
 }

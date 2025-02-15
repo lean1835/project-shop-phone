@@ -71,15 +71,21 @@
       "dob": "2003-06-20",
       "address": "Đà Nẵng",
       "accountID": "2",
-      "phone": "0359694849",
-      "id": "9OzWNBV"
+      "phone": "03596948492",
+      "id": "9OzWNBV",
+      "account": {
+        "id": "2",
+        "username": "banhang",
+        "password": "123",
+        "role": "Sales Staff"
+      }
     }
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Smartphone A",
-      "price": "31232",
+      "id": "1",
+      "name": "Smartphone AAAAAAA",
+      "price": 5000000,
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
       "screen_size": "6.1 inches",
       "camera": "12MP",
@@ -89,32 +95,8 @@
       "description": "A high-quality smartphone with advanced features."
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Smartphone B",
-      "price": "0",
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.5 inches",
-      "camera": "48MP",
-      "selfie": "16MP",
-      "cpu": "Snapdragon 888",
-      "storage": "256GB",
-      "description": "A flagship smartphone with the latest technology."
-    },
-    {
-      "id": 3,
-      "name": "Smartphone C",
-      "price": 5000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
-      "screen_size": "6.1 inches",
-      "camera": "12MP",
-      "selfie": "8MP",
-      "cpu": "Snapdragon 870",
-      "storage": "128GB",
-      "description": "A high-quality smartphone with advanced features."
-    },
-    {
-      "id": 4,
-      "name": "Smartphone D",
       "price": 7000000,
       "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
       "screen_size": "6.5 inches",
@@ -123,6 +105,42 @@
       "cpu": "Snapdragon 888",
       "storage": "256GB",
       "description": "A flagship smartphone with the latest technology."
+    },
+    {
+      "id": "3",
+      "name": "Smartphone C",
+      "price": 5500000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
+      "screen_size": "6.1 inches",
+      "camera": "12MP",
+      "selfie": "8MP",
+      "cpu": "Snapdragon 870",
+      "storage": "128GB",
+      "description": "A high-quality smartphone with a great display."
+    },
+    {
+      "id": "4",
+      "name": "Smartphone D (256GB)",
+      "price": 7000000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
+      "screen_size": "6.5 inches",
+      "camera": "48MP",
+      "selfie": "16MP",
+      "cpu": "Snapdragon 888",
+      "storage": "256GB",
+      "description": "A premium smartphone with 256GB storage."
+    },
+    {
+      "id": "5",
+      "name": "Smartphone D (512GB)",
+      "price": 7500000,
+      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
+      "screen_size": "6.5 inches",
+      "camera": "48MP",
+      "selfie": "16MP",
+      "cpu": "Snapdragon 888",
+      "storage": "512GB",
+      "description": "A premium smartphone with 512GB storage."
     }
   ],
   "suppliers": [
@@ -169,7 +187,7 @@
       "id": 3
     },
     {
-      "name": "VÕ TẤN TRÍd",
+      "name": "VÕ TẤN TRÍ",
       "phone": "0359694849",
       "address": "Đà Nẵng",
       "age": 22,
@@ -182,9 +200,29 @@
       "id": "1",
       "productId": 1,
       "supplierId": 1,
-      "quantity": 30,
+      "quantity": "32",
       "importPrice": 4000000,
-      "importDate": "2025-01-10"
+      "importDate": "2025-01-10",
+      "product": {
+        "id": 1,
+        "name": "Smartphone A",
+        "price": "99",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png",
+        "screen_size": "6.1 inches",
+        "camera": "12MP",
+        "selfie": "8MP",
+        "cpu": "Snapdragon 870",
+        "storage": "128GB",
+        "description": "A high-quality smartphone with advanced features."
+      },
+      "supplier": {
+        "id": "1",
+        "code": "SUP001",
+        "name": "ABC Supplies",
+        "address": "123 Main Street, Hanoi, Vietnam",
+        "phone": "0123456789",
+        "email": "abc@supplies.com"
+      }
     },
     {
       "id": "2",
@@ -205,6 +243,14 @@
     {
       "id": "4",
       "productId": 4,
+      "supplierId": 2,
+      "quantity": 50,
+      "importPrice": 6000000,
+      "importDate": "2025-01-12"
+    },
+    {
+      "id": "5",
+      "productId": 5,
       "supplierId": 2,
       "quantity": 50,
       "importPrice": 6000000,

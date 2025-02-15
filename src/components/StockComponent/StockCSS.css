@@ -1,0 +1,60 @@
+/* trang list css */
+.border-form {
+  border: 2px solid #ebedee; 
+  border-radius: 8px; 
+  padding: 20px; 
+  max-width: 90%; 
+  margin: 20px auto; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  /* background-color: #f9f9f9; */
+  
+}
+
+.title-form {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+  /* padding: 10px; */
+}
+.title-form h4{
+  margin: 0;
+  white-space: nowrap;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  /* margin: 20px;  */
+}
+
+/* nút button */
+.btn-custom {
+  border: 1px solid red;  
+  background-color: white; 
+  color: black;           
+}
+.btn-custom:hover {
+  background-color: red;  
+  color: white;           
+}
+.btn-exit{
+  border: 1px solid rgb(71, 69, 69);  
+  background-color: white; 
+  color: black;           
+}
+.btn-exit:hover {
+  background-color: rgb(71, 69, 69);  
+  color: white;           
+}
+.button-container{
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.button-list{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
