@@ -8,13 +8,12 @@
 }
 .info_product{
     border: 0px solid gainsboro;
-    height: 500px;
     position: absolute;
     top: 30%;
     left: 45%;
     transform: translate(-50%, -50%);
     width: 47%;
-    height: 51%;
+    height: 55%;
     margin-left: 6%;
     margin-top: 2%;
     border-radius: 15px;
@@ -30,7 +29,7 @@
 }
 .button_submit{
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 38%;
     padding: 20px;
     border-radius: 4px;
@@ -54,7 +53,7 @@
  }
  .button_exit{
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 54%;
     padding: 20px;
     border-radius: 4px;

@@ -47,7 +47,7 @@ function EditManagerCustomer (){
                     <Form>{/* from thông tin */}
                         <div className={styles.info_product}>
                             <div className={styles.khung_start}>
-                                <h1>Quản lý khách hàng</h1><hr/>
+                                <h1>Chỉnh sửa thông tin khách hàng</h1><hr/>
                             </div>
                             <div className={styles.cover_form}>
                             <div className={styles.form_group}> 

@@ -8,7 +8,7 @@ function Manager (){
 <div className={styles.menu}>
     <div className={styles.bao}>
        <div className={styles.khung_start}>
-            <h1>Chọn sản phẩm</h1><hr/>
+            <h1>Quản lý kinh doanh</h1><hr/>
         </div>
         <div className={styles.manager}> 
             <button className={styles.button_retail} onClick={() => navigate('/home/manager/retail')}>
