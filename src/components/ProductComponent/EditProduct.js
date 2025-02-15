@@ -11,10 +11,10 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
     selfie: "",
     cpu: "",
     storage: "",
-    description: ""
+    description: "",
   });
 
-  const [previewImage, setPreviewImage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Tránh submit nhiều lần
 
   // Lấy dữ liệu sản phẩm từ API khi mở modal
   useEffect(() => {
@@ -23,7 +23,6 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
         .then((response) => response.json())
         .then((data) => {
           setProduct(data);
-          setPreviewImage(data.image); // Hiển thị ảnh hiện tại
         })
         .catch(error => console.error("Lỗi khi lấy dữ liệu sản phẩm:", error));
     }
@@ -34,33 +33,36 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  // Xử lý khi chọn ảnh từ máy tính
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setPreviewImage(imageUrl);
-      setProduct({ ...product, image: imageUrl }); // Cập nhật ảnh vào sản phẩm
-    }
-  };
-
   // Xử lý cập nhật sản phẩm
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     if (!product.name || !product.price || !product.image || !product.screen_size || !product.camera || !product.selfie || !product.cpu || !product.storage || !product.description) {
       alert("Vui lòng nhập đầy đủ thông tin sản phẩm.");
+      setIsSubmitting(false);
       return;
     }
 
-    fetch(`http://localhost:8080/products/${productId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product),
-    })
-      .then(() => {
-        onUpdate(product); // Cập nhật dữ liệu trong danh sách sản phẩm
-        onClose(); // Đóng modal sau khi cập nhật
-      })
-      .catch((error) => console.error("Lỗi khi cập nhật sản phẩm:", error));
+    try {
+      const response = await fetch(`http://localhost:8080/products/${productId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
+
+      if (!response.ok) {
+        throw new Error("Lỗi khi cập nhật sản phẩm.");
+      }
+
+      onUpdate(product); // Cập nhật dữ liệu trên giao diện
+      onClose(); // Đóng modal sau khi cập nhật thành công
+    } catch (error) {
+      console.error("Lỗi khi cập nhật sản phẩm:", error);
+      alert("Có lỗi xảy ra khi cập nhật sản phẩm.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!show) return null;
@@ -102,21 +104,22 @@ const EditProduct = ({ show, onClose, productId, onUpdate }) => {
                 <label className="form-label">Mô tả sản phẩm</label>
                 <textarea className="form-control mb-2" name="description" value={product.description} onChange={handleChange} placeholder="Nhập mô tả sản phẩm"></textarea>
 
-                <label className="form-label">Hình ảnh</label>
-                <input type="file" className="form-control mb-2" onChange={handleImageUpload} accept="image/*" />
+                <label className="form-label">Hình ảnh (URL)</label>
                 <input type="text" className="form-control mb-2" name="image" value={product.image} onChange={handleChange} placeholder="Nhập URL hình ảnh" />
 
-                {previewImage && (
+                {product.image && (
                   <div className="text-center">
-                    <img src={previewImage} alt="Ảnh sản phẩm" className="img-thumbnail mt-2" style={{ maxWidth: "150px" }} />
+                    <img src={product.image} alt="Ảnh sản phẩm" className="img-thumbnail mt-2" style={{ maxWidth: "150px" }} />
                   </div>
                 )}
               </div>
             </div>
           </div>
           <div className="modal-footer">
-            <button className="btn btn-success" onClick={handleSubmit}>Cập nhật</button>
-            <button className="btn btn-secondary" onClick={onClose}>Hủy</button>
+            <button className="btn btn-success" onClick={handleSubmit} disabled={isSubmitting}>
+              {isSubmitting ? "Đang cập nhật..." : "Cập nhật"}
+            </button>
+            <button className="btn btn-secondary" onClick={onClose} disabled={isSubmitting}>Hủy</button>
           </div>
         </div>
       </div>

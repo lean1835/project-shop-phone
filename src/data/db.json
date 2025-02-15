@@ -124,15 +124,14 @@
       "id": 6,
       "name": "Smartphone D",
       "price": 7000000,
-      "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/a/galaxy-a15-xanh-01.png",
+      "image": "images/imageB.jpg",
       "screen_size": "6.5 inches",
       "camera": "48MP",
       "selfie": "16MP",
       "cpu": "Snapdragon 888",
       "storage": "256GB",
       "description": "A flagship smartphone with the latest technology."
-    }
-  
+    }    
   ],
   "suppliers": [
     {
