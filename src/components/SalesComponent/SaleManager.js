@@ -3,7 +3,6 @@ import {getAllCustomers} from "../../services/customerService";
 import {useLocation, useNavigate} from "react-router-dom";
 import {formarCurrency, getUriSearchParam} from "../../utils/common";
 import '../../assets/saleComp.css';
-import HeaderComponent from "../HomeComponent/HeaderComponent";
 import {Button, Modal} from 'react-bootstrap';
 import {triggerWebhook} from "./checkOutProduct";
 import {toast} from "react-toastify";

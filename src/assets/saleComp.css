@@ -192,7 +192,6 @@ table th {
 
 .add-customer-container button:hover {
     font-weight: bold;
-    background-color: #000000;
 }
 
 .add-customer-container .error-message {

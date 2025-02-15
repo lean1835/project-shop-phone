@@ -20,11 +20,21 @@ export async function searchProductByName(searchName){
 }
 
 export async function getProductById(id){
-    try {
-        const response=await axios.get(`${urlProduct}/`+id);
+
+    try{
+        const response = await axios.get(`${urlProduct}/`+id)
         return response.data;
-    } catch (e) {
-        console.log("Lỗi:"+e)
+    }catch (error){
+        console.error(error)
+    }
+}
+
+export async function addNewProduct(product) {
+    try {
+        const response = await axios.post(urlProduct, product);
+        return response.data;
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -60,4 +70,5 @@ export async  function searchByNameAndChoice(nameSearch,choiceSearch) {
         console.log("lỗi "+e);
         return [];
     }
+
 }

@@ -34,6 +34,7 @@ function AddNewCustomer() {
     });
     return (
         <>
+            <HeaderComponent/>
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                 <Form className="add-customer-container">
                     <div className="form-group">
