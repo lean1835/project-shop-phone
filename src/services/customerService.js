@@ -19,3 +19,34 @@ export async function addNewCustomer(customer) {
         console.error(error);
     }
 }
+export async function getCustomerById(id){
+    try {
+        const response=await axios.get(`${urlCus}/`+id);
+        return response.data;
+    } catch (e) {
+        console.log("Lỗi:"+e)
+    }
+}
+
+export async function updateCustomer(id,service) {
+
+    try {
+        const  response = await axios.put(`${urlCus}/`+id,service);
+    }catch (e) {
+        console.log("lỗi "+e);
+    }
+}
+export async  function searchByNameOrAddress(nameSearch,addressSearch) {
+
+    let url1 =`${urlCus}?name_like=${nameSearch}`
+    if (nameSearch==""){
+        url1 =`${urlCus}?address_like=${addressSearch}`
+    }
+    try {
+        const  response = await axios.get(url1);
+        return response.data;
+    }catch (e) {
+        console.log("lỗi "+e);
+        return [];
+    }
+}

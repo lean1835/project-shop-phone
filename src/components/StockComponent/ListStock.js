@@ -69,7 +69,7 @@ function ListStock() {
           </button>
         </div>
       </div>
-      <div style={{ marginTop: "20px" }}>
+      <div className="button-list">
         <Link className="btn btn-success" style={{ color: "white", textDecoration: "none" }} to={"/AddStock"}>
           Nhập kho
         </Link>

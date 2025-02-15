@@ -1,9 +1,10 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./AddStock.css";
 import { addNewStock } from "../../services/stockService";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
 
 function AddStock() {
   const location = useLocation();
@@ -29,8 +30,9 @@ function AddStock() {
   });
 
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (values) => {
+
     const stockData = {
       productId: location.state?.id || newStock.id,
       supplierId: location.state?.supplierIdSelected || "",
@@ -69,6 +71,11 @@ function AddStock() {
     }
   }, [location.state]);
 
+  const handleValidateStock = Yup.object({
+    quantity: Yup.number().required("Yêu cầu không để trống"),
+    importPrice: Yup.number().required("Yêu cầu không để trống"),
+    importDate: Yup.date().required("Vui lòng chọn ngày nhập kho"),
+  });
   return (
     <div
       style={{
@@ -78,7 +85,7 @@ function AddStock() {
         maxWidth: "700px",
         margin: "20px auto",
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#f9f9f9",
+        // backgroundColor: "#f9f9f9",
       }}
     >
       <h4 style={{ textAlign: "center", color: "#333" }}>NHẬP KHO</h4>
@@ -90,7 +97,7 @@ function AddStock() {
           Thêm sản phẩm mới
         </Link>
       </div>
-      <Formik initialValues={newAddStock} onSubmit={handleSubmit}>
+      <Formik initialValues={newAddStock} validationSchema={handleValidateStock} onSubmit={handleSubmit}>
         <Form>
           <div className="mb-3">
             <label className="form-label">Tên sản phẩm</label>
@@ -102,6 +109,7 @@ function AddStock() {
               value={newStock.name}
               disabled
             />
+            
           </div>
           <div className="mb-3 d-flex align-items-center">
             <div className="flex-grow-1">
@@ -114,6 +122,7 @@ function AddStock() {
                 value={newSupplier.nameSupplier}
                 disabled
               />
+             
             </div>
             <button
               type="button"
@@ -152,6 +161,7 @@ function AddStock() {
                 name="quantity"
                 placeholder="Nhập số lượng"
               />
+              <ErrorMessage name="quantity" component="div" className="text-danger" />
             </div>
           </div>
           <div className="row mb-3">
@@ -163,10 +173,12 @@ function AddStock() {
                 name="importPrice"
                 placeholder="Nhập giá sản phẩm"
               />
+              <ErrorMessage name="importPrice" component="div" className="text-danger" />
             </div>
             <div className="col">
               <label className="form-label">Ngày</label>
               <Field className="form-control" type="date" name="importDate" />
+              <ErrorMessage name="importDate" component="div" className="text-danger" />
             </div>
           </div>
           <div style={{ textAlign: "center" }}>

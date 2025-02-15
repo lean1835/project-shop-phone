@@ -1,8 +1,9 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addNewProduct } from "../../services/productService";
+import * as Yup from "yup";
 
 function AddNewProduct() {
   const [newAddProduct] = useState({
@@ -19,12 +20,33 @@ function AddNewProduct() {
 
   const navigate = useNavigate();
 
+  
   const handleSubmit = async (value) => {
     await addNewProduct(value);
     toast.success("Thêm mới thành công");
     navigate("/AddStock");
   };
 
+  const handleValidate = Yup.object({
+    name: Yup.string().required("Yêu cầu k để trống"),
+    price: Yup.string()
+      .required("Yêu cầu không để trống")
+      .transform((value) => value.replace(/\./g, "").replace(/,/g, ".")) // Chuyển đổi 1.050.290 thành 1050290
+      .test(
+        "is-number",
+        "Giá phải là một số dương",
+        (value) => !isNaN(value) && parseFloat(value) > 0
+      ),
+    image: Yup.string().required("Yêu cầu không để trống"),
+    screen_size: Yup.string()
+    .required("Yêu cầu không để trống")
+    .test("is-number", "Màn hình phải là số", (value) => !isNaN(value) && parseFloat(value) > 0),
+    camera: Yup.number().required("Yêu cầu không để trống"),
+    selfie: Yup.number().required("Yêu cầu không để trống"),
+    cpu: Yup.string().required("Yêu cầu không để trống"),
+    storage: Yup.number().required("Yêu cầu không để trống"),
+    description: Yup.string().required("Yêu cầu không để trống"),
+  });
   return (
     <div
       style={{
@@ -38,7 +60,7 @@ function AddNewProduct() {
       }}
     >
       <h4 style={{ textAlign: "center", color: "#333" }}>THÊM SẢN PHẨM MỚI</h4>
-      <Formik initialValues={newAddProduct} onSubmit={handleSubmit}>
+      <Formik initialValues={newAddProduct} validationSchema={handleValidate} onSubmit={handleSubmit}>
         <Form>
           <div className="row mb-3">
             <div className="col">
@@ -49,6 +71,7 @@ function AddNewProduct() {
                 name="name"
                 placeholder="Nhập tên sản phẩm"
               />
+              <ErrorMessage name="name" component="div" className="text-danger" />
             </div>
             <div className="col">
               <label className="form-label">Giá</label>
@@ -58,6 +81,7 @@ function AddNewProduct() {
                 name="price"
                 placeholder="Nhập giá sản phẩm"
               />
+              <ErrorMessage name="price" component="div" className="text-danger" />
             </div>
           </div>
 
@@ -70,6 +94,7 @@ function AddNewProduct() {
                 name="image"
                 placeholder="URL hình ảnh"
               />
+              <ErrorMessage name="image" component="div" className="text-danger" />
             </div>
             <div className="col">
               <label className="form-label">Màn hình</label>
@@ -79,6 +104,7 @@ function AddNewProduct() {
                 name="screen_size"
                 placeholder="Nhập thông tin"
               />
+              <ErrorMessage name="screen_size" component="div" className="text-danger" />
             </div>
           </div>
 
@@ -91,6 +117,7 @@ function AddNewProduct() {
                 name="camera"
                 placeholder="Nhập thông tin"
               />
+              <ErrorMessage name="camera" component="div" className="text-danger" />
             </div>
             <div className="col">
               <label className="form-label">Selfie</label>
@@ -100,6 +127,7 @@ function AddNewProduct() {
                 name="selfie"
                 placeholder="Nhập thông tin"
               />
+              <ErrorMessage name="selfie" component="div" className="text-danger" />
             </div>
           </div>
 
@@ -112,6 +140,7 @@ function AddNewProduct() {
                 name="cpu"
                 placeholder="Nhập thông tin"
               />
+              <ErrorMessage name="cpu" component="div" className="text-danger" />
             </div>
             <div className="col">
               <label className="form-label">Lưu trữ</label>
@@ -121,6 +150,7 @@ function AddNewProduct() {
                 name="storage"
                 placeholder="Nhập thông tin"
               />
+              <ErrorMessage name="storage" component="div" className="text-danger" />
             </div>
           </div>
 
@@ -132,6 +162,7 @@ function AddNewProduct() {
               name="description"
               placeholder="Nhập thông tin"
             />
+            <ErrorMessage name="description" component="div" className="text-danger" />
           </div>
 
           <div style={{ textAlign: "center" }}>

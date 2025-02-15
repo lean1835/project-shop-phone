@@ -1,67 +1,212 @@
 import React, { useEffect, useState } from "react";
-import staffService from "../../service/staffService";
+import { Pagination } from "react-bootstrap";
+import staffService from "../../services/staffService";
 import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import { getAllAccounts } from "../../services/accountService";
+import "../../assets/button.css";
+import "./index.css";
+import { toast } from "react-toastify";
 
 export default function StaffingComponent() {
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [accounts, setAccounts] = useState([]);
   const [staff, setStaff] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedStaff, setSelectedStaff] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    dob: "",
+    address: "",
+    accountID: "",
+    phone: "",
+  });
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
     try {
-      Promise.all([staffService.getAll(), getAllAccounts()]).then(([staffResponse, accountResponse]) => {
-        const staffData = staffResponse.data;
-        const accountData = accountResponse.data;
+      const [staffResponse, accountResponse] = await Promise.all([staffService.getAll(), getAllAccounts()]);
+      const staffData = staffResponse.data;
+      const accountData = accountResponse.data;
+      setAccounts(accountData);
 
-        const combinedData = staffData.map((staff) => ({
-          ...staff,
-          account: accountData.find((account) => account.id == staff.accountID),
-        }));
+      const combinedData = staffData.map((staff) => ({
+        ...staff,
+        account: accountData.find((account) => account.id == staff.accountID),
+      }));
 
-        setStaff(combinedData);
-      });
+      setStaff(combinedData.reverse());
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  };
+
+  const handleShowModal = (staff = null) => {
+    setSelectedStaff(staff);
+    setFormData(staff || { name: "", dob: "", address: "", accountID: "", phone: "" });
+    setShowModal(true);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSave = async () => {
+    if (!formData.name.trim()) {
+      toast.warn("Họ và tên không được để trống");
+      return;
+    }
+    if (!formData.dob) {
+      toast.warn("Ngày sinh không được để trống");
+      return;
+    }
+    if (!formData.address.trim()) {
+      toast.warn("Địa chỉ không được để trống");
+      return;
+    }
+    if (!formData.accountID) {
+      toast.warn("Vui lòng chọn công việc");
+      return;
+    }
+    if (!formData.phone.trim() || !/^\d{10,11}$/.test(formData.phone)) {
+      toast.warn("Số điện thoại không hợp lệ (phải có 10-11 chữ số)");
+      return;
+    }
+
+    try {
+      if (selectedStaff) {
+        await staffService.update(selectedStaff.id, formData);
+      } else {
+        await staffService.add(formData);
+      }
+      fetchData();
+      setShowModal(false);
+    } catch (error) {
+      console.error("Lỗi khi lưu nhân viên", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await staffService.remove(id);
+      fetchData();
+    } catch (error) {
+      console.error("Lỗi khi xóa nhân viên", error);
+    }
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentStaff = staff.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(staff.length / itemsPerPage);
 
   return (
-    <div className='container py-5'>
+    <div className='container py-5 staff-wrapper'>
       <Card>
-        <Card.Header>Nhân viên</Card.Header>
+        <Card.Header>
+          <div className="text-center fw-bold">
+            Nhân viên
+          </div>
+        </Card.Header>
         <Card.Body>
+          <div className='mb-3'>
+            <Button className='gradient-button me-2' variant='primary' onClick={() => handleShowModal()}>
+              Thêm nhân viên
+            </Button>
+          </div>
           <Table bordered hover>
             <thead>
-              <tr>
+              <tr className="bg-danger text-white">
                 <th>Họ và tên</th>
                 <th>Ngày sinh</th>
                 <th>Địa chỉ</th>
                 <th>Công việc</th>
                 <th>Số điện thoại</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>
-              {staff.map((staff) => (
+              {currentStaff.map((staff) => (
                 <tr key={staff.id}>
                   <td>{staff.name}</td>
                   <td>{staff.dob}</td>
                   <td>{staff.address}</td>
-                  <td>{staff.account.role}</td>
+                  <td>{staff.account?.role}</td>
                   <td>{staff.phone}</td>
+                  <td>
+                    <Button size='sm' className='gradient-button me-2' onClick={() => handleShowModal(staff)}>
+                      Sửa
+                    </Button>
+                    <Button size='sm' className='gradient-button me-2' onClick={() => handleDelete(staff.id)}>
+                      Xóa
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </Table>
         </Card.Body>
         <Card.Footer>
-          <div className='d-flex justify-content-center gap-3'>
-            <Button variant='primary'>Tạo nhân viên</Button>
-            <Button variant='danger'>Xóa nhân viên</Button>
-            <Button variant='warning'>Cập nhật thông tin nhân viên</Button>
-          </div>
+          <Pagination className='justify-content-center'>
+            {[...Array(totalPages)].map((_, index) => (
+              <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => setCurrentPage(index + 1)}>
+                {index + 1}
+              </Pagination.Item>
+            ))}
+          </Pagination>
+          
         </Card.Footer>
       </Card>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedStaff ? "Chỉnh sửa nhân viên" : "Thêm nhân viên"}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className='mb-3'>
+              <Form.Label>Họ và tên</Form.Label>
+              <Form.Control type='text' name='name' value={formData.name} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              <Form.Label>Ngày sinh</Form.Label>
+              <Form.Control type='date' name='dob' value={formData.dob} onChange={handleChange} max={new Date().toISOString().split("T")[0]} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              <Form.Label>Địa chỉ</Form.Label>
+              <Form.Control type='text' name='address' value={formData.address} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              <Form.Label>Công việc</Form.Label>
+              <Form.Select name='accountID' value={formData.accountID} onChange={handleChange}>
+                <option value=''>Chọn công việc</option>
+                {accounts.map((account) => (
+                  <option key={account.id} value={account.id}>
+                    {account.role}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              <Form.Label>Số điện thoại</Form.Label>
+              <Form.Control type='text' name='phone' value={formData.phone} onChange={handleChange} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={() => setShowModal(false)}>
+            Hủy
+          </Button>
+          <Button variant='primary' onClick={handleSave}>
+            Lưu
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

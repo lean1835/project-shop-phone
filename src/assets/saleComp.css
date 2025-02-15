@@ -6,6 +6,17 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('../../public/banner4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1.sale-manager {
+    font-size: 32px;
+    font-weight: bold;
+    color:#190e12;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .order-box {
@@ -56,15 +67,18 @@
 
 .order-box button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+    background-color: white;
+    color: #b81211;
+    border: white;
     border-radius: 4px;
     cursor: pointer;
+    border: 2px solid red;
 }
 
 .order-box button:hover {
-    background-color: #0056b3;
+    background-color: #b81211;
+    color: white;
+    font-weight: bold;
 }
 
 .render-td {
@@ -151,19 +165,34 @@ table th {
 .add-customer-container button {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid ;
     border-radius: 4px;
+
 }
 
+.add-customer-container .add{
+    background-color: green;
+    color: white;
+}
 .add-customer-container button {
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     cursor: pointer;
+
+}
+
+.add-customer-container .back{
+    background-color: gray;
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+
 }
 
 .add-customer-container button:hover {
-    background-color: #0056b3;
+    font-weight: bold;
+    background-color: #000000;
 }
 
 .add-customer-container .error-message {
@@ -195,7 +224,7 @@ table th {
 .search-product-container button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -204,7 +233,7 @@ table th {
 }
 
 .search-product-container button:hover {
-    background-color: #0056b3;
+    background-color: #272f33;
 }
 
 .search-product-container table {
@@ -255,7 +284,7 @@ table th {
 
 .search-product-container .modal-footer button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -264,5 +293,19 @@ table th {
 }
 
 .search-product-container .modal-footer button:hover {
-    background-color: #0056b3;
+    background-color: #272f33;
+}
+.container .check-out{
+    padding: 10px 20px;
+    background-color: white;
+    color: #b81211;
+    border: white;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+.container .check-out:hover{
+    background-color: #b81211;
+    color: white;
+    font-weight: bold;
 }

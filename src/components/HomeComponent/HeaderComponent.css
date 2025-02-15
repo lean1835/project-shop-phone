@@ -15,6 +15,14 @@
     justify-content: center;
     align-items: center;
 }
+.navbar .logo-header .navbar-brand{
+    font-family: selectedFont;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #190e12;
+}
 .navbar .collapse{
     height: 100%;
     width: auto;

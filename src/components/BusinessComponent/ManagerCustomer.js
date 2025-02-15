@@ -1,27 +1,67 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { getAllCustomers, searchByNameOrAddress } from "../../services/customerService";
 function ManagerCustomer (){
+        const [customerList,setCustomerList]=useState([]);
+        const [selectedCustomer,setSelectedCustomer]=useState(null);
+        const [typeId,setTypeId]=useState("1");
+        const navigate=useNavigate();
+        const [isReload,setIsReload]=useState(false);
+        const searchNameRef=useRef();
+        const searchAddressRef=useRef();
+        
+        useEffect(() => {
+            const fetchData = async () => {
+                const nameSearch = searchNameRef.current?.value || "";
+                const addressSearch = searchAddressRef.current?.value || "";
+                try {
+                    const customers = await searchByNameOrAddress(nameSearch, addressSearch);
+                    setCustomerList(customers);
+                } catch (error) {
+                    console.error("Lỗi khi lấy dữ liệu khách hàng:", error);
+                    setCustomerList([]); // Nếu lỗi, hiển thị danh sách rỗng
+                }
+            };
+            fetchData();
+        }, [isReload]);
+    
+        const handleRadioChange = (customerId) => {
+            setSelectedCustomer(customerId);
+        };
 
+        const handleOut=()=>{
+            navigate('/home/manager')
+        }  
+        const handleChoice=(event)=>{
+            const newTypeId = event.target.value;
+            setTypeId(newTypeId);
+            setIsReload((prev) => !prev);
+        } 
+        const handleSearch=()=>{
+            setIsReload((pre)=>!pre);
+        } 
     return(
         <>
+
             <div className="manager_customer">
                 <form >
                     <br/>
                     <span>Tìm kiếm theo:  </span> 
-                    <select  className={'w-17'}>
-                        <option value={""}>Tìm kiếm theo tên</option>
-                        {/* {manufactureList.map(e=>(
-                            <option value={e.id}>{e.name}</option>
-                        ))} */}
+                    <select onChange={handleChoice} value={typeId}  className={'w-17'}>
+                        <option  onChange={handleChoice} value={"1"}>Tìm kiếm theo tên</option>
+                        <option  onChange={handleChoice} value={"2"}>Tìm kiếm Địa chỉ</option>
+                        
                     </select>                    
-                    <input className={'w-10'}  name={'searchName'} placeholder={'áo'}/> 
-                    {/* <input className={'w-25'} ref={searchRef} name={'searchName'} placeholder={'Enter search name'}/> */}
-                    <button className={' w-10 btn btn-success btn-sm'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
-                    {/* <button onClick={handleSearch} className={' w-25 btn btn-success btn-sm'} type={'button'} >Search</button> */}
+                    {typeId === "1" ? (
+                    <input className="form-control d-inline w-25 mx-2" ref={searchNameRef} placeholder="Nhập tên khách hàng" />
+                ) : (
+                    <input className="form-control d-inline w-25 mx-2" ref={searchAddressRef} placeholder="Nhập địa chỉ" />
+                )}
+                     <button onClick={handleSearch} className={' w-10 btn btn-success btn-sm'} type={'button'} ><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
-                <table className={'table table-dark'}>
+                <table className={'table table-light'}>
                 <thead>
                 <tr>
                     <th>Tên</th>
@@ -29,28 +69,39 @@ function ManagerCustomer (){
                     <th>Tuổi </th>
                     <th>Địa chỉ</th>
                     <th>Email</th>
+                    <th>Chọn</th>
                 </tr>
                 </thead>
                 <tbody>
-                {/* {productList.map((p,i)=>(
-                    <tr key={p.id}>
-                        <td>{i+1}</td>
-                        <td>{p.id}</td>
-                        <td>{p.name}</td>
-                        <td>{p.sim}</td>
-                        <td>{p.feature}</td>
-                        <td>{p.manufacture.name}</td>
-
+                {customerList.map((c,i)=>(
+                    <tr key={c.id}>
+                        <td>{c.name}</td>
+                        <td>{c.phone}</td>
+                        <td>{c.age}</td>
+                        <td>{c.address}</td>
+                        <td>{c.email}</td>
+                        <td>
+                            <input
+                                type="radio"
+                                name="product"
+                                checked={selectedCustomer === c.id}
+                                onChange={() => handleRadioChange(c.id)}
+                                className="form-check-input"
+                            />
+                        </td>
                     </tr>
-                ))} */}
+                ))}
 
                 </tbody>
             </table>
+            {selectedCustomer !=null &&(
                 <button>
-                    <Link to={'/home/manager/customer/edit'}>Chỉnh sửa</Link>
+                    <Link to={'/home/manager/customer/edit/'+selectedCustomer}>Chỉnh sửa</Link>
                 </button>
+            )}
                 
-                <button>Thoát</button>
+                
+                <button onClick={handleOut}>Thoát</button>
 
             </div>
         </>
