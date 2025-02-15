@@ -58,7 +58,7 @@ function ChoiceProduct (){
                 </div>
                 
                 <form  >                 
-                    <input className={styles.search_input} ref={nameSearchRef} name={'nameSearch'} placeholder={'áo'}/> 
+                    <input className={styles.search_input} ref={nameSearchRef} name={'nameSearch'} placeholder={'iphone...'}/> 
                     <button className={styles.button_search}  onClick={handleSearch} type={'button'} ><i class="fa-solid fa-magnifying-glass "></i></button>
                 </form>
                 <table  className={styles.table}>

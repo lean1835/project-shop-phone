@@ -74,13 +74,13 @@
 
 .search_input{
     background-color: rgb(255, 255, 255);
-    width: 12%;
-    margin-left: 80%;
+    width: 17%;
+    margin-left: 75%;
     margin-top: 115px;
     box-shadow: -7px 6px 3px 0px rgb(235 117 57);
     border: 1px solid rgba(255, 0, 0, 0.856);
     border-radius: 15px; /* Bo tròn viền bảng */
-   
+    height: 39px;
 }
 .search_input:focus{
     box-shadow: 0 0 15px rgba(215, 42, 33, 0.5);
