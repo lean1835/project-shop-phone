@@ -24,33 +24,33 @@ function AddNewCustomer() {
         navigate('/SaleManager');
     }
     const handleValidate = Yup.object({
-        name: Yup.string().required("Name is required"),
-        phone: Yup.string().matches(/^\d{10}$/, "Phone must be exactly 10 digits").required("Phone is required"),
-        address: Yup.string().required("Address is required"),
-        age: Yup.number().min(6, "Age must be at least 6").required("Age is required"),
-        email: Yup.string().matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email is invalid").required("Email is required")
+        name: Yup.string().required("Tên không được để trống"),
+        phone: Yup.string().matches(/^\d{10}$/, "Số điện thoại phải 10 số trở lên").required("Số điện thoại không được để trống"),
+        address: Yup.string().required("Địa chi không được để trống"),
+        age: Yup.number().min(6, "Ít nhất là 6 tuổi").required("Tuổi không được để trống"),
+        email: Yup.string().matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email is invalid").required("Email không được để trống")
     });
     return (
         <>
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                 <Form className="add-customer-container">
                     <div className="form-group">
-                        <label>Name</label>
+                        <label>Họ và tên</label>
                         <Field name="name" type="text" className="form-control"/>
                         <ErrorMessage name="name" component="div" className="error-message"/>
                     </div>
                     <div className="form-group">
-                        <label>Phone</label>
+                        <label>Số điện thoại</label>
                         <Field name="phone" type="tel" className="form-control" disabled/>
                         <ErrorMessage name="phone" component="div" className="error-message"/>
                     </div>
                     <div className="form-group">
-                        <label>Address</label>
+                        <label>Địa chỉ</label>
                         <Field name="address" type="text" className="form-control"/>
                         <ErrorMessage name="address" component="div" className="error-message"/>
                     </div>
                     <div className="form-group">
-                        <label>Age</label>
+                        <label>Tuổi</label>
                         <Field name="age" type="number" className="form-control"/>
                         <ErrorMessage name="age" component="div" className="error-message"/>
                     </div>
@@ -60,8 +60,8 @@ function AddNewCustomer() {
                         <ErrorMessage name="email" component="div" className="error-message"/>
                     </div>
                     <div className="form-actions">
-                        <button type="submit" className="btn btn-primary add">Add New Customer</button>
-                        <button type="button" className="btn btn-secondary back" onClick={handleBack}>Back</button>
+                        <button type="submit" className="btn btn-primary add">Thêm mới</button>
+                        <button type="button" className="btn btn-secondary back" onClick={handleBack}>Thoát</button>
                     </div>
                 </Form>
             </Formik>

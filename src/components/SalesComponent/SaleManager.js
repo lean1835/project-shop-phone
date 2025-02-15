@@ -74,36 +74,36 @@ function SaleManager() {
     return (
         <>
             <div className="container">
-                <h1 className="sale-manager" >Sale Manager</h1>
+                <h1 className="sale-manager" >Quản lý bán hàng</h1>
                 <div className="order-box order-box-1">
                     <div>
-                        <label>Phone:</label>
+                        <label>Số điện thoại:</label>
                         <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-                        <button onClick={handleCheck}>Check</button>
+                        <button onClick={handleCheck}>Kiểm tra</button>
                     </div>
                     {customer && (
                         <table className="sales-table">
                             <tbody>
                             <tr className="render-tr">
-                                <th className="render-th">Name</th>
+                                <th className="render-th">Họ và tên</th>
                                 <td className="render-td">{customer.name}</td>
                             </tr>
                             </tbody>
                             <tbody>
                             <tr className="render-tr">
-                                <th className="render-th">Phone</th>
+                                <th className="render-th">Số điện thoại</th>
                                 <td className="render-td">{customer.phone}</td>
                             </tr>
                             </tbody>
                             <tbody>
                             <tr className="render-tr">
-                                <th className="render-th">Address</th>
+                                <th className="render-th">Địa chỉ</th>
                                 <td className="render-td">{customer.address}</td>
                             </tr>
                             </tbody>
                             <tbody>
                             <tr className="render-tr">
-                                <th className="render-th">Age</th>
+                                <th className="render-th">Tuổi</th>
                                 <td className="render-td">{customer.age}</td>
                             </tr>
                             </tbody>
@@ -125,18 +125,18 @@ function SaleManager() {
                             total: allSelectedProduct.total,
                             quantities: allSelectedProduct.quantities
                         }
-                    })}>Select Product
+                    })}>Chọn sản phẩm
                     </button>
                     <table className="sales-table">
                         <tbody>
                         <tr className="render-tr">
-                            <th className="render-th">Selected Product</th>
+                            <th className="render-th">Chọn sản phẩm</th>
                             <td className="render-td">{allSelectedProduct.selectedProduct.map(product => product.name).join(', ')}</td>
                         </tr>
                         </tbody>
                         <tbody>
                         <tr className="render-tr">
-                            <th className="render-th">Total</th>
+                            <th className="render-th">Tổng</th>
                             <td className="render-td">{formarCurrency(allSelectedProduct.total)}</td>
                         </tr>
                         </tbody>
@@ -146,10 +146,10 @@ function SaleManager() {
                     <table className="sales-table">
                         <thead>
                         <tr className="render-tr">
-                            <th className="render-th">Product Name</th>
-                            <th className="render-th">Quantity</th>
-                            <th className="render-th">Price</th>
-                            <th className="render-th">Total</th>
+                            <th className="render-th">Tên sản phẩm</th>
+                            <th className="render-th">Số lượng</th>
+                            <th className="render-th">Giá</th>
+                            <th className="render-th">Tổng cộng</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -165,7 +165,7 @@ function SaleManager() {
                         </tbody>
                         <tfoot>
                         <tr className="render-tr">
-                            <th className="render-th">Total</th>
+                            <th className="render-th">Tổng</th>
                             <td className="render-td" colSpan="2"
                                 style={{borderRight: 'none'}}>{formarCurrency(allSelectedProduct.total)}</td>
                         </tr>
@@ -173,30 +173,30 @@ function SaleManager() {
                     </table>
                 </div>
                 <div>
-                    <button onClick={handleCheckOut}>Checkout</button>
+                    <button onClick={handleCheckOut}>Thanh toán</button>
                 </div>
             </div>
 
             {selectedProduct && (
                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Product Information</Modal.Title>
+                        <Modal.Title>Thông tin sản phẩm</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p><strong>Name:</strong> {selectedProduct.name}</p>
-                        <p><strong>Price:</strong> {formarCurrency(selectedProduct.price)}</p>
-                        <p><strong>Image:</strong> <img src={selectedProduct.image} alt={selectedProduct.name}
+                        <p><strong>Tên sản phẩm:</strong> {selectedProduct.name}</p>
+                        <p><strong>Giá:</strong> {formarCurrency(selectedProduct.price)}</p>
+                        <p><strong>Hình ảnh:</strong> <img src={selectedProduct.image} alt={selectedProduct.name}
                                                         className="product-image"/></p>
-                        <p><strong>Screen Size:</strong> {selectedProduct.screen_size}</p>
+                        <p><strong>Màn hình:</strong> {selectedProduct.screen_size}</p>
                         <p><strong>Camera:</strong> {selectedProduct.camera}</p>
                         <p><strong>Selfie:</strong> {selectedProduct.selfie}</p>
                         <p><strong>CPU:</strong> {selectedProduct.cpu}</p>
-                        <p><strong>Storage:</strong> {selectedProduct.storage}</p>
-                        <p><strong>Description:</strong> {selectedProduct.description}</p>
+                        <p><strong>Lưu trữ:</strong> {selectedProduct.storage}</p>
+                        <p><strong>Mô tả:</strong> {selectedProduct.description}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setShowModal(false)}>
-                            Close
+                            Thoát
                         </Button>
                     </Modal.Footer>
                 </Modal>

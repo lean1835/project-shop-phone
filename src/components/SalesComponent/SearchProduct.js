@@ -101,23 +101,23 @@ function SearchProduct() {
     return (
         <>
             <div className="search-product-container">
-                <input ref={searchName} name="searchName" placeholder="Enter name product" className="form-control"/>
-                <button onClick={handleSearch} className="btn btn-primary">Search</button>
+                <input ref={searchName} name="searchName" placeholder="Nhập tên sản phẩm tìm kiếm" className="form-control"/>
+                <button onClick={handleSearch} className="btn btn-primary">Tìm kiếm</button>
                 <table className="table table-sm">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Screen size</th>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Hình ảnh</th>
+                        <th>Màn hình</th>
                         <th>Camera</th>
                         <th>Selfie</th>
-                        <th>Chip</th>
-                        <th>RAM</th>
-                        <th>Description</th>
-                        <th>Select</th>
-                        <th>Purchase quantity</th>
+                        <th>CPU</th>
+                        <th>Dung lượng</th>
+                        <th>Mô tả</th>
+                        <th>Chọn</th>
+                        <th>Tổng số lượng</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -160,26 +160,25 @@ function SearchProduct() {
                 </table>
 
                 <div className="form-actions">
-                    <button onClick={handleBack} className="btn btn-secondary">Back</button>
-                    <button onClick={() => totalAndSelectedProductNames()} className="btn btn-primary">Calculate All
-                        Selected Product
+                    <button onClick={handleBack} className="btn btn-secondary">Trở về</button>
+                    <button onClick={() => totalAndSelectedProductNames()} className="btn btn-primary">Tính giá sản phẩm đã chọn
                     </button>
                 </div>
 
                 <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Selected Products</Modal.Title>
+                        <Modal.Title>Chọn sản phẩm</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>Selected Products: {selectedProductNames}</p>
-                        <p>Total: {formarCurrency(total)}</p>
+                        <p>Chọn sản phẩm: {selectedProductNames}</p>
+                        <p>Tổng tiền: {formarCurrency(total)}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
-                            Close
+                            Thoát
                         </Button>
                         <Button variant="primary" onClick={handleConfirm}>
-                            Confirm
+                            Chọn
                         </Button>
                     </Modal.Footer>
                 </Modal>
