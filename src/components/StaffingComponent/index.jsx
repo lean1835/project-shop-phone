@@ -99,6 +99,15 @@ export default function StaffingComponent() {
       console.error("Lỗi khi xóa nhân viên", error);
     }
   };
+  const handleDeleteConfirm = (id) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Bạn có chắc chắn muốn xóa nhân viên này không?")) {
+      handleDelete(id);
+      alert("Nhân viên đã được xóa thành công!");
+    } else {
+      alert("Hủy xóa nhân viên!");
+    }
+  };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -106,7 +115,7 @@ export default function StaffingComponent() {
   const totalPages = Math.ceil(staff.length / itemsPerPage);
 
   return (
-    <div className='container py-5 staff-wrapper'>
+    <div className='container py-5 staff-wrapper red-shadow'>
       <Card>
         <Card.Header>
           <div className="text-center fw-bold">
@@ -121,13 +130,13 @@ export default function StaffingComponent() {
           </div>
           <Table bordered hover>
             <thead>
-              <tr className="bg-danger text-white">
-                <th>Họ và tên</th>
-                <th>Ngày sinh</th>
-                <th>Địa chỉ</th>
-                <th>Công việc</th>
-                <th>Số điện thoại</th>
-                <th>Hành động</th>
+              <tr className="bg-danger text-white">               
+                <th class="text-center">Họ và tên</th>
+                <th class="text-center">Ngày sinh</th>
+                <th class="text-center">Địa chỉ</th>
+                <th class="text-center">Công việc</th>
+                <th class="text-center">Số điện thoại</th>
+                <th class="text-center">Hành động</th>
               </tr>
             </thead>
             <tbody>
@@ -142,7 +151,7 @@ export default function StaffingComponent() {
                     <Button size='sm' className='gradient-button me-2' onClick={() => handleShowModal(staff)}>
                       Sửa
                     </Button>
-                    <Button size='sm' className='gradient-button me-2' onClick={() => handleDelete(staff.id)}>
+                    <Button size='sm' className='gradient-button me-2' onClick={() => handleDeleteConfirm(staff.id)}>
                       Xóa
                     </Button>
                   </td>
