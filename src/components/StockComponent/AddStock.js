@@ -77,10 +77,10 @@ function AddStock() {
     >
       <h4 style={{ textAlign: "center", color: "#333" }}>NHẬP KHO</h4>
       <div className="button-container">
-        <Link className="btn btn-secondary" to="/AddStock/ProductsInStock">
+        <Link className="btn button_input" to="/AddStock/ProductsInStock">
           Chọn hàng hóa đã từng nhập kho
         </Link>
-        <Link to={"/AddStock/AddNewProduct"} className="btn btn-secondary">
+        <Link to={"/AddStock/AddNewProduct"} className="btn button-add-product">
           Thêm sản phẩm mới
         </Link>
       </div>
@@ -114,14 +114,7 @@ function AddStock() {
             <button
               type="button"
               onClick={handleSupplier}
-              className="btn btn-secondary ms-2"
-              style={{
-                height: "38px",
-                padding: "0 10px",
-                display: "flex",
-                alignItems: "center",
-                marginTop: "30px",
-              }}
+              className="btn button_supplier ms-2"
             >
               Chọn NCC
             </button>
@@ -169,10 +162,10 @@ function AddStock() {
             </div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <button type="submit" className="btn me-2 btn-custom">
+            <button type="submit" className="btn me-2 button_add">
               Thêm vào kho
             </button>
-            <Link to={"/Liststock"} type="button" className="btn btn-exit">
+            <Link to={"/Liststock"} type="button" className="btn button_exit">
               Hủy
             </Link>
           </div>
