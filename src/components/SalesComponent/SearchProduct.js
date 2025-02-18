@@ -6,6 +6,7 @@ import {Button, Modal} from 'react-bootstrap';
 import {formarCurrency} from "../../utils/common";
 import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
+import {toast} from "react-toastify";
 
 function SearchProduct() {
     const [originProducts, setOriginProducts] = useState([]);
@@ -20,8 +21,6 @@ function SearchProduct() {
     const [total, setTotal] = useState(useLocation().state?.total || 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const phone = useLocation().state?.phone;
-    console.log("useLocation().state:", useLocation().state);
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -72,15 +71,17 @@ function SearchProduct() {
             setTotal(total);
             setSelectedProductNames(names.slice(0, -2));
             setIsModalOpen(true);
+            console.log("selectedProducts:", selectedProducts);
         },
         [selectedProducts, originProducts, quantities],
     );
 
     const handleConfirm = useCallback(() => {
+        toast("Chọn sản phẩm thành công");
         navigate('/SaleManager', {
             state: {
                 selectedProductNames,
-                selectedProducts: products.filter(p => selectedProducts.includes(p.id)),
+                selectedProducts: originProducts.filter(p => selectedProducts.includes(p.id)),
                 total,
                 phone,
                 quantities,
@@ -92,32 +93,32 @@ function SearchProduct() {
         navigate('/SaleManager', {
             state: {
                 ...originLocationState,
-                selectedProducts: products.filter(p => originLocationState.selectedProducts.includes(p.id)),
+                selectedProducts: originProducts.filter(p => originLocationState.selectedProducts.includes(p.id)),
             }
         });
     }, [originLocationState, selectedProducts, products]);
 
 
     return (
-        <>
+        <div className="container">
             <div className="search-product-container">
-                <input ref={searchName} name="searchName" placeholder="Enter name product" className="form-control"/>
-                <button onClick={handleSearch} className="btn btn-primary">Search</button>
+                <input ref={searchName} name="searchName" placeholder="Nhập tên sản phẩm tìm kiếm" className="form-control"/>
+                <button onClick={handleSearch} className="btn btn-primary">Tìm kiếm</button>
                 <table className="table table-sm">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Screen size</th>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Hình ảnh</th>
+                        <th>Màn hình</th>
                         <th>Camera</th>
                         <th>Selfie</th>
-                        <th>Chip</th>
-                        <th>RAM</th>
-                        <th>Description</th>
-                        <th>Select</th>
-                        <th>Purchase quantity</th>
+                        <th>CPU</th>
+                        <th>Dung lượng</th>
+                        <th>Mô tả</th>
+                        <th>Chọn</th>
+                        <th>Tổng số lượng</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -160,31 +161,30 @@ function SearchProduct() {
                 </table>
 
                 <div className="form-actions">
-                    <button onClick={handleBack} className="btn btn-secondary">Back</button>
-                    <button onClick={() => totalAndSelectedProductNames()} className="btn btn-primary">Calculate All
-                        Selected Product
+                    <button onClick={handleBack} className="btn btn-secondary">Trở về</button>
+                    <button onClick={() => totalAndSelectedProductNames()} className="btn btn-primary">Tính giá sản phẩm đã chọn
                     </button>
                 </div>
 
                 <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Selected Products</Modal.Title>
+                        <Modal.Title>Chọn sản phẩm</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>Selected Products: {selectedProductNames}</p>
-                        <p>Total: {formarCurrency(total)}</p>
+                        <p>Chọn sản phẩm: {selectedProductNames}</p>
+                        <p>Tổng tiền: {formarCurrency(total)}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
-                            Close
+                            Thoát
                         </Button>
                         <Button variant="primary" onClick={handleConfirm}>
-                            Confirm
+                            Chọn
                         </Button>
                     </Modal.Footer>
                 </Modal>
             </div>
-        </>
+        </div>
     );
 }
 
