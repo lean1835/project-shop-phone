@@ -36,10 +36,10 @@ function EditStock(){
             border: "2px solid #ebedee", 
             borderRadius: "8px", 
             padding: "20px", 
-            maxWidth: "700px", 
+            maxWidth: "600px", 
             margin: "20px auto", 
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", 
-            backgroundColor: "#f9f9f9"
+            // backgroundColor: "#f9f9f9"
           }}>
           <h4 style={{ textAlign: "center", color: "#333" }}>CHỈNH SỬA THÔNG TIN</h4>
             
@@ -66,8 +66,8 @@ function EditStock(){
                         <Field className="form-control" type="text" name="importPrice" placeholder="Enter the price" />
                     </div>
                     <div style={{ textAlign: "center" }}>
-                    <button type="submit" className='btn btn-custom me-2'>Sửa</button>
-                    <Link to={"/Liststock"} type="button" className='btn btn-exit'>Hủy</Link>
+                    <button type="submit" className='btn button_add me-2'>Sửa</button>
+                    <Link to={"/Liststock"} type="button" className='btn button_exit'>Hủy</Link>
                     </div>
                 </Form>
             </Formik>

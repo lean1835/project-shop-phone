@@ -56,7 +56,6 @@ function AddNewProduct() {
         maxWidth: "700px",
         margin: "20px auto",
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#f9f9f9",
       }}
     >
       <h4 style={{ textAlign: "center", color: "#333" }}>THÊM SẢN PHẨM MỚI</h4>
@@ -166,10 +165,10 @@ function AddNewProduct() {
           </div>
 
           <div style={{ textAlign: "center" }}>
-            <button type="submit" className="btn btn-custom me-2">
+            <button type="submit" className="btn button_add me-2">
               Thêm
             </button>
-            <Link to={"/Liststock"} type="button" className="btn btn-exit">
+            <Link to={"/Liststock"} type="button" className="btn button_exit">
               Hủy
             </Link>
           </div>

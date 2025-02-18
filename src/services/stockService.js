@@ -16,27 +16,20 @@ export async function getAllStock(page, size) {
   }
   }
 
-export async function searchStockByName(searchName, importDate) {
-  let params = [];
-
-  if (searchName) {
-    params.push(`product.name_like=${searchName}`); 
-  }
+  export async function searchStockByName(searchName) {
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      const filteredStocks = data.filter(stock => 
+        stock.product.name.toLowerCase().includes(searchName.toLowerCase())
+      );
   
-  if (importDate) {
-    params.push(`importDate=${importDate}`);
+      return filteredStocks;
+    } catch (error) {
+      console.error('Error fetching stock data:', error);
+      return [];
+    }
   }
-
-  const searchUrl = params.length > 0 ? `${url}&${params.join('&')}` : url;
-
-  try {
-    const response = await axios.get(searchUrl);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching search results:", error);
-    return [];
-  }
-}
 
 export async function addNewStock(stock) {
   try {
