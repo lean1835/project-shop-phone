@@ -59,19 +59,6 @@ function SaleManager() {
         setShowModal(true);
     };
 
-    // const handleCheckOut = async () => {
-    //     const info = {
-    //         name: customer.name,
-    //         email: customer.email,
-    //         selectedProductNames: allSelectedProduct.selectedProductName,
-    //         quantities: allSelectedProduct.quantities.map(q => q.quantity),
-    //         total: allSelectedProduct.total
-    //     };
-    //     await triggerWebhook(info);
-    //     toast("Thanh toán thành công");
-    //     navigate('/home');
-    // }
-
     const handleCheckOut = async () => {
         if (!phone) {
             toast.error("Số điện thoại là bắt buộc");
