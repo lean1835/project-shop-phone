@@ -119,7 +119,7 @@ export default function StaffingComponent() {
       <Card>
         <Card.Header>
           <div className="text-center fw-bold">
-            Nhân viên
+            Danh sách nhân viên
           </div>
         </Card.Header>
         <Card.Body>

@@ -4,6 +4,7 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import { getCustomerById, updateCustomer } from "../../services/customerService";
 import * as Yup from 'yup';
 import { toast } from "react-toastify";
+import styles from './EditManagerCustomer.module.css'
 function EditManagerCustomer (){
     const {id}=useParams();
     const [customer,setCustomer]=useState(null);
@@ -40,43 +41,50 @@ function EditManagerCustomer (){
         }         
     return(
         <>
-            <div className="manager_retail">              
+            <div className={styles.edit_customer}>              
                 {/* <Formik initialValues={product} onSubmit={handleSubmit} validationSchema={handleValidate} > */}
                 <Formik initialValues={customer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                     <Form>{/* from thông tin */}
-                        <div className="info_product">
-                            <h5>Chỉnh sửa thông tin khách hàng</h5>
-                            <div> 
+                        <div className={styles.info_product}>
+                            <div className={styles.khung_start}>
+                                <h1>Chỉnh sửa thông tin khách hàng</h1><hr/>
+                            </div>
+                            <div className={styles.cover_form}>
+                            <div className={styles.form_group}> 
                                 <label >Họ và tên</label>
-                                <Field  type='text' name='name'/>
+                                <Field className={styles.input}  type='text' name='name'/>
                                 <ErrorMessage name='name' style={{color: 'red'}} component='div'/>
                             </div><br/>
-                            <div> 
+                            <div  className={styles.form_group}> 
                                 <label >Số điện thoại</label>
-                                <Field  type='number' name='phone'/>
+                                <Field className={styles.input} type='number' name='phone'/>
                                 <ErrorMessage name='phone' style={{color: 'red'}} component='div'/>
                             </div><br/>
-                            <div> 
+                            <div className={styles.form_group} > 
                                 <label >Địa chỉ</label>
-                                <Field  type='text' name='address'/>
+                                <Field className={styles.input}  type='text' name='address'/>
                                 <ErrorMessage name='address' style={{color: 'red'}} component='div'/>
                             </div><br/>
-                            <div> 
+                            <div  className={styles.form_group}> 
                                 <label >Tuổi</label>
-                                <Field  type='number' name='age'/>
+                                <Field className={styles.input} type='number' name='age'/>
                                 <ErrorMessage name='age' style={{color: 'red'}} component='div'/>
                             </div><br/>
-                            <div> 
+                            <div className={styles.form_group}> 
                                 <label >Email</label>
-                                <Field  type='text' name='email'/>
+                                <Field className={styles.input} type='text' name='email'/>
                                 <ErrorMessage name='email' style={{color: 'red'}} component='div'/>
-                            </div><br/>
+                            </div></div><br/>
                         </div>                    
-                            <button className="btn btn-success" type={'submit'}>OK</button>
-                            <button><Link to={'/home/manager/customer'}>Thoát</Link></button>
+                            <button className={styles.button_submit} type={'submit'}>Sửa</button>
+                            
                     </Form>
                 </Formik>
-                {/* <button onClick={handleOut}>Thoát</button> */}
+                            <button 
+                                className={styles.button_exit}
+                                onClick={() => navigate('/home/manager/customer')}>
+                                Thoát
+                            </button>
             </div>
         </>
     );

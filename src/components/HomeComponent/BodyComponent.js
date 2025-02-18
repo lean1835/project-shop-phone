@@ -28,7 +28,7 @@ function BodyComponent() {
                 <div className="body-list">
                     {productsList.slice(0, visibleCount).map((products, i) => (
                         <Link className="link" key={i}>
-                            <div className="card" style={{ width: "18rem" }}>
+                            <div className="card" style={{ width: "16rem" }}>
                                 <img src={products.image} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <p className="card-text">
