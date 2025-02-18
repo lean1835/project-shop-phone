@@ -8,7 +8,7 @@ function ListStock() {
   const [productList, setProductList] = useState([]);
   const searchName = useRef('');
   const [page, setPage] = useState(1);
-  const [size] = useState(4);
+  const [size] = useState(5);
   const [totalPage, setTotalPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteStock, setDeleteStock] = useState({ id: '', name: '' }); 
@@ -58,27 +58,29 @@ function ListStock() {
     <div className="border-form">
       <div className="title-form">
         <h4>QUẢN LÝ KHO</h4>
-        <div className="search-container">
-          <input
-            ref={searchName}
-            placeholder="Sản phẩm cần tìm kiếm"
-            className="form-control d-inline-block w-25"
-          />
-          <button className="btn btn-sm btn-success ms-2" type="button" onClick={handleSearch}>
-            Search
-          </button>
+        <div className="search_body">
+          <div className="search_input">
+            <input
+              ref={searchName}
+              placeholder="Nhập tên sản phẩm cần tìm"
+              className="form-control search-input"
+            />
+            <button className="btn button_search" type="button" onClick={handleSearch}>
+              <i className="fas fa-search"></i> 
+            </button>
+          </div>
         </div>
       </div>
       <div className="button-list">
-        <Link className="btn btn-success" style={{ color: "white", textDecoration: "none" }} to={"/AddStock"}>
+        <Link className="btn button_add" to={"/AddStock"}>
           Nhập kho
         </Link>
-        <Link to={"/home"} className="btn btn-secondary">Thoát</Link>
+        <Link to={"/home"} className="btn button_exit"><i className="fa-solid fa-rotate"></i></Link>
       </div>
       <hr style={{ margin: "20px 0" }} />
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ backgroundColor: "#f2f2f2" }}>
+        <tr style={{ background: 'linear-gradient(90.63deg, rgb(239, 68, 68) -15.16%, rgb(248, 113, 113) 105.15%)' }}>
             <th>STT</th>
             <th>Ngày</th>
             <th>Tên hàng</th>
@@ -123,7 +125,7 @@ function ListStock() {
         {[...Array(totalPage)].map((_, i) => (
           <button
             key={i}
-            className={`btn btn-sm ms-1 ${page === i + 1 ? "btn-primary" : "btn-light"}`}
+            className={`btn btn-sm ms-1 ${page === i + 1 ? "btn-color" : "btn-light"}`}
             onClick={() => setPage(i + 1)}
           >
             {i + 1}
@@ -140,10 +142,10 @@ function ListStock() {
         </Modal.Header>
         <Modal.Body>Bạn có muốn xóa sản phẩm trong kho này không?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className="button_exit" onClick={handleClose}>
             Thoát
           </Button>
-          <Button variant="primary" onClick={handleDelete}>
+          <Button className="button_add" onClick={handleDelete}>
             Xóa
           </Button>
         </Modal.Footer>
