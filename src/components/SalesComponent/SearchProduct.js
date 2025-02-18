@@ -21,8 +21,6 @@ function SearchProduct() {
     const [total, setTotal] = useState(useLocation().state?.total || 0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const phone = useLocation().state?.phone;
-    console.log("useLocation().state:", useLocation().state);
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,6 +71,7 @@ function SearchProduct() {
             setTotal(total);
             setSelectedProductNames(names.slice(0, -2));
             setIsModalOpen(true);
+            console.log("selectedProducts:", selectedProducts);
         },
         [selectedProducts, originProducts, quantities],
     );
@@ -82,7 +81,7 @@ function SearchProduct() {
         navigate('/SaleManager', {
             state: {
                 selectedProductNames,
-                selectedProducts: products.filter(p => selectedProducts.includes(p.id)),
+                selectedProducts: originProducts.filter(p => selectedProducts.includes(p.id)),
                 total,
                 phone,
                 quantities,
@@ -94,14 +93,14 @@ function SearchProduct() {
         navigate('/SaleManager', {
             state: {
                 ...originLocationState,
-                selectedProducts: products.filter(p => originLocationState.selectedProducts.includes(p.id)),
+                selectedProducts: originProducts.filter(p => originLocationState.selectedProducts.includes(p.id)),
             }
         });
     }, [originLocationState, selectedProducts, products]);
 
 
     return (
-        <>
+        <div className="container">
             <div className="search-product-container">
                 <input ref={searchName} name="searchName" placeholder="Nhập tên sản phẩm tìm kiếm" className="form-control"/>
                 <button onClick={handleSearch} className="btn btn-primary">Tìm kiếm</button>
@@ -185,7 +184,7 @@ function SearchProduct() {
                     </Modal.Footer>
                 </Modal>
             </div>
-        </>
+        </div>
     );
 }
 

@@ -59,7 +59,30 @@ function SaleManager() {
         setShowModal(true);
     };
 
+    // const handleCheckOut = async () => {
+    //     const info = {
+    //         name: customer.name,
+    //         email: customer.email,
+    //         selectedProductNames: allSelectedProduct.selectedProductName,
+    //         quantities: allSelectedProduct.quantities.map(q => q.quantity),
+    //         total: allSelectedProduct.total
+    //     };
+    //     await triggerWebhook(info);
+    //     toast("Thanh toán thành công");
+    //     navigate('/home');
+    // }
+
     const handleCheckOut = async () => {
+        if (!phone) {
+            toast.error("Số điện thoại là bắt buộc");
+            return;
+        }
+
+        if (allSelectedProduct.selectedProduct.length === 0) {
+            toast.error("Bạn phải chọn ít nhất một sản phẩm");
+            return;
+        }
+
         const info = {
             name: customer.name,
             email: customer.email,
@@ -132,7 +155,7 @@ function SaleManager() {
                         <tbody>
                         <tr className="render-tr">
                             <th className="render-th">Chọn sản phẩm</th>
-                            <td className="render-td">{allSelectedProduct.selectedProduct.map(product => product.name).join(', ')}</td>
+                            <td className="render-td">{allSelectedProduct.selectedProductName}</td>
                         </tr>
                         </tbody>
                         <tbody>

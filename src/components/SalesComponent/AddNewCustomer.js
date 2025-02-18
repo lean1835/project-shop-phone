@@ -33,8 +33,7 @@ function AddNewCustomer() {
         email: Yup.string().matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email is invalid").required("Email không được để trống")
     });
     return (
-        <>
-            <HeaderComponent/>
+        <div className="container">
             <Formik initialValues={newCustomer} onSubmit={handleSubmit} validationSchema={handleValidate}>
                 <Form className="add-customer-container">
                     <div className="form-group">
@@ -68,7 +67,7 @@ function AddNewCustomer() {
                     </div>
                 </Form>
             </Formik>
-        </>
+        </div>
     );
 }
 
