@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {getAllCustomers} from "../../services/customerService";
 import {useLocation, useNavigate} from "react-router-dom";
-import {formarCurrency, getUriSearchParam} from "../../utils/common";
+import {formatCurrency, getUriSearchParam} from "../../utils/common";
 import '../../assets/saleComp.css';
 import {Button, Modal} from 'react-bootstrap';
 import {triggerWebhook} from "./checkOutProduct";
@@ -148,7 +148,7 @@ function SaleManager() {
                         <tbody>
                         <tr className="render-tr">
                             <th className="render-th">Tổng</th>
-                            <td className="render-td">{formarCurrency(allSelectedProduct.total)}</td>
+                            <td className="render-td">{formatCurrency(allSelectedProduct.total)}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -169,8 +169,8 @@ function SaleManager() {
                                 <td className="render-td"
                                     onClick={() => handleProductClick(product)}>{product.name}</td>
                                 <td className="render-td">{allSelectedProduct.quantities.find(q => q.productId === product.id).quantity || 1}</td>
-                                <td className="render-td">{formarCurrency(product.price)}</td>
-                                <td className="render-td">{formarCurrency(product.price * allSelectedProduct.quantities.find(q => q.productId === product.id).quantity || 1)}</td>
+                                <td className="render-td">{formatCurrency(product.price)}</td>
+                                <td className="render-td">{formatCurrency(product.price * allSelectedProduct.quantities.find(q => q.productId === product.id).quantity || 1)}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -178,7 +178,7 @@ function SaleManager() {
                         <tr className="render-tr">
                             <th className="render-th">Tổng</th>
                             <td className="render-td" colSpan="2"
-                                style={{borderRight: 'none'}}>{formarCurrency(allSelectedProduct.total)}</td>
+                                style={{borderRight: 'none'}}>{formatCurrency(allSelectedProduct.total)}</td>
                         </tr>
                         </tfoot>
                     </table>
@@ -195,7 +195,7 @@ function SaleManager() {
                     </Modal.Header>
                     <Modal.Body>
                         <p><strong>Tên sản phẩm:</strong> {selectedProduct.name}</p>
-                        <p><strong>Giá:</strong> {formarCurrency(selectedProduct.price)}</p>
+                        <p><strong>Giá:</strong> {formatCurrency(selectedProduct.price)}</p>
                         <p><strong>Hình ảnh:</strong> <img src={selectedProduct.image} alt={selectedProduct.name}
                                                         className="product-image"/></p>
                         <p><strong>Màn hình:</strong> {selectedProduct.screen_size}</p>
