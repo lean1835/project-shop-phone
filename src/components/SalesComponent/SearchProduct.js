@@ -3,7 +3,7 @@ import {searchProductByName} from "../../services/productService";
 import {useLocation, useNavigate} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Modal} from 'react-bootstrap';
-import {formarCurrency} from "../../utils/common";
+import {formatCurrency} from "../../utils/common";
 import '../../assets/saleComp.css';
 import HeaderComponent from "../HomeComponent/HeaderComponent";
 import {toast} from "react-toastify";
@@ -126,7 +126,7 @@ function SearchProduct() {
                         <tr key={p.id}>
                             <td>{p.id}</td>
                             <td>{p.name}</td>
-                            <td>{formarCurrency(p.price)}</td>
+                            <td>{formatCurrency(p.price)}</td>
                             <td>
                                 <img src={p.image} alt={p.name} className="product-image"/>
                             </td>
@@ -172,7 +172,7 @@ function SearchProduct() {
                     </Modal.Header>
                     <Modal.Body>
                         <p>Chọn sản phẩm: {selectedProductNames}</p>
-                        <p>Tổng tiền: {formarCurrency(total)}</p>
+                        <p>Tổng tiền: {formatCurrency(total)}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
